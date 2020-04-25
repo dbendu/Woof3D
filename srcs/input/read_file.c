@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 18:04:49 by user              #+#    #+#             */
-/*   Updated: 2020/04/25 19:00:25 by user             ###   ########.fr       */
+/*   Updated: 2020/04/25 19:37:45 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,16 @@ static bool		is_dir(const char *filename)
 		return (false);
 }
 
+static bool		useless_line(const char *line)
+{
+	while (*line == ' ' || *line == '\t')
+		line += 1;
+	if (*line == '\0')
+		return (true);
+	else
+		return (false);
+}
+
 t_vector_char	*read_file(const char *filename)
 {
 	int				fd;
@@ -40,10 +50,10 @@ t_vector_char	*read_file(const char *filename)
 	lines = vec_create(20, sizeof(t_vector_char));
 	while (gnl(fd, &line, NULL) == GNL_OK)
 	{
-		if (*line != '\0')
-			vec_pushback(&lines, &line);
-		else
+		if (useless_line(line))
 			free(line);
+		else
+			vec_pushback(&lines, &line);
 	}
 	return (lines);
 }

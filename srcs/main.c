@@ -14,9 +14,9 @@ static void	print_map(t_map *map)
 			// printf("%zu - %zu\n", col * CELL_SIZE, row * CELL_SIZE);
 			if (map->hero.position.y > (int)row * CELL_SIZE && map->hero.position.y < (int)(row + 1) * CELL_SIZE &&
 				map->hero.position.x > (int)col * CELL_SIZE && map->hero.position.x < (int)(col + 1) * CELL_SIZE)
-				printf("X ");
+				printf("X");
 			else
-				printf("%c ", map->map[row][col].wall ? '#' : ' ');
+				printf("%c", map->map[row][col].wall ? '#' : ' ');
 		}
 		printf("\n");
 	}

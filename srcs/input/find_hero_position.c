@@ -6,11 +6,10 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 18:29:35 by user              #+#    #+#             */
-/*   Updated: 2020/04/25 19:15:08 by user             ###   ########.fr       */
+/*   Updated: 2020/04/25 19:40:31 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
- #include <stdio.h>
 #include "Woof_defines.h"
 #include "input_utils.h"
 
@@ -56,8 +55,7 @@ t_point			find_hero_position(const t_vector_char *lines)
 		}
 		line_index += 1;
 	}
-	printf("HERO: %d : %d\n", hero_position.x, hero_position.y);
-	if (hero_founded == false)
+	if (hero_founded == false)		// then it'll checked in other function, but now i must be sure that hero exist
 		ft_error("can\'t find a hero", "find_hero_position", 0);
 	return (hero_position);
 }

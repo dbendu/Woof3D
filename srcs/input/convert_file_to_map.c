@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 17:56:34 by user              #+#    #+#             */
-/*   Updated: 2020/04/25 19:01:37 by user             ###   ########.fr       */
+/*   Updated: 2020/04/25 19:41:32 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 static void				get_point(const char **lineptr, t_point *point)
 {
 	const char *line = *lineptr;
+
 	if (*line == 'X')
 	{
 		point->wall = false;
