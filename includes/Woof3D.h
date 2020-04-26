@@ -17,5 +17,7 @@
 # include "input.h"
 
 void	woof_quit(t_map *map);
+void	ft_exit(const char *str);
+void	run();
 
 #endif

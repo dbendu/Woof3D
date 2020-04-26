@@ -22,6 +22,12 @@ typedef struct	s_point
 	bool		wall;
 }				t_point;
 
+typedef struct	s_point_xy
+{
+	int			x;
+	int			y;
+}				t_point_xy;
+
 typedef t_point	*t_vector_point;
 
 #endif

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "Woof3D.h"
+#include "libft.h"
 
 static void	free_map(t_vector_point *map)
 {
@@ -29,5 +30,11 @@ static void	free_map(t_vector_point *map)
 void	woof_quit(t_map *map)
 {
 	free_map(map->map);
+	exit(0);
+}
 
+void	ft_exit(const char *str)
+{
+	write(2, str, ft_strlen(str));
+	exit(-1);
 }

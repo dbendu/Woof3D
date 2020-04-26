@@ -6,22 +6,23 @@ SRCS =				main.c							\
 					input/init_hero.c				\
 					input/read_file.c				\
 					input/convert_file_to_map.c		\
-					input/find_hero_position.c
+					input/find_hero_position.c		\
+					raycasting_main.c
 
 SRCS_DIR =			srcs
 OBJS_DIR =			objs
 
 OBJS =				$(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 
-INCLUDES_DIRS =		includes			\
-					includes/input		\
-					libft/includes
+INCLUDES_DIRS =		includes/			\
+					includes/input/		\
+					libft/includes/
 
-INCLUDES =			$(addprefix -I, $(INCLUDES_DIRS))
+INCLUDES =			$(addprefix -I , $(INCLUDES_DIRS))
 
-FLAGS_COMPILE =		-Wall -Werror -Wextra -g
+FLAGS_COMPILE =		-Wall -Wextra -g
 
-FLAGS_LINK =		-L libft -lft -lSDL2
+FLAGS_LINK =		-L libft -lft -lSDL2 -lm
 
 
 all: $(NAME)

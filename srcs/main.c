@@ -4,7 +4,7 @@
 
 static void	usage(void)
 {
-	write(1, "usage: ./a.out [map]\n", 21);
+	write(2, "usage: ./a.out [map]\n", 21);
 }
 
 static void	print_map(t_map *map)
@@ -30,7 +30,7 @@ int main(int argc, const char **argv)
 	{
 		map = get_input(argv[1]);
 		print_map(&map);
-
+		run(map);
 		woof_quit(&map);
 	}
 	else
