@@ -14,11 +14,17 @@ OBJS_DIR =			objs
 
 OBJS =				$(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 
-INCLUDES_DIRS =		includes/			\
-					includes/input/		\
-					libft/includes/
+INCLUDES_DIRS 		=	includes/
+INCLUDES_INPUT		=	$(INCLUDES_DIRS)input/
+INCLUDES_LIBFT		=	libft/includes/
 
-INCLUDES =			$(addprefix -I , $(INCLUDES_DIRS))
+INCLUDES =			-I $(INCLUDES_DIRS) -I $(INCLUDES_INPUT) -I $(INCLUDES_LIBFT)
+
+HEADER_LIST			=	hero.h map.h point.h window.h Woof_defines.h Woof3D.h
+HEADER_INPUT_LIST	=	input_utils.h input.h
+
+HEADERS				=	$(addprefix $(INCLUDES_DIRS), $(HEADER_LIST))
+HEADERS				+=	$(addprefix $(INCLUDES_INPUT), $(HEADER_INPUT_LIST))
 
 FLAGS_COMPILE =		-Wall -Wextra -g
 
@@ -31,7 +37,7 @@ $(OBJS_DIR):
 	mkdir -p $(OBJS_DIR)
 	mkdir -p $(OBJS_DIR)/input
 
-$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c $(HEADERS)
 	gcc $(FLAGS_COMPILE) $(INCLUDES) -o $@ -c $<
 
 $(NAME): $(OBJS_DIR) $(OBJS)

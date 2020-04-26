@@ -13,7 +13,7 @@ t_window	*sdl_intial()
 	win = (t_window *)malloc(sizeof(*win));
 	win->state = true;
 	win->window = NULL;
-	win->surface	= NULL;
+	win->surface = NULL;
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 		ft_exit(SDL_GetError());
 	if (!(win->window = SDL_CreateWindow(TITLE, SDL_WINDOWPOS_UNDEFINED,
@@ -69,31 +69,26 @@ void		drawmap(t_map map, t_window *win)
 */
 void		raycast(t_map map, t_window *win)
 {
-	SDL_Rect	rect;
 	int		a;
 	double	rayx;
 	double	rayy;
 
 	a = 0;
-	rect.w = (int)(WIDTH / vec_size(&map.map[0]));
-	rect.h = (int)(HEIGHT / vec_size(&map.map));
-	rect.w = (rect.h < rect.w) ? rect.h : rect.w;
-	rect.h = (rect.w < rect.h) ? rect.w : rect.h;
 	while (a < 181)
 	{
-		rayx = map.hero.position.x  * rect.w;
-		rayy = map.hero.position.y  * rect.w;
-		while (rect.w <= rayx && rayx <= WIDTH &&
-			rect.w <= rayy && rayy <= HEIGHT)
+		rayx = map.hero.position.x;
+		rayy = map.hero.position.y;
+		while (0 <= rayx && rayx <= WIDTH &&
+			0 <= rayy && rayy <= HEIGHT)
 		{
-			// rayx += cos(a) * 0.5;
-			// rayy += sin(a) * 0.5;
-			if (map.map[(int)(rayy / rect.w)][(int)(rayx / rect.w)].wall)
+			rayx += cos(a) * 0.5;
+			rayy += sin(a) * 0.5;
+			if (map.map[(int)(rayy / CELL_SIZE)][(int)(rayx / CELL_SIZE)].wall)
 			{
 				write(1, "OK\n", 3);
-				SDL_RenderDrawLine(win->renderer, (int)(map.hero.position.x * rect.w),
-					(int)(map.hero.position.y * rect.w),
-					(int)(rayx * rect.w), (int)(rayy * rect.w));
+				SDL_RenderDrawLine(win->renderer, (int)(map.hero.position.x),
+					(int)(map.hero.position.y),
+					(int)(rayx), (int)(rayy));
 			}
 		}
 		a++;

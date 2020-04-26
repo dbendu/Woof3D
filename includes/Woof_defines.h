@@ -16,7 +16,7 @@
 # define WIDTH		1000
 # define HEIGHT		800
 # define TITLE		"Woof3D"	// window title
-# define CELL_SIZE	64
+# define CELL_SIZE	50
 # define FOV		60			// field of view, in degrees
 
 #endif
