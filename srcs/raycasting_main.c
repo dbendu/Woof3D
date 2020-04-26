@@ -73,9 +73,9 @@ void		raycast(t_map map, t_window *win)
 	double	rayx;
 	double	rayy;
 
-	a = -FOV / 2;
+	a = map.hero.pov - FOV / 2;
 	a *= 3.14 / 180;
-	while (a < ((FOV * 3.14) / 360 ))
+	while (a < ((((FOV / 2 + map.hero.pov) * 3.14) / 180 )))
 	{
 		rayx = map.hero.position.x;
 		rayy = map.hero.position.y;
