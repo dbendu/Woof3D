@@ -69,29 +69,30 @@ void		drawmap(t_map map, t_window *win)
 */
 void		raycast(t_map map, t_window *win)
 {
-	int		a;
+	double	a;
 	double	rayx;
 	double	rayy;
 
-	a = 0;
-	while (a < 181)
+	a = -FOV / 2;
+	a *= 3.14 / 180;
+	while (a < ((FOV * 3.14) / 360 ))
 	{
 		rayx = map.hero.position.x;
 		rayy = map.hero.position.y;
 		while (0 <= rayx && rayx <= WIDTH &&
 			0 <= rayy && rayy <= HEIGHT)
 		{
-			rayx += cos(a) * 0.5;
-			rayy += sin(a) * 0.5;
 			if (map.map[(int)(rayy / CELL_SIZE)][(int)(rayx / CELL_SIZE)].wall)
 			{
-				write(1, "OK\n", 3);
 				SDL_RenderDrawLine(win->renderer, (int)(map.hero.position.x),
 					(int)(map.hero.position.y),
 					(int)(rayx), (int)(rayy));
+					break ;
 			}
+			rayx += cos(a) * 0.5;
+			rayy += sin(a) * 0.5;
 		}
-		a++;
+		a += 3.14 / 180;
 	}
 
 }
@@ -106,7 +107,7 @@ void		run(t_map map)
 		proccesInput(win);
 		// SDL_RenderDrawLine(win->renderer, 0, 0, 200, 200);
 		drawmap(map, win);
-		// raycast(map, win);
+		raycast(map, win);
 		SDL_RenderPresent(win->renderer);
 	}
 }
