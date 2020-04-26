@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 17:29:15 by user              #+#    #+#             */
-/*   Updated: 2020/04/25 18:03:31 by user             ###   ########.fr       */
+/*   Updated: 2020/04/27 02:12:54 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,21 @@
 
 # include "point.h"
 
+typedef struct		s_position
+{
+	float			x;
+	float			y;
+}					t_position;
+
 typedef struct		s_hero
 {
-	t_point			position;
+	t_point			relative_position;
+	t_position		absolute_position;
 	unsigned		hp;
 	unsigned short	lives;
 	void			*ammo;
 	float			pov;
+	float			fov;
 }					t_hero;
 
 #endif

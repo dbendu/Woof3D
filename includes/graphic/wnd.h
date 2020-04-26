@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 11:28:57 by user              #+#    #+#             */
-/*   Updated: 2020/04/26 11:31:20 by user             ###   ########.fr       */
+/*   Updated: 2020/04/26 13:35:11 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ typedef struct		s_sdl
 {
 	SDL_Window		*window;
 	SDL_Renderer	*renderer;
-	SDL_Texture		*texture;
 }					t_sdl;
 
 typedef struct		s_wnd

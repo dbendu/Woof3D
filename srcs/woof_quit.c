@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 18:58:31 by user              #+#    #+#             */
-/*   Updated: 2020/04/26 13:06:12 by user             ###   ########.fr       */
+/*   Updated: 2020/04/26 22:04:06 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ static void	free_map(t_vector_point *map)
 
 void	woof_quit(t_data *data)
 {
-	wnd_destroy(&data->wnd);
 	free_map(data->map.map);
+	wnd_destroy(&data->wnd);
 }

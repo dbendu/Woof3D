@@ -7,15 +7,13 @@ SRCS =				main.c									\
 					input/read_file.c						\
 					input/convert_file_to_map.c				\
 					input/find_hero_position.c				\
-					graphic/utils.c							\
-					graphic/interface/interface_create.c	\
-					graphic/interface/interface_destroy.c	\
-					graphic/interface/interface_draw.c		\
-					graphic/minimap/minimap_destroy.c		\
-					graphic/minimap/minimap_draw.c			\
-					graphic/wnd/wnd_init.c					\
-					graphic/wnd/wnd_destroy.c				\
-					woof_init.c
+					woof_init.c								\
+					graphic/draw.c							\
+					graphic/wnd_destroy.c					\
+					graphic/wnd_init.c						\
+					controls/mouse.c						\
+					controls/keyboard.c						\
+					controls/processing_input.c
 
 SRCS_DIR =			srcs
 OBJS_DIR =			objs
@@ -27,10 +25,11 @@ INCLUDES_INPUT		=	$(INCLUDES_DIRS)input/
 INCLUDES_GRAPHIC	=	$(INCLUDES_DIRS)/graphic/
 INCLUDES_LIBFT		=	libft/includes/
 INCLUDES_CONTROLS	=	$(INCLUDES_DIRS)/controls
+INCLUDES_STRUCTS	=	$(INCLUDES_DIRS)/structs
 
 INCLUDES =			-I $(INCLUDES_DIRS) -I $(INCLUDES_INPUT)	\
 					-I $(INCLUDES_LIBFT) -I $(INCLUDES_GRAPHIC)	\
-					-I $(INCLUDES_CONTROLS)
+					-I $(INCLUDES_CONTROLS) -I $(INCLUDES_STRUCTS)
 
 HEADER_LIST			=	hero.h map.h point.h window.h Woof_defines.h Woof3D.h
 HEADER_INPUT_LIST	=	input_utils.h input.h
@@ -52,6 +51,7 @@ $(OBJS_DIR):
 	mkdir -p $(OBJS_DIR)/graphic/interface
 	mkdir -p $(OBJS_DIR)/graphic/minimap
 	mkdir -p $(OBJS_DIR)/graphic/wnd
+	mkdir -p $(OBJS_DIR)/controls
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c #$(HEADERS)
 	gcc $(FLAGS_COMPILE) $(INCLUDES) -o $@ -c $<

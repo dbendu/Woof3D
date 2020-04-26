@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 18:29:35 by user              #+#    #+#             */
-/*   Updated: 2020/04/25 19:40:31 by user             ###   ########.fr       */
+/*   Updated: 2020/04/26 21:39:22 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static t_point	get_hero_position(const char *line, size_t y_position)
 {
 	t_point	hero_posititon;
 
-	hero_posititon.y = y_position * CELL_SIZE + CELL_SIZE / 2;
+	hero_posititon.y = y_position;
 	hero_posititon.x = 0;
 	while (true)
 	{
@@ -32,7 +32,6 @@ static t_point	get_hero_position(const char *line, size_t y_position)
 			hero_posititon.x += 1;
 		}
 	}
-	hero_posititon.x = hero_posititon.x * CELL_SIZE + CELL_SIZE / 2;
 	return (hero_posititon);
 }
 

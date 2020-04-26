@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   interface_draw.c                                   :+:      :+:    :+:   */
+/*   controls_utils.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/26 11:44:03 by user              #+#    #+#             */
-/*   Updated: 2020/04/26 11:47:02 by user             ###   ########.fr       */
+/*   Created: 2020/04/26 15:31:25 by user              #+#    #+#             */
+/*   Updated: 2020/04/27 01:17:06 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "interface.h"
+#ifndef CONTROLS_UTILS_H
+# define CONTROLS_UTILS_H
 
-void				interface_draw(const t_interface *interface,
-									SDL_Renderer *renderer)
-{
-	SDL_Texture	*texture;
+# include "Woof3D.h"
 
-	texture = SDL_CreateTextureFromSurface(renderer, interface->surface);
-	SDL_RenderSetViewport(renderer, &interface->viewport);
-	SDL_RenderCopy(renderer, texture, NULL, NULL);
-	SDL_RenderPresent(renderer);
-	SDL_DestroyTexture(texture);
-}
+void	processing_input(t_data *data);
+
+#endif

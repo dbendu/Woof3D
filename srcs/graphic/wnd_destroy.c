@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   data.h                                             :+:      :+:    :+:   */
+/*   wnd_destroy.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/26 12:44:06 by user              #+#    #+#             */
-/*   Updated: 2020/04/26 13:04:43 by user             ###   ########.fr       */
+/*   Created: 2020/04/26 12:05:35 by user              #+#    #+#             */
+/*   Updated: 2020/04/26 22:10:36 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DATA_H
-# define DATA_H
+#include "wnd.h"
 
-# include "wnd.h"
-# include "map.h"
-# include "mouse.h"
-# include "keyboard.h"
-
-typedef struct		s_data
+void		wnd_destroy(t_wnd *wnd)
 {
-	t_wnd			wnd;
-	t_mouse			mouse;
-	t_keyboard		keyboard;
-	t_map			map;
-}					t_data;
-
-t_data	woof_init(const char *map);
-void	woof_quit(t_data *data);
-
-#endif
+	SDL_FreeSurface(wnd->interface.surface);
+	SDL_FreeSurface(wnd->minimap.surface);
+	SDL_FreeSurface(wnd->main_canvas);
+	SDL_DestroyRenderer(wnd->sdl.renderer);
+	SDL_DestroyWindow(wnd->sdl.window);
+	SDL_Quit();
+}
