@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Woof_defines.h                                     :+:      :+:    :+:   */
+/*   keyboard.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/25 18:23:48 by user              #+#    #+#             */
-/*   Updated: 2020/04/26 13:17:10 by user             ###   ########.fr       */
+/*   Created: 2020/04/26 12:45:42 by user              #+#    #+#             */
+/*   Updated: 2020/04/26 12:48:35 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WOOF_DEFINES_H
-# define WOOF_DEFINES_H
+#ifndef KEYBOARD_H
+# define KEYBOARD_H
 
-# define WIDTH		1000
-# define HEIGHT		800
-# define MINIMAP_SZ	150
-# define TITLE		"Woof3D"	// window title
-# define CELL_SIZE	64
-# define FOV		60			// field of view, in degrees
+# define MOVE_FORVARD	(1L << 0)
+# define MOVE_BACK		(1L << 1)
+# define MOVE_LEFT		(1L << 2)
+# define MOVE_RIGHT		(1L << 3)
+
+typedef struct	s_keyboard
+{
+	bool		move_forvard;
+	bool		move_back;
+	bool		move_left;
+	bool		move_right;
+}				t_keyboard;
 
 #endif

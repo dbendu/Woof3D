@@ -39,10 +39,9 @@ void	proccesInput(t_window *win)
 void		drawmap(t_map map, t_window *win)
 {
 	SDL_Rect	rect;
-	rect.w = (int)(WIDTH / vec_size(&map.map[0]));
-	rect.h = (int)(HEIGHT / vec_size(&map.map));
-	rect.w = (rect.h < rect.w) ? rect.h : rect.w;
-	rect.h = (rect.w < rect.h) ? rect.w : rect.h;
+	rect.w = CELL_SIZE;
+	rect.h = CELL_SIZE;
+	printf("HERO: %d-%d\n", map.hero.position.x, map.hero.position.y);
 	for (size_t row = 0; row < vec_size(&map.map); ++row) {
 		for (size_t col = 0; col < vec_size(&map.map[row]); ++col) {
 			// printf("%zu - %zu\n", col * CELL_SIZE, row * CELL_SIZE);
@@ -110,13 +109,20 @@ void		run(t_map map)
 	t_window	*win;
 	win = sdl_intial();
 	SDL_SetRenderDrawColor(win->renderer, 255, 255, 255, 255);
-	while (win->state)
+	bool quit = false;
+	bool draw = true;
+	SDL_Event	event;
+	while (!quit)
 	{
-		proccesInput(win);
-		// SDL_RenderDrawLine(win->renderer, 0, 0, 200, 200);
-		drawmap(map, win);
-		// raycast(map, win);
-		SDL_RenderPresent(win->renderer);
+		SDL_WaitEvent(&event);
+		if (event.type == SDL_QUIT)
+			quit = true;
+		if (draw)
+		{
+			drawmap(map, win);
+			// raycast(map, win);
+			SDL_RenderPresent(win->renderer);
+			draw = false;
+		}
 	}
 }
-
