@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Woof_defines.h                                     :+:      :+:    :+:   */
+/*   wnd_destroy.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/25 18:23:48 by user              #+#    #+#             */
-/*   Updated: 2020/04/26 13:17:10 by user             ###   ########.fr       */
+/*   Created: 2020/04/26 12:05:35 by user              #+#    #+#             */
+/*   Updated: 2020/04/26 13:19:01 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WOOF_DEFINES_H
-# define WOOF_DEFINES_H
+#include "wnd.h"
 
-# define WIDTH		1000
-# define HEIGHT		800
-# define MINIMAP_SZ	150
-# define TITLE		"Woof3D"	// window title
-# define CELL_SIZE	50
-# define FOV		180			// field of view, in degrees
+static void	minimap_destroy(t_minimap *minimap)
+{
+	SDL_FreeSurface(minimap->surface);
+}
 
-#endif
+void		wnd_destroy(t_wnd *wnd)
+{
+	if (wnd->interface.exist)
+		interface_destroy(&wnd->interface);
+	minimap_destroy(&wnd->minimap);
+	SDL_FreeSurface(wnd->main_canvas);
+	SDL_DestroyRenderer(wnd->sdl.renderer);
+	SDL_DestroyWindow(wnd->sdl.window);
+	SDL_Quit();
+}

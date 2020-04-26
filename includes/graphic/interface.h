@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Woof_defines.h                                     :+:      :+:    :+:   */
+/*   interface.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/25 18:23:48 by user              #+#    #+#             */
-/*   Updated: 2020/04/26 13:17:10 by user             ###   ########.fr       */
+/*   Created: 2020/04/26 11:07:51 by user              #+#    #+#             */
+/*   Updated: 2020/04/26 11:47:44 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WOOF_DEFINES_H
-# define WOOF_DEFINES_H
+#ifndef INTERFACE_H
+# define INTERFACE_H
 
-# define WIDTH		1000
-# define HEIGHT		800
-# define MINIMAP_SZ	150
-# define TITLE		"Woof3D"	// window title
-# define CELL_SIZE	50
-# define FOV		180			// field of view, in degrees
+# include <SDL2/SDL.h>
+# include <stdbool.h>
+
+typedef struct		s_interface
+{
+	SDL_Surface		*surface;
+	SDL_Rect		viewport;
+	bool			exist;
+}					t_interface;
+
+t_interface			interface_create(void);
+void				interface_destroy(t_interface *interface);
+void				interface_draw(const t_interface *interface,
+									SDL_Renderer *renderer);
 
 #endif

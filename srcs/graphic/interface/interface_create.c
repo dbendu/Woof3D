@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Woof_defines.h                                     :+:      :+:    :+:   */
+/*   interface_create.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/25 18:23:48 by user              #+#    #+#             */
-/*   Updated: 2020/04/26 13:17:10 by user             ###   ########.fr       */
+/*   Created: 2020/04/26 11:47:11 by user              #+#    #+#             */
+/*   Updated: 2020/04/26 12:34:29 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WOOF_DEFINES_H
-# define WOOF_DEFINES_H
+#include "interface.h"
+#include "Woof_defines.h"
+#include "graphic_utils.h"
 
-# define WIDTH		1000
-# define HEIGHT		800
-# define MINIMAP_SZ	150
-# define TITLE		"Woof3D"	// window title
-# define CELL_SIZE	50
-# define FOV		180			// field of view, in degrees
+t_interface	interface_create(void)
+{
+	t_interface	interface;
 
-#endif
+	interface.surface = sdl_create_surface(WIDTH, 150);
+	interface.exist = true;
+	interface.viewport.x = 0;
+	interface.viewport.y = HEIGHT - 150;
+	interface.viewport.w = WIDTH;
+	interface.viewport.h = 150;
+	return (interface);
+}

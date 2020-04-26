@@ -1,23 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Woof_defines.h                                     :+:      :+:    :+:   */
+/*   wnd.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/25 18:23:48 by user              #+#    #+#             */
-/*   Updated: 2020/04/26 13:17:10 by user             ###   ########.fr       */
+/*   Created: 2020/04/26 11:28:57 by user              #+#    #+#             */
+/*   Updated: 2020/04/26 11:31:20 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WOOF_DEFINES_H
-# define WOOF_DEFINES_H
+#ifndef WND_H
+# define WND_H
 
-# define WIDTH		1000
-# define HEIGHT		800
-# define MINIMAP_SZ	150
-# define TITLE		"Woof3D"	// window title
-# define CELL_SIZE	50
-# define FOV		180			// field of view, in degrees
+# include <SDL2/SDL.h>
+# include "minimap.h"
+# include "interface.h"
+
+typedef struct		s_sdl
+{
+	SDL_Window		*window;
+	SDL_Renderer	*renderer;
+	SDL_Texture		*texture;
+}					t_sdl;
+
+typedef struct		s_wnd
+{
+	t_sdl			sdl;
+	SDL_Surface		*main_canvas;
+	t_interface		interface;
+	t_minimap		minimap;
+}					t_wnd;
+
+t_wnd				wnd_init(void);
+
+void				wnd_destroy(t_wnd *wnd);
 
 #endif

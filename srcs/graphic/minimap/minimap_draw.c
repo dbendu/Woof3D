@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Woof_defines.h                                     :+:      :+:    :+:   */
+/*   minimap_draw.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/25 18:23:48 by user              #+#    #+#             */
-/*   Updated: 2020/04/26 13:17:10 by user             ###   ########.fr       */
+/*   Created: 2020/04/26 11:32:08 by user              #+#    #+#             */
+/*   Updated: 2020/04/26 11:36:57 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WOOF_DEFINES_H
-# define WOOF_DEFINES_H
+#include "minimap.h"
 
-# define WIDTH		1000
-# define HEIGHT		800
-# define MINIMAP_SZ	150
-# define TITLE		"Woof3D"	// window title
-# define CELL_SIZE	50
-# define FOV		180			// field of view, in degrees
+void		minimap_draw(const t_minimap *minimap, SDL_Renderer *renderer)
+{
+	SDL_Texture	*texture;
 
-#endif
+	texture = SDL_CreateTextureFromSurface(renderer, minimap->surface);
+	SDL_RenderSetViewport(renderer, &minimap->viewport);
+	SDL_RenderCopy(renderer, texture, NULL, NULL);
+	SDL_RenderPresent(renderer);
+	SDL_DestroyTexture(texture);
+}
