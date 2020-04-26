@@ -18,5 +18,6 @@
 void	woof_quit(t_data *data);
 void	ft_exit(const char *str);
 void	run();
+void	mem(t_wnd win, t_map map);
 
 #endif

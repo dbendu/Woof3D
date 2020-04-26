@@ -25,7 +25,6 @@ static void	draw(t_wnd *wnd)
 {
 	SDL_Texture	*texture;
 
-	clock_t begin = clock();
 	texture = SDL_CreateTextureFromSurface(wnd->sdl.renderer, wnd->main_canvas);
 	SDL_RenderSetViewport(wnd->sdl.renderer, NULL);
 	SDL_RenderCopy(wnd->sdl.renderer, texture, NULL, NULL);
@@ -85,14 +84,34 @@ static void	game_cycle(t_data data)
 int main(int argc, const char **argv)
 {
 	t_data	data;
+		SDL_Event	event;
+	bool		quit;
 
 	if (argc == 2)
 	{
 		data = woof_init(argv[1]);
-		game_cycle(data);
+		// game_cycle(data);
+		quit = false;
+		while (!quit)
+		{
+		mem(data.wnd, data.map);
+				SDL_WaitEvent(&event);
+		if (event.type == SDL_KEYDOWN)
+		{
+			if (event.key.keysym.sym == SDLK_ESCAPE)
+				quit = true;
+			else
+				key_pressed(&data, event.key.keysym.sym);
+		}
+		// else if (event.type == SDL_KEYUP)
+		// 	key_release(&data, event.key.keysym.sym);
+		else if (event.type == SDL_QUIT)
+			quit = true;
+	}
 		woof_quit(&data);
 	}
 	else
 		usage();
+	write(1, "Os\n", 3);
 	return (0);
 }

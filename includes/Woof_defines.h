@@ -18,6 +18,6 @@
 # define MINIMAP_SZ	150
 # define TITLE		"Woof3D"	// window title
 # define CELL_SIZE	50
-# define FOV		180			// field of view, in degrees
+# define FOV		80			// field of view, in degrees
 
 #endif

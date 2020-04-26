@@ -28,6 +28,12 @@ typedef struct	s_point_xy
 	int			y;
 }				t_point_xy;
 
+typedef struct	s_point_d
+{
+	double		x;
+	double		y;
+}				t_point_d;
+
 typedef t_point	*t_vector_point;
 
 #endif
