@@ -39,13 +39,10 @@ void	proccesInput(t_window *win)
 void		drawmap(t_map map, t_window *win)
 {
 	SDL_Rect	rect;
-	rect.w = (int)(WIDTH / vec_size(&map.map[0]));
-	rect.h = (int)(HEIGHT / vec_size(&map.map));
-	rect.w = (rect.h < rect.w) ? rect.h : rect.w;
-	rect.h = (rect.w < rect.h) ? rect.w : rect.h;
+	rect.w = CELL_SIZE;
+	rect.h = CELL_SIZE;
 	for (size_t row = 0; row < vec_size(&map.map); ++row) {
 		for (size_t col = 0; col < vec_size(&map.map[row]); ++col) {
-			// printf("%zu - %zu\n", col * CELL_SIZE, row * CELL_SIZE);
 			if (map.hero.position.y > (int)row * CELL_SIZE && map.hero.position.y < (int)(row + 1) * CELL_SIZE &&
 				map.hero.position.x > (int)col * CELL_SIZE && map.hero.position.x < (int)(col + 1) * CELL_SIZE)
 			{
@@ -54,11 +51,10 @@ void		drawmap(t_map map, t_window *win)
 				SDL_RenderDrawLine(win->renderer, (col + 1) * rect.w, row * rect.w,
 					col * rect.w, (row + 1) * rect.w);
 			}
-				// printf("X");
 			else if (map.map[row][col].wall)
 			{
-				rect.x = row * rect.w;
-				rect.y = col * rect.w;
+				rect.y = row * CELL_SIZE;
+				rect.x = col * CELL_SIZE;
 				SDL_RenderDrawRect(win->renderer, &rect);
 			}
 		}
