@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 13:00:08 by user              #+#    #+#             */
-/*   Updated: 2020/04/26 13:09:22 by user             ###   ########.fr       */
+/*   Updated: 2020/04/26 22:05:25 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 static t_keyboard	keyboard_init(void)
 {
 	t_keyboard	keyboard;
+	int			i;
 
-	keyboard.move_back = false;
-	keyboard.move_forvard = false;
-	keyboard.move_left = false;
-	keyboard.move_right = false;
+	i = 0;
+	while (i < 4)
+		keyboard.key[i++] = false;
 	return (keyboard);
 }
 
@@ -43,5 +43,6 @@ t_data	woof_init(const char *map)
 	data.map = get_input(map);
 	data.keyboard = keyboard_init();
 	data.mouse = mouse_init();
+	data.quit = false;
 	return (data);
 }

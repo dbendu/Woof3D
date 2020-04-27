@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 12:45:42 by user              #+#    #+#             */
-/*   Updated: 2020/04/26 12:48:35 by user             ###   ########.fr       */
+/*   Updated: 2020/04/27 01:17:13 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 
 typedef struct	s_keyboard
 {
-	bool		move_forvard;
-	bool		move_back;
-	bool		move_left;
-	bool		move_right;
+	bool		key[4];
 }				t_keyboard;
+
+void			key_pressed(t_data *data, SDL_Keycode button);
+void			key_release(t_data *data, SDL_Keycode button);
 
 #endif

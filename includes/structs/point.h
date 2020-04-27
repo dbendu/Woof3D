@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimap_draw.c                                     :+:      :+:    :+:   */
+/*   point.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/26 11:32:08 by user              #+#    #+#             */
-/*   Updated: 2020/04/26 11:36:57 by user             ###   ########.fr       */
+/*   Created: 2020/04/25 17:28:33 by user              #+#    #+#             */
+/*   Updated: 2020/04/25 18:15:50 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minimap.h"
+#ifndef POINT_H
+# define POINT_H
 
-void		minimap_draw(const t_minimap *minimap, SDL_Renderer *renderer)
+# include <stdbool.h>
+
+typedef struct	s_point
 {
-	SDL_Texture	*texture;
+	int			x;
+	int			y;
+	bool		wall;
+}				t_point;
 
-	texture = SDL_CreateTextureFromSurface(renderer, minimap->surface);
-	SDL_RenderSetViewport(renderer, &minimap->viewport);
-	SDL_RenderCopy(renderer, texture, NULL, NULL);
-	SDL_RenderPresent(renderer);
-	SDL_DestroyTexture(texture);
-}
+typedef struct	s_point_xy
+{
+	int			x;
+	int			y;
+}				t_point_xy;
+
+typedef t_point	*t_vector_point;
+
+#endif

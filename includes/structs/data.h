@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   interface_destroy.c                                :+:      :+:    :+:   */
+/*   data.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/26 11:47:07 by user              #+#    #+#             */
-/*   Updated: 2020/04/26 11:59:02 by user             ###   ########.fr       */
+/*   Created: 2020/04/26 12:44:06 by user              #+#    #+#             */
+/*   Updated: 2020/04/26 15:59:38 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "interface.h"
+#ifndef DATA_H
+# define DATA_H
 
-void				interface_destroy(t_interface *interface)
+# include "wnd.h"
+# include "map.h"
+# include "mouse.h"
+# include "keyboard.h"
+# include <stdbool.h>
+
+typedef struct		s_data
 {
-	if (interface->exist)
-	{
-		SDL_FreeSurface(interface->surface);
-		interface->exist = false;
-	}
-}
+	t_wnd			wnd;
+	t_mouse			mouse;
+	bool			quit;
+	t_keyboard		keyboard;
+	t_map			map;
+}					t_data;
+
+t_data	woof_init(const char *map);
+void	woof_quit(t_data *data);
+
+#endif

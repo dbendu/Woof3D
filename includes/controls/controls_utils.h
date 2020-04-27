@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hero.h                                             :+:      :+:    :+:   */
+/*   controls_utils.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/25 17:29:15 by user              #+#    #+#             */
-/*   Updated: 2020/04/25 18:03:31 by user             ###   ########.fr       */
+/*   Created: 2020/04/26 15:31:25 by user              #+#    #+#             */
+/*   Updated: 2020/04/27 01:17:06 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HERO_H
-# define HERO_H
+#ifndef CONTROLS_UTILS_H
+# define CONTROLS_UTILS_H
 
-# include "point.h"
+# include "Woof3D.h"
 
-typedef struct		s_hero
-{
-	t_point			position;
-	unsigned		hp;
-	unsigned short	lives;
-	void			*ammo;
-	float			pov;
-}					t_hero;
+void	processing_input(t_data *data);
 
 #endif

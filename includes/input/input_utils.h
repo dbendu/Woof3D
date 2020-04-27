@@ -6,14 +6,13 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 17:56:55 by user              #+#    #+#             */
-/*   Updated: 2020/04/25 18:14:11 by user             ###   ########.fr       */
+/*   Updated: 2020/04/26 21:40:20 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INPUT_UTILS_H
 # define INPUT_UTILS_H
 
-# include "point.h"
 # include "hero.h"
 # include "libft.h"
 

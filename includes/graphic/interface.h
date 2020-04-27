@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/26 11:07:51 by user              #+#    #+#             */
-/*   Updated: 2020/04/26 11:47:44 by user             ###   ########.fr       */
+/*   Created: 2020/04/26 14:59:02 by user              #+#    #+#             */
+/*   Updated: 2020/04/26 15:00:09 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,7 @@ typedef struct		s_interface
 {
 	SDL_Surface		*surface;
 	SDL_Rect		viewport;
-	bool			exist;
+	bool			show;
 }					t_interface;
-
-t_interface			interface_create(void);
-void				interface_destroy(t_interface *interface);
-void				interface_draw(const t_interface *interface,
-									SDL_Renderer *renderer);
 
 #endif

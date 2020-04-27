@@ -2,42 +2,79 @@ NAME =				a.out
 
 SRCS =				main.c									\
 					woof_quit.c								\
-					raycasting_main.c						\
 					input/get_input.c						\
 					input/init_hero.c						\
 					input/read_file.c						\
 					input/convert_file_to_map.c				\
 					input/find_hero_position.c				\
-					graphic/utils.c							\
-					graphic/interface/interface_create.c	\
-					graphic/interface/interface_destroy.c	\
-					graphic/interface/interface_draw.c		\
-					graphic/minimap/minimap_destroy.c		\
-					graphic/minimap/minimap_draw.c			\
-					graphic/wnd/wnd_init.c					\
-					graphic/wnd/wnd_destroy.c				\
-					woof_init.c
+					woof_init.c								\
+					graphic/draw.c							\
+					graphic/wnd_destroy.c					\
+					graphic/wnd_init.c						\
+					controls/mouse.c						\
+					controls/keyboard.c						\
+					controls/processing_input.c
 
 SRCS_DIR =			srcs
 OBJS_DIR =			objs
 
 OBJS =				$(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 
-INCLUDES_DIRS 		=	includes/
-INCLUDES_INPUT		=	$(INCLUDES_DIRS)input/
-INCLUDES_GRAPHIC	=	$(INCLUDES_DIRS)/graphic/
+#-------------------------------------------------------------------------------
+#									INCLUDES
+#-------------------------------------------------------------------------------
+
 INCLUDES_LIBFT		=	libft/includes/
-INCLUDES_CONTROLS	=	$(INCLUDES_DIRS)/controls
+INCLUDES_DIR =		includes
+INCLUDES_CON_DIR =	$(INCLUDES_DIRS)controls
+INCLUDES_GR_DIR =	$(INCLUDES_DIRS)graphic
+INCLUDES_INP_DIR =	$(INCLUDES_DIRS)input
+INCLUDES_STR_DIR =	$(INCLUDES_DIRS)structs
 
-INCLUDES =			-I $(INCLUDES_DIRS) -I $(INCLUDES_INPUT)	\
-					-I $(INCLUDES_LIBFT) -I $(INCLUDES_GRAPHIC)	\
-					-I $(INCLUDES_CONTROLS)
+INCLUDES =			-I $(INCLUDES_DIR) -I $(INCLUDES_CON_DIR)
+INCLUDES +=			-I $(INCLUDES_LIBFT) -I $(INCLUDES_GR_DIR)
+INCLUDES +=			-I $(INCLUDES_INP_DIR) -I $(INCLUDES_STR_DIR)
 
-HEADER_LIST			=	hero.h map.h point.h window.h Woof_defines.h Woof3D.h
-HEADER_INPUT_LIST	=	input_utils.h input.h
+INCLUDES_DIR =		includes
+INCLUDES_CON_DIR =	$(INCLUDES_DIRS)controls
+INCLUDES_GR_DIR =	$(INCLUDES_DIRS)graphic
+INCLUDES_INP_DIR =	$(INCLUDES_DIRS)input
+INCLUDES_STR_DIR =	$(INCLUDES_DIRS)structs
 
-HEADERS				=	$(addprefix $(INCLUDES_DIRS), $(HEADER_LIST))
-HEADERS				+=	$(addprefix $(INCLUDES_INPUT), $(HEADER_INPUT_LIST))
+
+#-------------------------------------------------------------------------------
+#									HEADERS
+#-------------------------------------------------------------------------------
+
+HEADERS_LIST =		Woof_defines.h			\
+					Woof3D.h
+
+HEADERS_CON_LIST =	controls_utils.h		\
+					keyboard.h				\
+					mouse.h
+
+HEADERS_GR_LIST =	interface.h				\
+					minimap.h				\
+					wnd.h
+
+HEADERS_INP_LIST =	input_utils.h			\
+					input.h
+
+HEADERS_STR_LIST =	data.h					\
+					hero.h					\
+					map.h					\
+					point.h
+
+HEADERS =			$(addprefix $(INCLUDES_DIR), $(HEADERS_LIST))
+HEADERS +=			$(addprefix $(INCLUDES_CON_DIR), $(HEADERS_CON_LIST))
+HEADERS +=			$(addprefix $(INCLUDES_GR_DIR), $(HEADERS_GR_LIST))
+HEADERS +=			$(addprefix $(INCLUDES_INP_DIR), $(HEADERS_INP_LIST))
+HEADERS +=			$(addprefix $(INCLUDES_STR_DIR), $(HEADERS_STR_LIST))
+
+
+#-------------------------------------------------------------------------------
+#									FLAGS
+#-------------------------------------------------------------------------------
 
 FLAGS_COMPILE =		-Wall -Wextra -g
 
@@ -53,8 +90,9 @@ $(OBJS_DIR):
 	mkdir -p $(OBJS_DIR)/graphic/interface
 	mkdir -p $(OBJS_DIR)/graphic/minimap
 	mkdir -p $(OBJS_DIR)/graphic/wnd
+	mkdir -p $(OBJS_DIR)/controls
 
-$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c #$(HEADERS)
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c $(HEADERS)
 	gcc $(FLAGS_COMPILE) $(INCLUDES) -o $@ -c $<
 
 $(NAME): $(OBJS_DIR) $(OBJS)
