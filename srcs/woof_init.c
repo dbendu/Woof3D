@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 13:00:08 by user              #+#    #+#             */
-/*   Updated: 2020/04/26 22:05:25 by user             ###   ########.fr       */
+/*   Updated: 2020/04/27 21:12:31 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static t_keyboard	keyboard_init(void)
 	int			i;
 
 	i = 0;
-	while (i < 4)
+	while (i < KEYS_BINDED)
 		keyboard.key[i++] = false;
 	return (keyboard);
 }

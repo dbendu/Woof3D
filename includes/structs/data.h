@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 12:44:06 by user              #+#    #+#             */
-/*   Updated: 2020/04/26 15:59:38 by user             ###   ########.fr       */
+/*   Updated: 2020/04/27 21:12:24 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ typedef struct		s_data
 {
 	t_wnd			wnd;
 	t_mouse			mouse;
-	bool			quit;
 	t_keyboard		keyboard;
 	t_map			map;
+	bool			quit;
 }					t_data;
 
 t_data	woof_init(const char *map);

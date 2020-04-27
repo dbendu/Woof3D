@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 10:46:13 by user              #+#    #+#             */
-/*   Updated: 2020/04/27 02:01:35 by user             ###   ########.fr       */
+/*   Updated: 2020/04/27 22:43:25 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static void			sdl_init(t_wnd *wnd)
 
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 		ft_error(SDL_GetError(), "wnd_init", 0);
-	ret = SDL_CreateWindowAndRenderer(WIDTH, HEIGHT, SDL_WINDOW_INPUT_GRABBED, &wnd->sdl.window,
+	ret = SDL_CreateWindowAndRenderer(WIDTH, HEIGHT, 0, &wnd->sdl.window,
 														&wnd->sdl.renderer);
 	if (ret < 0)
 		ft_error(SDL_GetError(), "wnd_init", 0);

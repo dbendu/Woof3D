@@ -3,6 +3,8 @@ NAME =				a.out
 SRCS =				main.c									\
 					woof_quit.c								\
 					utils.c									\
+					player_update.c							\
+					raycasting.c							\
 					input/get_input.c						\
 					input/init_hero.c						\
 					input/read_file.c						\
@@ -90,17 +92,14 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c #$(HEADERS)
 	gcc $(FLAGS_COMPILE) $(INCLUDES) -o $@ -c $<
 
 $(NAME): $(OBJS_DIR) $(OBJS)
-	make -C libft
 	gcc $(OBJS) $(FLAGS_LINK) -o $(NAME)
 
 clean:
-	make clean -C libft
 	rm -rf $(OBJS_DIR)
 
 c: clean
 
 fclean: clean
-	make fclean -C libft
 	rm -f $(NAME)
 
 f: clean

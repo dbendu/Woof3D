@@ -6,21 +6,25 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 12:45:42 by user              #+#    #+#             */
-/*   Updated: 2020/04/27 01:17:13 by user             ###   ########.fr       */
+/*   Updated: 2020/04/27 21:12:05 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef KEYBOARD_H
 # define KEYBOARD_H
 
-# define MOVE_FORVARD	(1L << 0)
-# define MOVE_BACK		(1L << 1)
-# define MOVE_LEFT		(1L << 2)
-# define MOVE_RIGHT		(1L << 3)
+# define KEYS_BINDED	(6)
+
+# define MOVE_FORWARD	(0)
+# define MOVE_BACK		(1)
+# define TURN_LEFT		(2)
+# define TURN_RIGHT		(3)
+# define FOV_DECREASE	(4)
+# define FOV_INCREASE	(5)
 
 typedef struct	s_keyboard
 {
-	bool		key[4];
+	bool		key[KEYS_BINDED];
 }				t_keyboard;
 
 void			key_pressed(t_data *data, SDL_Keycode button);
