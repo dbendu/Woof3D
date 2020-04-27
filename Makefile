@@ -2,6 +2,7 @@ NAME =				a.out
 
 SRCS =				main.c									\
 					woof_quit.c								\
+					utils.c									\
 					input/get_input.c						\
 					input/init_hero.c						\
 					input/read_file.c						\
@@ -25,22 +26,15 @@ OBJS =				$(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 #-------------------------------------------------------------------------------
 
 INCLUDES_LIBFT		=	libft/includes/
-INCLUDES_DIR =		includes
-INCLUDES_CON_DIR =	$(INCLUDES_DIRS)controls
-INCLUDES_GR_DIR =	$(INCLUDES_DIRS)graphic
-INCLUDES_INP_DIR =	$(INCLUDES_DIRS)input
-INCLUDES_STR_DIR =	$(INCLUDES_DIRS)structs
+INCLUDES_DIR =		includes/
+INCLUDES_CON_DIR =	$(INCLUDES_DIR)controls/
+INCLUDES_GR_DIR =	$(INCLUDES_DIR)graphic/
+INCLUDES_INP_DIR =	$(INCLUDES_DIR)input/
+INCLUDES_STR_DIR =	$(INCLUDES_DIR)structs/
 
 INCLUDES =			-I $(INCLUDES_DIR) -I $(INCLUDES_CON_DIR)
 INCLUDES +=			-I $(INCLUDES_LIBFT) -I $(INCLUDES_GR_DIR)
 INCLUDES +=			-I $(INCLUDES_INP_DIR) -I $(INCLUDES_STR_DIR)
-
-INCLUDES_DIR =		includes
-INCLUDES_CON_DIR =	$(INCLUDES_DIRS)controls
-INCLUDES_GR_DIR =	$(INCLUDES_DIRS)graphic
-INCLUDES_INP_DIR =	$(INCLUDES_DIRS)input
-INCLUDES_STR_DIR =	$(INCLUDES_DIRS)structs
-
 
 #-------------------------------------------------------------------------------
 #									HEADERS
@@ -92,7 +86,7 @@ $(OBJS_DIR):
 	mkdir -p $(OBJS_DIR)/graphic/wnd
 	mkdir -p $(OBJS_DIR)/controls
 
-$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c $(HEADERS)
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c #$(HEADERS)
 	gcc $(FLAGS_COMPILE) $(INCLUDES) -o $@ -c $<
 
 $(NAME): $(OBJS_DIR) $(OBJS)

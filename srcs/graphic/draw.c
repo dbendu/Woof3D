@@ -35,7 +35,7 @@ typedef struct	s_ray
 	float		pov;
 }				t_ray;
 
-void	ray_cast(t_vector_point *map, t_ray *ray)
+void	ray_cast(t_vector_point *map, t_ray *ray, t_hero hero)
 {
 	int y;
 	int x;
@@ -48,6 +48,7 @@ void	ray_cast(t_vector_point *map, t_ray *ray)
 		y = ray->y / CELL_SIZE;
 		x = ray->x / CELL_SIZE;
 	}
+	ray->len = sqrt(pow(ray->x - hero.relative_position.x, 2) + (ray->y - hero.relative_position.y, 2));
 }
 
 
@@ -82,7 +83,7 @@ static void	draw_game(t_data *data)
 	for (int rays = 0; rays < max_rays; ++rays) {
 		ray.x = data->map.hero.absolute_position.x;
 		ray.y = data->map.hero.absolute_position.y;
-		ray_cast(data->map.map, &ray);
+		ray_cast(data->map.map, &ray, data->map.hero);
 		SDL_RenderDrawLine(data->wnd.sdl.renderer, data->map.hero.absolute_position.x, data->map.hero.absolute_position.y,
 													ray.x, ray.y);
 		ray.pov += data->map.hero.fov / max_rays;
@@ -97,7 +98,32 @@ static void	draw_game(t_data *data)
 }
 
 
+void			d3Render(t_data *data)
+{
+	int max_rays = FOV;
+	t_ray	ray;
+	SDL_Rect	rect;
+	Uint32		color;
+	int			a;
 
+	rect.h = HEIGHT;
+	rect.w = WIDTH / FOV;
+	ray.pov = data->map.hero.pov - data->map.hero.fov / 2;
+	for (int rays = 0; rays < max_rays; ++rays) {
+		ray.x = data->map.hero.absolute_position.x;
+		ray.y = data->map.hero.absolute_position.y;
+		ray_cast(data->map.map, &ray, data->map.hero);
+		rect.x = rays * rect.w;
+		rect.y = 0;
+		a = ft_map(ray.len, 800, 0, 0, 255);
+		color = pack_color(255, a, a, a);
+		SDL_FillRect(data->wnd.main_canvas, &rect, color);
+		ray.pov += data->map.hero.fov / max_rays;
+	}
+	SDL_Texture *texture = SDL_CreateTextureFromSurface(data->wnd.sdl.renderer, data->wnd.main_canvas);
+	SDL_RenderCopy(data->wnd.sdl.renderer, texture, NULL, NULL);
+	SDL_DestroyTexture(texture);
+}
 
 
 
@@ -180,6 +206,7 @@ void	draw(t_data *data)
 {
 	SDL_SetRenderDrawColor(data->wnd.sdl.renderer, 0x00, 0x00, 0x00, 0xff);
 	SDL_RenderClear(data->wnd.sdl.renderer);
+	d3Render(data);
 	draw_game(data);
 	// if (data->wnd.minimap.show)
 	// 	draw_minimap(data);
