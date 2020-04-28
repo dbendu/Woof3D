@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 13:00:08 by user              #+#    #+#             */
-/*   Updated: 2020/04/28 18:01:14 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/04/28 19:20:01 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ t_data	woof_init(const char *map)
 	data.keyboard = keyboard_init();
 	data.mouse = mouse_init();
 	data.quit = false;
-	data.max_rays = data.map.hero.fov * 5;
+	data.max_rays = data.map.hero.fov * MAX_RAY_MULTIPLYER;
 	return (data);
 }

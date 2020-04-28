@@ -1,22 +1,22 @@
 NAME =				a.out
 
 SRCS =				main.c									\
-					woof_quit.c								\
-					utils.c									\
 					player_update.c							\
 					raycasting.c							\
-					input/get_input.c						\
-					input/init_hero.c						\
-					input/read_file.c						\
-					input/convert_file_to_map.c				\
-					input/find_hero_position.c				\
+					utils.c									\
 					woof_init.c								\
+					woof_quit.c								\
+					controls/mouse.c						\
+					controls/keyboard.c						\
+					controls/processing_input.c				\
 					graphic/draw.c							\
 					graphic/wnd_destroy.c					\
 					graphic/wnd_init.c						\
-					controls/mouse.c						\
-					controls/keyboard.c						\
-					controls/processing_input.c
+					input/convert_file_to_map.c				\
+					input/find_hero_position.c				\
+					input/get_input.c						\
+					input/init_hero.c						\
+					input/read_file.c						\
 
 SRCS_DIR =			srcs
 OBJS_DIR =			objs

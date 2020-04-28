@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 18:23:48 by user              #+#    #+#             */
-/*   Updated: 2020/04/28 18:21:19 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/04/28 19:36:03 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define RAYS_BY_ANGLE	5	// only integer, not fractional!
 
 # define HERO_STEP_SPEED	2
-# define HERO_RUN_SPEED		4;
+# define HERO_RUN_SPEED		4
 
+# define MAX_RAY_MULTIPLYER	5
 #endif

@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 21:25:37 by user              #+#    #+#             */
-/*   Updated: 2020/04/28 18:53:32 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/04/28 19:38:17 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ t_ray	*raycast(float pov, t_data *data,
 	while (ray_number < data->max_rays)
 	{
 		rays[ray_number].pov = pov;
-		rays[ray_number].angle = addToAngle(-map->hero.fov / 2, ray_number);
+		rays[ray_number].angle = addToAngle(-map->hero.fov / 2, (int)ray_number / MAX_RAY_MULTIPLYER);
 		rays[ray_number].x = map->hero.position.x;
 		rays[ray_number].y = map->hero.position.y;
 		rays[ray_number].y = map->hero.position.y;

@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 14:24:00 by user              #+#    #+#             */
-/*   Updated: 2020/04/28 18:31:09 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/04/28 19:31:34 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void			d3Render(t_data *data, t_ray *ray)
 	floor.w = rect.w;
 	for (int rays = 0; rays < data->max_rays; rays++)
 	{
+		// printf("angle = %d\n", ray[rays].angle);
 		rect.h = (int)ft_map(ray[rays].len, 0, WIDTH, HEIGHT, 0);
 		rect.y = (HEIGHT - rect.h) / 2;
 		cloud.y = 0;
