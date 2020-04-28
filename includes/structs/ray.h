@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 21:38:59 by user              #+#    #+#             */
-/*   Updated: 2020/04/27 21:39:16 by user             ###   ########.fr       */
+/*   Updated: 2020/04/28 08:58:18 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct	s_ray
 	float		y;
 	float		len;
 	float		pov;
+	int			wall_c;
 }				t_ray;
 
 #endif

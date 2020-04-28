@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 21:25:37 by user              #+#    #+#             */
-/*   Updated: 2020/04/27 22:53:38 by user             ###   ########.fr       */
+/*   Updated: 2020/04/28 09:04:29 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	cast_ray(t_ray *ray, const t_vector_point *map)
 		y = ray->y / CELL_SIZE;
 		x = ray->x / CELL_SIZE;
 	}
+	ray->wall_c = map[y][x].wall_c;
 	begin_x -= ray->x;
 	begin_y -= ray->y;
 	ray->len = sqrt(begin_x * begin_x + begin_y * begin_y);

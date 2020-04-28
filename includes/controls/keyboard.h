@@ -15,10 +15,10 @@
 
 # define KEYS_BINDED	(6)
 
-# define MOVE_FORWARD	(0)
-# define MOVE_BACK		(1)
-# define TURN_LEFT		(2)
-# define TURN_RIGHT		(3)
+# define TURN_LEFT		(0)
+# define MOVE_FORWARD	(1)
+# define TURN_RIGHT		(2)
+# define MOVE_BACK		(3)
 # define FOV_DECREASE	(4)
 # define FOV_INCREASE	(5)
 

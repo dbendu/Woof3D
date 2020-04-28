@@ -1,4 +1,6 @@
 #include <SDL2/SDL.h>
+#include <math.h>
+#include "wolf_utils.h"
 
 double			ft_map(double value, double start_range, double end_range, double new_range_start, double new_range_end)
 {
@@ -9,4 +11,9 @@ double			ft_map(double value, double start_range, double end_range, double new_r
 int32_t    pack_color(int alpha, int red, int green, int blue)
 {
     return ((alpha << 24) | (red << 16) | (green << 8) | blue);
+}
+
+double		to_rad(double angle)
+{
+	return (angle * PI / 180);
 }

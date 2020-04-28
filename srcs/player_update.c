@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   player_update.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 20:59:56 by user              #+#    #+#             */
-/*   Updated: 2020/04/27 23:18:43 by user             ###   ########.fr       */
+/*   Updated: 2020/04/28 09:06:52 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Woof3D.h"
 #include "Woof_defines.h"
+#include "wolf_utils.h"
 
 static void			move_hero_if_possible(t_vector_point *map, t_hero *hero,
 										float estimated_x, float estimated_y)
@@ -44,9 +45,9 @@ void				playerUpdate(t_data *data, t_hero *hero)
 		updatePosition(&data->map, data->keyboard.key[MOVE_FORWARD]);		// only in one direction at the moment
 
 	if (data->keyboard.key[TURN_RIGHT])										// its okay if execute both conditions
-		hero->pov += 0.18;													// cause here no overhead calculations
+		hero->pov += 3.0;													// cause here no overhead calculations
 	if (data->keyboard.key[TURN_LEFT])										// like in updatePosition
-		hero->pov -= 0.18;
+		hero->pov -= 3.0;
 	if (data->keyboard.key[FOV_INCREASE] && data->map.hero.fov < FOV_MAX)
 		data->map.hero.fov += 1;
 	if (data->keyboard.key[FOV_DECREASE] && data->map.hero.fov > FOV_MIN)

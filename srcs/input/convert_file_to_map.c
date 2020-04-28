@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convert_file_to_map.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 17:56:34 by user              #+#    #+#             */
-/*   Updated: 2020/04/25 19:41:32 by user             ###   ########.fr       */
+/*   Updated: 2020/04/28 08:55:49 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void				get_point(const char **lineptr, t_point *point)
 	else
 	{
 		point->wall = ft_atoi(line) ? true : false;
+		point->wall_c = ft_atoi(line);
 		while (ft_isdigit(*line))
 			line += 1;
 	}

@@ -34,6 +34,7 @@ INCLUDES_GR_DIR =	$(INCLUDES_DIR)graphic/
 INCLUDES_INP_DIR =	$(INCLUDES_DIR)input/
 INCLUDES_STR_DIR =	$(INCLUDES_DIR)structs/
 
+
 INCLUDES =			-I $(INCLUDES_DIR) -I $(INCLUDES_CON_DIR)
 INCLUDES +=			-I $(INCLUDES_LIBFT) -I $(INCLUDES_GR_DIR)
 INCLUDES +=			-I $(INCLUDES_INP_DIR) -I $(INCLUDES_STR_DIR)
@@ -43,7 +44,8 @@ INCLUDES +=			-I $(INCLUDES_INP_DIR) -I $(INCLUDES_STR_DIR)
 #-------------------------------------------------------------------------------
 
 HEADERS_LIST =		Woof_defines.h			\
-					Woof3D.h
+					Woof3D.h				\
+					wolf_utils.h
 
 HEADERS_CON_LIST =	controls_utils.h		\
 					keyboard.h				\

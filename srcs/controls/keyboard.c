@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 15:30:39 by user              #+#    #+#             */
-/*   Updated: 2020/04/27 23:20:18 by user             ###   ########.fr       */
+/*   Updated: 2020/04/28 10:20:37 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	key_pressed(t_data *data, SDL_Keycode button)
 		data->keyboard.key[FOV_DECREASE] = true;
 	else if (button == 'e')
 		data->keyboard.key[FOV_INCREASE] = true;
-	else if (button == SDLK_LSHIFT)
-		data->map.hero.speed = HERO_RUN_SPEED;
 	else if (button == 'm')
 		data->wnd.minimap.show = !data->wnd.minimap.show;
 	else if (button == SDLK_ESCAPE)
 		data->quit = true;
+	else if (button == SDLK_LSHIFT)
+		data->map.hero.speed = HERO_RUN_SPEED;
 }
 
 void			key_release(t_data *data, SDL_Keycode button)

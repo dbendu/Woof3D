@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   point.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 17:28:33 by user              #+#    #+#             */
-/*   Updated: 2020/04/25 18:15:50 by user             ###   ########.fr       */
+/*   Updated: 2020/04/28 08:55:38 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct	s_point
 {
 	int			x;
 	int			y;
+	int			wall_c;
 	bool		wall;
 }				t_point;
 
