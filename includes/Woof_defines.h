@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 18:23:48 by user              #+#    #+#             */
-/*   Updated: 2020/04/28 19:36:03 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/04/28 19:40:26 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@
 # define HERO_STEP_SPEED	2
 # define HERO_RUN_SPEED		4
 
-# define MAX_RAY_MULTIPLYER	5
+# define MAX_RAY_MULTIPLYER	6
 #endif

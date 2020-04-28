@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 21:25:37 by user              #+#    #+#             */
-/*   Updated: 2020/04/28 19:38:17 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/04/28 19:45:02 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,12 @@ void	cast_ray(t_ray *ray, const t_vector_point *map)
 	ray->len *= cos(to_rad(ray->angle));
 }
 
-/*
-	d *= cos(a)
-	into ray_cast
-*/
-int			addToAngle(int angle, int add)
+double			addToAngle(double angle, double add)
 {
 	if (angle <= -360)
-		angle += (int)(-angle / 360) * 360;
+		angle += (-angle / 360) * 360;
 	else if(angle >= 360)
-		angle -= (int)(angle / 360) * 360;
+		angle -= (angle / 360) * 360;
 	if (add != 0)
 	{
 		if (add > 0 && angle < 0)
@@ -58,7 +54,7 @@ int			addToAngle(int angle, int add)
 			angle -= add;
 			if (angle <= -360)
 			{
-				angle += (int)(-angle / 360) * 360;
+				angle += (-angle / 360) * 360;
 				angle *= -1;
 			}
 		}
@@ -66,7 +62,7 @@ int			addToAngle(int angle, int add)
 		{
 			angle += add;
 			if (angle >= 360)
-				angle -= (int)(-angle / 360) * 360;
+				angle -= (-angle / 360) * 360;
 		}
 	}
 	return (angle);
@@ -89,7 +85,7 @@ t_ray	*raycast(float pov, t_data *data,
 	while (ray_number < data->max_rays)
 	{
 		rays[ray_number].pov = pov;
-		rays[ray_number].angle = addToAngle(-map->hero.fov / 2, (int)ray_number / MAX_RAY_MULTIPLYER);
+		rays[ray_number].angle = addToAngle(-map->hero.fov / 2, ray_number * data->max_rays / map->hero.fov);
 		rays[ray_number].x = map->hero.position.x;
 		rays[ray_number].y = map->hero.position.y;
 		rays[ray_number].y = map->hero.position.y;
