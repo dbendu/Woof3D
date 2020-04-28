@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 18:23:48 by user              #+#    #+#             */
-/*   Updated: 2020/04/28 17:02:50 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/04/28 18:21:19 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define CELL_SIZE		32
 // # define PLAYER_CELL_SIZE	CELL_SIZE - 5
 # define MINIMAP_CELL	32
-# define FOV_DEFAULT	90			// field of view, in degrees
+# define FOV_DEFAULT	66			// field of view, in degrees
 # define FOV_MAX		170
 # define FOV_MIN		30
 

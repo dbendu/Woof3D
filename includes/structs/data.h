@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 12:44:06 by user              #+#    #+#             */
-/*   Updated: 2020/04/27 21:12:24 by user             ###   ########.fr       */
+/*   Updated: 2020/04/28 18:14:20 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "mouse.h"
 # include "keyboard.h"
 # include <stdbool.h>
+# include "ray.h"
 
 typedef struct		s_data
 {
@@ -25,6 +26,8 @@ typedef struct		s_data
 	t_mouse			mouse;
 	t_keyboard		keyboard;
 	t_map			map;
+	t_ray			*ray;
+	int				max_rays;
 	bool			quit;
 }					t_data;
 

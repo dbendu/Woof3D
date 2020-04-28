@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 14:24:00 by user              #+#    #+#             */
-/*   Updated: 2020/04/28 17:15:15 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/04/28 18:31:09 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,20 @@
 #include "ray.h"
 #include <SDL2/SDL.h>
 
-
 void			d3Render(t_data *data, t_ray *ray)
 {
-	int max_rays = data->map.hero.fov;
 	SDL_Rect	rect;
 	SDL_Rect	cloud;
 	SDL_Rect	floor;
 	Uint32		color;
 	
-	rect.w = WIDTH / max_rays;
+	rect.w = WIDTH / data->max_rays;
 	cloud.w = rect.w;
 	floor.w = rect.w;
-	for (int rays = 0; rays < max_rays; rays++)
+	for (int rays = 0; rays < data->max_rays; rays++)
 	{
-		rect.h = (int)ft_map(ray[rays].len, 0, 2000, HEIGHT, 0);
-		rect.y = - rect.h / 2  + HEIGHT / 2;
+		rect.h = (int)ft_map(ray[rays].len, 0, WIDTH, HEIGHT, 0);
+		rect.y = (HEIGHT - rect.h) / 2;
 		cloud.y = 0;
 		cloud.h = rect.y;
 		cloud.x = rays * rect.w;
@@ -79,7 +77,7 @@ static void	draw_game(t_data *data, const t_ray *rays)
 	}
 
 	t_hero hero = data->map.hero;
-	for (int ray = 0; ray < hero.fov; ++ray) {
+	for (int ray = 0; ray < data->max_rays; ++ray) {
 		SDL_RenderDrawLine(data->wnd.sdl.renderer, hero.position.x, hero.position.y,
 							rays[ray].x, rays[ray].y);
 
@@ -92,12 +90,9 @@ static void	draw_game(t_data *data, const t_ray *rays)
 void	draw(t_data *data)
 {
 	static bool True = true;
-	t_ray	*rays;
 
 	// rays amount equal to RAYS_BY_ANGLE * hero.fov
-	rays = raycast(data->map.hero.pov, data->map.hero.fov,	// ray distance now ignored
-					POV_DISTANCE, &data->map);
-
+	data->ray = raycast(data->map.hero.pov, data, &data->map);	// ray distance now ignored
 
 	// if (True)
 	// {
@@ -108,9 +103,9 @@ void	draw(t_data *data)
 	// }
 	SDL_SetRenderDrawColor(data->wnd.sdl.renderer, 0x00, 0x00, 0x00, 0xff);
 	SDL_RenderClear(data->wnd.sdl.renderer);
-	d3Render(data, rays);
-	draw_game(data, rays);
+	d3Render(data, data->ray);
+	draw_game(data, data->ray);
 	SDL_RenderPresent(data->wnd.sdl.renderer);
 
-	free(rays);
+	free(data->ray);
 }

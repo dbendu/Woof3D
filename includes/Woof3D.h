@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Woof3D.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 17:28:08 by user              #+#    #+#             */
-/*   Updated: 2020/04/27 22:29:06 by user             ###   ########.fr       */
+/*   Updated: 2020/04/28 18:13:35 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ void	draw(t_data *data);
 void		playerUpdate(t_data *data, t_hero *hero);
 int32_t    pack_color(int alpha, int red, int green, int blue);
 double			ft_map(double value, double start_range, double end_range, double new_range_start, double new_range_end);
-t_ray	*raycast(float pov, float fov, int max_len, const t_map *map);
+t_ray	*raycast(float pov, t_data *data, const t_map *map);
 
 #endif

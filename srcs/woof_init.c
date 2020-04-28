@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   woof_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 13:00:08 by user              #+#    #+#             */
-/*   Updated: 2020/04/27 21:12:31 by user             ###   ########.fr       */
+/*   Updated: 2020/04/28 18:01:14 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ t_data	woof_init(const char *map)
 	data.keyboard = keyboard_init();
 	data.mouse = mouse_init();
 	data.quit = false;
+	data.max_rays = data.map.hero.fov * 5;
 	return (data);
 }
