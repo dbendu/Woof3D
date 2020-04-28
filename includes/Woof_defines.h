@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 18:23:48 by user              #+#    #+#             */
-/*   Updated: 2020/04/28 10:14:35 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/04/28 17:02:50 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define POV_DISTANCE	20	// max distance of ray
 # define RAYS_BY_ANGLE	5	// only integer, not fractional!
 
-# define HERO_STEP_SPEED	0.5
-# define HERO_RUN_SPEED		1;
+# define HERO_STEP_SPEED	2
+# define HERO_RUN_SPEED		4;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 21:38:59 by user              #+#    #+#             */
-/*   Updated: 2020/04/28 08:58:18 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/04/28 11:37:05 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct	s_ray
 	float		len;
 	float		pov;
 	int			wall_c;
+	int			angle;
 }				t_ray;
 
 #endif

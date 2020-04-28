@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 14:24:00 by user              #+#    #+#             */
-/*   Updated: 2020/04/28 10:28:08 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/04/28 17:15:15 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 void			d3Render(t_data *data, t_ray *ray)
 {
-	int max_rays = data->map.hero.fov * RAYS_BY_ANGLE;
+	int max_rays = data->map.hero.fov;
 	SDL_Rect	rect;
 	SDL_Rect	cloud;
 	SDL_Rect	floor;
@@ -32,8 +32,8 @@ void			d3Render(t_data *data, t_ray *ray)
 	floor.w = rect.w;
 	for (int rays = 0; rays < max_rays; rays++)
 	{
-		rect.h = (int)ft_map(ray[rays].len, 0, WIDTH, HEIGHT, 0);
-		rect.y = - rect.h * 11 / 20  + HEIGHT / 2;
+		rect.h = (int)ft_map(ray[rays].len, 0, 2000, HEIGHT, 0);
+		rect.y = - rect.h / 2  + HEIGHT / 2;
 		cloud.y = 0;
 		cloud.h = rect.y;
 		cloud.x = rays * rect.w;
@@ -79,7 +79,7 @@ static void	draw_game(t_data *data, const t_ray *rays)
 	}
 
 	t_hero hero = data->map.hero;
-	for (int ray = 0; ray < hero.fov * RAYS_BY_ANGLE; ++ray) {
+	for (int ray = 0; ray < hero.fov; ++ray) {
 		SDL_RenderDrawLine(data->wnd.sdl.renderer, hero.position.x, hero.position.y,
 							rays[ray].x, rays[ray].y);
 
@@ -87,8 +87,6 @@ static void	draw_game(t_data *data, const t_ray *rays)
 
 	(void)rays;
 }
-
-
 
 
 void	draw(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 21:25:37 by user              #+#    #+#             */
-/*   Updated: 2020/04/28 09:04:29 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/04/28 17:00:17 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,44 @@ void	cast_ray(t_ray *ray, const t_vector_point *map)
 }
 
 /*
+	d *= cos(a)
+	into ray_cast
+*/
+int			addToAngle(int angle, int add)
+{
+	if (angle <= -360)
+		angle += (int)(-angle / 360) * 360;
+	else if(angle >= 360)
+		angle -= (int)(angle / 360) * 360;
+	if (add != 0)
+	{
+		if (add > 0 && angle < 0)
+		{
+			angle -= add;
+			if (angle <= -360)
+			{
+				angle += (int)(-angle / 360) * 360;
+				angle *= -1;
+			}
+		}
+		else
+		{
+			angle += add;
+			if (angle >= 360)
+				angle -= (int)(-angle / 360) * 360;
+		}
+	}
+	return (angle);
+	
+}
+
+/*
 ** returns allocated array of rays. You need to free this array
 */
 t_ray	*raycast(float pov, float fov, int max_len,
 				const t_map *map)
 {
-	const int	rays_count = fov * RAYS_BY_ANGLE;
+	const int	rays_count = fov;
 	const float	pov_increase = fov / rays_count;
 	int			ray_number;
 	t_ray		*rays;
@@ -57,6 +89,7 @@ t_ray	*raycast(float pov, float fov, int max_len,
 	while (ray_number < rays_count)
 	{
 		rays[ray_number].pov = pov;
+		rays[ray_number].angle = addToAngle(-rays_count / 2, ray_number);
 		rays[ray_number].x = map->hero.position.x;
 		rays[ray_number].y = map->hero.position.y;
 		cast_ray(rays + ray_number, map->map);
