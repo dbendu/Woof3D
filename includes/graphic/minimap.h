@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 11:05:59 by user              #+#    #+#             */
-/*   Updated: 2020/04/26 13:19:04 by user             ###   ########.fr       */
+/*   Updated: 2020/04/29 23:27:07 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,5 @@ typedef struct		s_minimap
 	SDL_Rect		viewport;
 	bool			show;
 }					t_minimap;
-
-// void		minimap_draw(const t_minimap *minimap, SDL_Renderer *renderer);
 
 #endif

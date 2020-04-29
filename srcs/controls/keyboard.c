@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 15:30:39 by user              #+#    #+#             */
-/*   Updated: 2020/04/28 10:20:37 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/04/29 23:39:29 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "data.h"
-#include "Woof_defines.h"
-#include "controls_utils.h"
+#include "WoofDefines.h"
 
 void	key_pressed(t_data *data, SDL_Keycode button)
 {
@@ -29,7 +28,7 @@ void	key_pressed(t_data *data, SDL_Keycode button)
 	else if (button == 'e')
 		data->keyboard.key[FOV_INCREASE] = true;
 	else if (button == 'm')
-		data->wnd.minimap.show = !data->wnd.minimap.show;
+		data->minimap.show = !data->minimap.show;
 	else if (button == SDLK_ESCAPE)
 		data->quit = true;
 	else if (button == SDLK_LSHIFT)

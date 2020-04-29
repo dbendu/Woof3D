@@ -6,12 +6,14 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 12:45:42 by user              #+#    #+#             */
-/*   Updated: 2020/04/27 21:12:05 by user             ###   ########.fr       */
+/*   Updated: 2020/04/29 23:18:30 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef KEYBOARD_H
 # define KEYBOARD_H
+
+# include <SDL2/SDL.h>
 
 # define KEYS_BINDED	(6)
 
@@ -26,6 +28,8 @@ typedef struct	s_keyboard
 {
 	bool		key[KEYS_BINDED];
 }				t_keyboard;
+
+typedef struct s_data	t_data;
 
 void			key_pressed(t_data *data, SDL_Keycode button);
 void			key_release(t_data *data, SDL_Keycode button);

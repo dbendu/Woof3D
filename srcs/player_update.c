@@ -6,13 +6,13 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 20:59:56 by user              #+#    #+#             */
-/*   Updated: 2020/04/29 14:01:54 by user             ###   ########.fr       */
+/*   Updated: 2020/04/30 00:32:56 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "Woof3D.h"
-#include "Woof_defines.h"
-#include "wolf_utils.h"
+#include "WoofDefines.h"
 
 static void			move_hero_if_possible(t_vector_point *map, t_hero *hero,
 										float estimated_x, float estimated_y)
@@ -36,32 +36,23 @@ void				updatePosition(t_map *map, bool forward)
 	const float		new_y = map->hero.position.y -
 							sin(to_rad(map->hero.pov)) * moving_vector;
 
-
-	move_hero_if_possible(map->map, &map->hero, new_x, new_y);	// had to create another one func cause thanks
+	move_hero_if_possible(map->map, &map->hero, new_x, new_y);
 }
 
 void				playerUpdate(t_data *data, t_hero *hero)
 {
 	if (data->keyboard.key[MOVE_FORWARD] ^ data->keyboard.key[MOVE_BACK])	// xor returns true only if hero moving
 		updatePosition(&data->map, data->keyboard.key[MOVE_FORWARD]);		// only in one direction at the moment
-
 	if (data->keyboard.key[TURN_RIGHT])										// its okay if execute both conditions
-	{
 		hero->pov -= 0.25;													// cause here no overhead calculations
-		printf("pov: %f\n", hero->pov);
-	}
 	if (data->keyboard.key[TURN_LEFT])										// like in updatePosition
-	{
 		hero->pov += 0.25;
-		printf("pov: %f\n", hero->pov);
-	}
-	if (data->keyboard.key[FOV_INCREASE] && data->map.hero.fov < FOV_MAX)
+	if (data->keyboard.key[FOV_INCREASE] && data->map.hero.fov < HERO_FOV_MAX)
 		data->map.hero.fov += 1;
-	if (data->keyboard.key[FOV_DECREASE] && data->map.hero.fov > FOV_MIN)
+	if (data->keyboard.key[FOV_DECREASE] && data->map.hero.fov > HERO_FOV_MIN)
 		data->map.hero.fov -= 1;
 	if (hero->pov >= 360)
 		hero->pov = 0;
 	else if (hero->pov < 0)
 		hero->pov += 360;
-	// printf("pov: %f\n", hero->pov);
 }

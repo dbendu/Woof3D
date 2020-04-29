@@ -6,17 +6,15 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 21:25:37 by user              #+#    #+#             */
-/*   Updated: 2020/04/29 14:07:05 by user             ###   ########.fr       */
+/*   Updated: 2020/04/30 00:41:27 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <time.h>
 
-#include "Woof3D.h"
-#include "Woof_defines.h"
+#include "libft.h"
 #include "ray.h"
-#include "wolf_utils.h"
+#include "Woof3D.h"
+#include "WoofDefines.h"
 
 
 t_ray castx(float pov, t_position start_position, t_vector_point *map)
@@ -83,12 +81,10 @@ t_ray casty(float pov, t_position start_position, t_vector_point *map)
 }
 
 
-t_ray	*raycast(float pov, t_data *data,
+t_ray	*raycast(float pov,
 				t_map *map)
 {
-	clock_t begin = clock();
-	const int rays_count = map->hero.fov;
-	printf("rays count: %d\n", rays_count);
+	const int rays_count = WND_WIDTH;
 	const float	pov_decrease = map->hero.fov / rays_count;
 	int			ray_number;
 	t_ray		*rays;
@@ -120,7 +116,5 @@ t_ray	*raycast(float pov, t_data *data,
 		if (pov < 0)
 			pov += 360;
 	}
-	clock_t end = clock();
-	printf("runtime: %f\n", (end - begin) / (float)CLOCKS_PER_SEC);
 	return (rays);
 }

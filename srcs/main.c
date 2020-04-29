@@ -1,12 +1,14 @@
+#include <unistd.h>
 #include "Woof3D.h"
-#include "Woof_defines.h"
+#include "WoofDefines.h"
+#include "libft.h"
 
 static void	usage(void)
 {
 	write(2, "usage: ./a.out [map]\n", 21);
 }
 
-void		processInput(t_data *data)
+void		process_input(t_data *data)
 {
 	SDL_Event	event;
 
@@ -26,7 +28,7 @@ static void	game_cycle(t_data data)
 	while (data.quit == false)
 	{
 		draw(&data);
-		processInput(&data);
+		process_input(&data);
 		playerUpdate(&data, &data.map.hero);
 	}
 }

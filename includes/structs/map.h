@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 17:46:37 by user              #+#    #+#             */
-/*   Updated: 2020/04/25 18:14:22 by user             ###   ########.fr       */
+/*   Updated: 2020/04/29 23:11:57 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define MAP_H
 
 # include "point.h"
-# include "libft.h"
 # include "hero.h"
 
 typedef struct		s_map

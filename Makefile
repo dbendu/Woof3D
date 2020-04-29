@@ -1,21 +1,26 @@
 NAME =				a.out
 
-SRCS =				main.c									\
-					player_update.c							\
-					raycasting.c							\
-					utils.c									\
-					woof_init.c								\
-					woof_quit.c								\
-					controls/mouse.c						\
-					controls/keyboard.c						\
-					graphic/draw.c							\
-					graphic/wnd_destroy.c					\
-					graphic/wnd_init.c						\
-					input/convert_file_to_map.c				\
-					input/find_hero_position.c				\
-					input/get_input.c						\
-					input/init_hero.c						\
-					input/read_file.c						\
+SRCS =				main.c								\
+					player_update.c						\
+					raycasting.c						\
+					utils.c								\
+					controls/keyboard.c					\
+					draw.c								\
+					initialization/keyboard_init.c		\
+					initialization/map_init.c			\
+					initialization/minimap_init.c		\
+					initialization/wnd_init.c			\
+					initialization/woof_init.c			\
+					initialization/input/convert_file_to_map.c	\
+					initialization/input/find_hero_position.c	\
+					initialization/input/get_input.c			\
+					initialization/input/init_hero.c		\
+					initialization/input/read_file.c	\
+					quit/map_quit.c						\
+					quit/minimap_quit.c					\
+					quit/wnd_quit.c						\
+					quit/woof_quit.c
+
 
 SRCS_DIR =			srcs
 OBJS_DIR =			objs
@@ -30,19 +35,22 @@ INCLUDES_LIBFT		=	libft/includes/
 INCLUDES_DIR =		includes/
 INCLUDES_CON_DIR =	$(INCLUDES_DIR)controls/
 INCLUDES_GR_DIR =	$(INCLUDES_DIR)graphic/
-INCLUDES_INP_DIR =	$(INCLUDES_DIR)input/
 INCLUDES_STR_DIR =	$(INCLUDES_DIR)structs/
+INCLUDES_INIT_DIR =	$(INCLUDES_DIR)initialization/
+INCLUDES_INP_DIR =	$(INCLUDES_DIR)initialization/input/
+INCLUDES_QUIT_DIR =	$(INCLUDES_DIR)quit/
 
 
 INCLUDES =			-I $(INCLUDES_DIR) -I $(INCLUDES_CON_DIR)
 INCLUDES +=			-I $(INCLUDES_LIBFT) -I $(INCLUDES_GR_DIR)
 INCLUDES +=			-I $(INCLUDES_INP_DIR) -I $(INCLUDES_STR_DIR)
+INCLUDES +=			-I $(INCLUDES_INIT_DIR) -I $(INCLUDES_QUIT_DIR)
 
 #-------------------------------------------------------------------------------
 #									HEADERS
 #-------------------------------------------------------------------------------
 
-HEADERS_LIST =		Woof_defines.h			\
+HEADERS_LIST =		WoofDefines.h			\
 					Woof3D.h				\
 					wolf_utils.h
 
@@ -73,7 +81,7 @@ HEADERS +=			$(addprefix $(INCLUDES_STR_DIR), $(HEADERS_STR_LIST))
 #									FLAGS
 #-------------------------------------------------------------------------------
 
-FLAGS_COMPILE =		-Wall -Wextra -g
+FLAGS_COMPILE =		-Wall -Wextra -Werror -g
 
 FLAGS_LINK =		-L libft -lft -lSDL2 -lm
 
@@ -82,12 +90,10 @@ all: $(NAME)
 
 $(OBJS_DIR):
 	mkdir -p $(OBJS_DIR)
-	mkdir -p $(OBJS_DIR)/input
-	mkdir -p $(OBJS_DIR)/graphic
-	mkdir -p $(OBJS_DIR)/graphic/interface
-	mkdir -p $(OBJS_DIR)/graphic/minimap
-	mkdir -p $(OBJS_DIR)/graphic/wnd
+	mkdir -p $(OBJS_DIR)/initialization/input
 	mkdir -p $(OBJS_DIR)/controls
+	mkdir -p $(OBJS_DIR)/initialization
+	mkdir -p $(OBJS_DIR)/quit
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c #$(HEADERS)
 	gcc $(FLAGS_COMPILE) $(INCLUDES) -o $@ -c $<
