@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Woof_defines.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 18:23:48 by user              #+#    #+#             */
-/*   Updated: 2020/04/28 19:40:26 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/04/29 14:09:33 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 # define POV_DISTANCE	20	// max distance of ray
 # define RAYS_BY_ANGLE	5	// only integer, not fractional!
 
-# define HERO_STEP_SPEED	2
-# define HERO_RUN_SPEED		4
+# define HERO_STEP_SPEED	0.8
+# define HERO_RUN_SPEED		1.6
 
 # define MAX_RAY_MULTIPLYER	6
 #endif

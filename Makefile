@@ -8,7 +8,6 @@ SRCS =				main.c									\
 					woof_quit.c								\
 					controls/mouse.c						\
 					controls/keyboard.c						\
-					controls/processing_input.c				\
 					graphic/draw.c							\
 					graphic/wnd_destroy.c					\
 					graphic/wnd_init.c						\

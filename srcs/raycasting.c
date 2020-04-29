@@ -3,95 +3,124 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 21:25:37 by user              #+#    #+#             */
-/*   Updated: 2020/04/28 19:45:02 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/04/29 14:07:05 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdio.h>
+#include <time.h>
 
 #include "Woof3D.h"
 #include "Woof_defines.h"
 #include "ray.h"
 #include "wolf_utils.h"
-/*
-** fills ray fields .lenght, .x, .y
-*/
-void	cast_ray(t_ray *ray, const t_vector_point *map)
-{
-	int		y;
-	int		x;
-	float	begin_x;
-	float	begin_y;
 
-	begin_x = ray->x;
-	begin_y = ray->y;
-	y = ray->y / CELL_SIZE;
-	x = ray->x / CELL_SIZE;
-	while (!map[y][x].wall) {
-		ray->x += cos(ray->pov * 3.14 / 180) * 0.5;
-		ray->y += sin(ray->pov * 3.14 / 180) * 0.5;
-		y = ray->y / CELL_SIZE;
-		x = ray->x / CELL_SIZE;
-	}
-	ray->wall_c = map[y][x].wall_c;
-	begin_x -= ray->x;
-	begin_y -= ray->y;
-	ray->len = sqrt(begin_x * begin_x + begin_y * begin_y);
-	ray->len *= cos(to_rad(ray->angle));
-}
 
-double			addToAngle(double angle, double add)
+t_ray castx(float pov, t_position start_position, t_vector_point *map)
 {
-	if (angle <= -360)
-		angle += (-angle / 360) * 360;
-	else if(angle >= 360)
-		angle -= (angle / 360) * 360;
-	if (add != 0)
+	t_ray	ray;
+
+	float start_y = (int)start_position.y / CELL_SIZE * CELL_SIZE;
+	if (pov >= 180)
+		start_y += CELL_SIZE;
+	else
+		start_y -= 1;
+	float start_x = (int)start_position.x + ((int)start_position.y - (int)start_y) / tan(to_rad(pov));
+
+	float dy = pov <= 180 ? -CELL_SIZE : CELL_SIZE;
+	float dx = -dy / tan(to_rad(pov));
+
+
+	int x = start_x / CELL_SIZE;
+	int y = start_y / CELL_SIZE;
+
+	while (x >= 0 && y >= 0 && x < vec_size(&map[0]) && y < vec_size(&map) &&
+			map[y][x].wall == false)
 	{
-		if (add > 0 && angle < 0)
-		{
-			angle -= add;
-			if (angle <= -360)
-			{
-				angle += (-angle / 360) * 360;
-				angle *= -1;
-			}
-		}
-		else
-		{
-			angle += add;
-			if (angle >= 360)
-				angle -= (-angle / 360) * 360;
-		}
+		start_x += dx;
+		start_y += dy;
+		x = start_x / CELL_SIZE;
+		y = start_y / CELL_SIZE;
 	}
-	return (angle);
-	
+	ray.x = start_x;
+	ray.y = start_y;
+
+	return (ray);
 }
 
-/*
-** returns allocated array of rays. You need to free this array
-*/
-t_ray	*raycast(float pov, t_data *data,
-				const t_map *map)
+t_ray casty(float pov, t_position start_position, t_vector_point *map)
 {
-	const float	pov_increase = map->hero.fov / data->max_rays;
+	t_ray	ray;
+
+	float start_x = (int)start_position.x / CELL_SIZE * CELL_SIZE;
+	if (pov <= 90 || pov >= 270)
+		start_x += CELL_SIZE;
+	else
+		start_x -= 1;
+	float start_y = (int)start_position.y + ((int)start_position.x - (int)start_x) * tan(to_rad(pov));
+
+	float dx = (pov <= 90 || pov >= 270) ? CELL_SIZE : -CELL_SIZE;
+	float dy = -dx * tan(to_rad(pov));
+
+	int x = start_x / CELL_SIZE;
+	int y = start_y / CELL_SIZE;
+
+	while (x >= 0 && y >= 0 && x < vec_size(&map[0]) && y < vec_size(&map) &&
+			map[y][x].wall == false)
+	{
+		start_x += dx;
+		start_y += dy;
+		x = start_x / CELL_SIZE;
+		y = start_y / CELL_SIZE;
+	}
+	ray.x = start_x;
+	ray.y = start_y;
+
+	return (ray);
+}
+
+
+t_ray	*raycast(float pov, t_data *data,
+				t_map *map)
+{
+	clock_t begin = clock();
+	const int rays_count = map->hero.fov;
+	printf("rays count: %d\n", rays_count);
+	const float	pov_decrease = map->hero.fov / rays_count;
 	int			ray_number;
 	t_ray		*rays;
 
-	pov -= map->hero.fov / 2;
-	rays = malloc(sizeof(t_ray) * data->max_rays);
+	pov += map->hero.fov / 2;
+	if (pov > 360)
+		pov -= 360;
+	rays = malloc(sizeof(t_ray) * rays_count);
 	ray_number = 0;
-	while (ray_number < data->max_rays)
+	while (ray_number < rays_count)
 	{
-		rays[ray_number].pov = pov;
-		rays[ray_number].angle = addToAngle(-map->hero.fov / 2, ray_number * data->max_rays / map->hero.fov);
-		rays[ray_number].x = map->hero.position.x;
-		rays[ray_number].y = map->hero.position.y;
-		rays[ray_number].y = map->hero.position.y;
-		cast_ray(rays + ray_number, map->map);
+		t_ray rayx = castx(pov, map->hero.position, map->map);
+		t_ray rayy = casty(pov, map->hero.position, map->map);
+
+
+		t_position pos = map->hero.position;
+		float lenx = sqrt((rayx.x - pos.x) * (rayx.x - pos.x) + (rayx.y - pos.y) * (rayx.y - pos.y));
+		float leny = sqrt((rayy.x - pos.x) * (rayy.x - pos.x) + (rayy.y - pos.y) * (rayy.y - pos.y));
+
+		rayx.len = lenx;
+		rayy.len = leny;
+		if (lenx < leny)
+			rays[ray_number] = rayx;
+		else
+			rays[ray_number] = rayy;
+
 		ray_number += 1;
-		pov += pov_increase;
+		pov -= pov_decrease;
+		if (pov < 0)
+			pov += 360;
 	}
+	clock_t end = clock();
+	printf("runtime: %f\n", (end - begin) / (float)CLOCKS_PER_SEC);
 	return (rays);
 }
