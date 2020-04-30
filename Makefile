@@ -1,11 +1,11 @@
 NAME =				a.out
 
 SRCS =				main.c								\
+					draw.c								\
 					player_update.c						\
 					raycasting.c						\
 					utils.c								\
 					controls/keyboard.c					\
-					draw.c								\
 					initialization/keyboard_init.c		\
 					initialization/map_init.c			\
 					initialization/minimap_init.c		\

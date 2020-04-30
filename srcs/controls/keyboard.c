@@ -32,7 +32,7 @@ void	key_pressed(t_data *data, SDL_Keycode button)
 	else if (button == SDLK_ESCAPE)
 		data->quit = true;
 	else if (button == SDLK_LSHIFT)
-		data->map.hero.speed = HERO_RUN_SPEED;
+		data->map.hero.speed = CELL_SIZE * 0.3;
 }
 
 void			key_release(t_data *data, SDL_Keycode button)
@@ -50,5 +50,5 @@ void			key_release(t_data *data, SDL_Keycode button)
 	else if (button == 'e')
 		data->keyboard.key[FOV_INCREASE] = false;
 	else if (button == SDLK_LSHIFT)
-		data->map.hero.speed = HERO_STEP_SPEED;
+		data->map.hero.speed = CELL_SIZE * 0.15;
 }

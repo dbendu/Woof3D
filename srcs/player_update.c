@@ -44,9 +44,9 @@ void				playerUpdate(t_data *data, t_hero *hero)
 	if (data->keyboard.key[MOVE_FORWARD] ^ data->keyboard.key[MOVE_BACK])	// xor returns true only if hero moving
 		updatePosition(&data->map, data->keyboard.key[MOVE_FORWARD]);		// only in one direction at the moment
 	if (data->keyboard.key[TURN_RIGHT])										// its okay if execute both conditions
-		hero->pov -= 0.25;													// cause here no overhead calculations
+		hero->pov -= HERO_ROTATE;													// cause here no overhead calculations
 	if (data->keyboard.key[TURN_LEFT])										// like in updatePosition
-		hero->pov += 0.25;
+		hero->pov += HERO_ROTATE;
 	if (data->keyboard.key[FOV_INCREASE] && data->map.hero.fov < HERO_FOV_MAX)
 		data->map.hero.fov += 1;
 	if (data->keyboard.key[FOV_DECREASE] && data->map.hero.fov > HERO_FOV_MIN)

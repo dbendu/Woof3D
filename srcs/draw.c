@@ -85,7 +85,7 @@ void			d3Render(t_data *data, t_ray *ray)
 	int			up;
 	int			down;
 	float		distance = WND_WIDTH / 2 / tan(to_rad(data->map.hero.fov / 2));
-	const		float wall_height = 400;
+	const		float wall_height = 300;
 
 	for (int x = 0; x < WND_WIDTH; ++x)
 	{
@@ -101,8 +101,8 @@ static void	draw_game(t_data *data, const t_ray *rays)
 {
 	SDL_Rect	rect;
 
-	rect.h = CELL_SIZE;
-	rect.w = CELL_SIZE;
+	rect.h = MINIMAP_SZ / vec_size(&data->map.map);
+	rect.w = rect.h;
 	rect.y = 0;
 
 	SDL_SetRenderDrawColor(data->wnd.renderer, 0xff, 0xff, 0xff, 0xff);
@@ -112,18 +112,17 @@ static void	draw_game(t_data *data, const t_ray *rays)
 			if (data->map.map[y][x].wall) {
 				SDL_RenderDrawRect(data->wnd.renderer, &rect);
 			}
-			rect.x += CELL_SIZE;
+			rect.x += rect.h;
 		}
-		rect.y += CELL_SIZE;
+		rect.y += rect.h;
 	}
 
 	t_hero hero = data->map.hero;
 	for (int ray = 0; ray < WND_WIDTH; ++ray) {
-		SDL_RenderDrawLine(data->wnd.renderer, hero.position.x, hero.position.y,
-							rays[ray].x, rays[ray].y);
+		SDL_RenderDrawLine(data->wnd.renderer, hero.position.x / CELL_SIZE * rect.h, hero.position.y / CELL_SIZE * rect.h,
+							rays[ray].x / CELL_SIZE * rect.h, rays[ray].y / CELL_SIZE * rect.h);
 
 	}
-
 	(void)rays;
 }
 

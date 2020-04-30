@@ -16,8 +16,8 @@
 /*
 ** window
 */
-# define WND_WIDTH			1000
-# define WND_HEIGHT			1000
+# define WND_WIDTH			1280
+# define WND_HEIGHT			720
 # define WND_MIN_WIDTH		320
 # define WND_MIN_HEIGHT		240
 # define WND_TITLE			"Woof3D"
@@ -25,16 +25,16 @@
 /*
 ** game
 */
-# define CELL_SIZE			32
+# define CELL_SIZE			64
 # define MINIMAP_SZ			150
-
 /*
 ** hero
 */
+# define HERO_ROTATE        1
 # define HERO_FOV_DEFAULT	66			// field of view, in degrees
 # define HERO_FOV_MAX		170
 # define HERO_FOV_MIN		30
-# define HERO_STEP_SPEED	0.8
+# define HERO_STEP_SPEED	CELL_SIZE * 0.025
 # define HERO_RUN_SPEED		1.6
 
 # define RAYS_BY_ANGLE		5	// only integer, not fractional!

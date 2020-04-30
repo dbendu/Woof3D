@@ -23,7 +23,7 @@ t_hero	init_hero(t_point hero_position)
 	hero.position.x = hero_position.x * CELL_SIZE + CELL_SIZE / 2;
 	hero.position.y = hero_position.y * CELL_SIZE + CELL_SIZE / 2;
 	hero.fov = HERO_FOV_DEFAULT;
-	hero.speed = HERO_STEP_SPEED;
+	hero.speed = CELL_SIZE * 0.15;
 	hero.pov = 90;	// in degrees: [0; 360). Zero means hero looks to the east,
 	return (hero);	// 90 -- to the north...
 }
