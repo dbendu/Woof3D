@@ -11,14 +11,14 @@ double	clampYaw(double y)
 
 void	mouseCapture(t_data *data, SDL_MouseMotionEvent mouse)
 {
-	// double		deltaX;
-	// double		deltaY;
-	// const double sensitivity = 0.000001f; 
-	// double		yaw = 0.0;
+	double		deltaX;
+	double		deltaY;
+	const double sensitivity = 0.001f; 
+	double		yaw = 0.0;
 
-	// deltaX = (double)(mouse.xrel - WND_WIDTH / 2);
-	// // deltaY = (double)(mouse.y - WND_HEIGHT / 2);
-	// yaw = clampYaw(yaw + sensitivity * deltaX);
-	// data->map.hero.pov += yaw;
-	// // printf("x = %u, y = %u\t\t\tyaw = %f\n\n", mouse.xrel, mouse.xrel, yaw);
+	deltaX = (double)(mouse.xrel - WND_WIDTH);
+	// deltaY = (double)(mouse.y - WND_HEIGHT / 2);
+	yaw = clampYaw(yaw + sensitivity * deltaX);
+	data->map.hero.pov += yaw;
+	printf("x = %d, y = %d\t\t\tyaw = %f\n\n", mouse.xrel, mouse.xrel, yaw);
 }

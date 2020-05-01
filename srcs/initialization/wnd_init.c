@@ -35,6 +35,7 @@ t_wnd		wnd_init(const char *title, int width, int height)
 	wnd.main_canvas = SDL_GetWindowSurface(wnd.window);
 	if (wnd.main_canvas == NULL)
 		ft_error(SDL_GetError(), "woof_init/wnd_init", 0);
-	// SDL_SetRelativeMouseMode(SDL_TRUE);
+	if (SDL_SetRelativeMouseMode(SDL_TRUE) < 0)
+		ft_error(SDL_GetError(), "SDL_SetRelativeMouseMode", 0);
 	return (wnd);
 }

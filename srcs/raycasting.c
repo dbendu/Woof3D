@@ -101,8 +101,8 @@ t_ray	*raycast(float pov,
 
 
 		t_position pos = map->hero.position;
-		float lenx = sqrt((rayx.x - pos.x) * (rayx.x - pos.x) + (rayx.y - pos.y) * (rayx.y - pos.y));
-		float leny = sqrt((rayy.x - pos.x) * (rayy.x - pos.x) + (rayy.y - pos.y) * (rayy.y - pos.y));
+		float lenx = sqrt((rayx.x - pos.x) * (rayx.x - pos.x) + (rayx.y - pos.y) * (rayx.y - pos.y)) * cos(to_rad(ray_number * map->hero.fov / rays_count - map->hero.fov / 2));
+		float leny = sqrt((rayy.x - pos.x) * (rayy.x - pos.x) + (rayy.y - pos.y) * (rayy.y - pos.y)) * cos(to_rad(ray_number * map->hero.fov / rays_count - map->hero.fov / 2));
 
 		rayx.len = lenx;
 		rayy.len = leny;
