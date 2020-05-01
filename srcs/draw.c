@@ -85,7 +85,7 @@ void			d3Render(t_data *data, t_ray *ray)
 	int			up;
 	int			down;
 	float		distance = WND_WIDTH / 2 / tan(to_rad(data->map.hero.fov / 2));
-	const		float wall_height = 300;
+	const		float wall_height = WND_HEIGHT / 12;
 
 	for (int x = 0; x < WND_WIDTH; ++x)
 	{

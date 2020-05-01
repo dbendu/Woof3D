@@ -31,5 +31,6 @@ t_ray	*raycast(float pov, t_map *map);
 // void		playerUpdate(t_data *data, t_hero *hero);
 // double			ft_map(double value, double start_range, double end_range, double new_range_start, double new_range_end);
 // t_ray	*raycast(float pov, t_map *map);
+void	mouseCapture(t_data *data, SDL_MouseMotionEvent mouse);
 
 #endif

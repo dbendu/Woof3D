@@ -11,6 +11,7 @@ SRCS =				main.c								\
 					initialization/minimap_init.c		\
 					initialization/wnd_init.c			\
 					initialization/woof_init.c			\
+					initialization/mouse.c				\
 					initialization/input/convert_file_to_map.c	\
 					initialization/input/find_hero_position.c	\
 					initialization/input/get_input.c			\
@@ -81,7 +82,7 @@ HEADERS +=			$(addprefix $(INCLUDES_STR_DIR), $(HEADERS_STR_LIST))
 #									FLAGS
 #-------------------------------------------------------------------------------
 
-FLAGS_COMPILE =		-Wall -Wextra -Werror -g
+FLAGS_COMPILE =		-Wall -Wextra -g
 
 FLAGS_LINK =		-L libft -lft -lSDL2 -lm
 

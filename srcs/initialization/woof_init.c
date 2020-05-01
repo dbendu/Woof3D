@@ -17,7 +17,7 @@
 
 static void	sdl_init(void)
 {
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
+	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 		ft_error(SDL_GetError(), "woof_init", 0);
 }
 

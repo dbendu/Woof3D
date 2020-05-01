@@ -20,6 +20,8 @@ void		process_input(t_data *data)
 			key_pressed(data, event.key.keysym.sym);
 		else if (event.type == SDL_KEYUP)
 			key_release(data, event.key.keysym.sym);
+		else if (event.type == SDL_MOUSEMOTION)
+			mouseCapture(data, event.motion);
 	}
 }
 
