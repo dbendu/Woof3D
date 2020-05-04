@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/03 13:56:09 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/04 17:48:40 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/04 20:59:00 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,21 @@
 #include "button.h"
 
 
-t_button		checkSelected(t_data data, t_button button)
+void		checkSelected(t_data *data, int buttonPressed, int press)
 {
-	if (SDL_HasIntersection(&data.menu.mouse.tip, &button.dRect))
+	data->menu.button[buttonPressed];
+	if (SDL_HasIntersection(&data->menu.mouse.tip, &data->menu.button[buttonPressed].dRect))
 	{
-		button.selected = true;
-		button.sRect.x = 300;
+		data->menu.button[buttonPressed].selected = true;
+		data->menu.button[buttonPressed].sRect.x = 300;
+		if (press == 1)
+			data->gameState = buttonPressed;
 	}
 	else
 	{
-		button.selected = false;
-		button.sRect.x = 0;
+		data->menu.button[buttonPressed].selected = false;
+		data->menu.button[buttonPressed].sRect.x = 0;
 	}
-	return (button);
 }
 
 t_button	initButton(t_data data, int x, int y)
@@ -58,8 +60,9 @@ SDL_Rect	setButton(t_button button, int x, int y)
 	return (rect);
 }
 
-void	drawButton(t_data data, t_button button)
+void	drawButton(t_data *data, int buttonPressed, int press)
 {
-	button = checkSelected(data, button);
-	SDL_RenderCopy(data.wnd.renderer, data.menu.textureButton, &button.sRect, &button.dRect);
+	checkSelected(data, buttonPressed, press);
+	SDL_RenderCopy(data->wnd.renderer, data->menu.textureButton,
+		&data->menu.button[buttonPressed].sRect, &data->menu.button[buttonPressed].dRect);
 }

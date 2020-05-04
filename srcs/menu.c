@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/03 14:23:33 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/04 17:50:01 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/04 20:55:41 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,17 @@ t_menu		menuInit(t_data data)
 	return (menu);
 }
 
-void drawMenu(t_data data)
+void drawMenu(t_data *data)
 {
-	int		x;
-	int		y;
+	int		buttonPressed;
 
-	SDL_RenderClear(data.wnd.renderer);
-	SDL_GetMouseState(&data.menu.mouse.cursor.x, &data.menu.mouse.cursor.y);
-	data.menu.mouse.tip.x = data.menu.mouse.cursor.x;
-	data.menu.mouse.tip.y = data.menu.mouse.cursor.y;
-	drawButton(data, data.menu.button[Start_button]);
-	drawButton(data, data.menu.button[Options_button]);
-	drawButton(data, data.menu.button[Exit_button]);
-	drawMouse(data);
-	SDL_RenderPresent(data.wnd.renderer);
+	SDL_RenderClear(data->wnd.renderer);
+	buttonPressed = SDL_GetMouseState(&data->menu.mouse.cursor.x, &data->menu.mouse.cursor.y);
+	data->menu.mouse.tip.x = data->menu.mouse.cursor.x;
+	data->menu.mouse.tip.y = data->menu.mouse.cursor.y;
+	drawButton(data, Start_button, buttonPressed);
+	drawButton(data, Options_button, buttonPressed);
+	drawButton(data, Exit_button, buttonPressed);
+	drawMouse(*data);
+	SDL_RenderPresent(data->wnd.renderer);
 }

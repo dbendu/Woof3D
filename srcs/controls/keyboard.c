@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 15:30:39 by user              #+#    #+#             */
-/*   Updated: 2020/04/29 23:39:29 by user             ###   ########.fr       */
+/*   Updated: 2020/05/04 20:54:42 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	key_pressed(t_data *data, SDL_Keycode button)
 	else if (button == 'm')
 		data->minimap.show = !data->minimap.show;
 	else if (button == SDLK_ESCAPE)
-		data->quit = true;
+		data->gameState = Menu;
 	else if (button == SDLK_LSHIFT)
 		data->map.hero.speed = CELL_SIZE * 0.3;
 }

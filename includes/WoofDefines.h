@@ -23,7 +23,6 @@
 # define WND_TITLE			"Woof3D"
 
 
-enum gameState {Play, Menu, Options};
 /*
 ** game
 */

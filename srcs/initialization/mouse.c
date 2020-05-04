@@ -16,7 +16,7 @@ void	mouseCapture(t_data *data, SDL_MouseMotionEvent mouse)
 {
 	// if (mouse.xrel != -1 || mouse.xrel != 1)
 	// 	mouse.xrel = 0;
-	if (data->gameState == Play)
+	if (data->gameState == Start_button)
 	{
 		data->map.hero.pov += mouse.xrel;
 		if (data->map.hero.pov >= 360)

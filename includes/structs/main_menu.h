@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/04 02:18:20 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/04 17:19:07 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/04 20:37:50 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ typedef struct	s_menu
 }				t_menu;
 
 t_menu		menuInit(t_data data);
-void drawMenu(t_data data);
+void		drawMenu(t_data *data);
 
 #endif

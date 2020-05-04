@@ -16,7 +16,7 @@ void		process_input(t_data *data)
 
 	while (SDL_PollEvent(&event))
 	{
-		if (event.type == SDL_QUIT)
+		if (event.type == SDL_QUIT || data->gameState == Exit_button)
 			data->quit = true;
 		else if (event.type == SDL_KEYDOWN)
 			key_pressed(data, event.key.keysym.sym);
@@ -32,12 +32,12 @@ static void	game_cycle(t_data data)
 	while (data.quit == false)
 	{
 		// draw(&data);
-		if (data.gameState == Play)
+		if (data.gameState == Start_button)
 			draw(&data);
-		else if (data.gameState == Options)
+		else if (data.gameState == Options_button)
 			;
 		else if (data.gameState == Menu)
-			drawMenu(data);
+			drawMenu(&data);
 		process_input(&data);
 		playerUpdate(&data, &data.map.hero);
 	}

@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/03 13:52:16 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/04 16:20:05 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/04 20:50:04 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "WoofDefines.h"
 # include "data.h"
 
-enum buttonName {Start_button, Options_button, Exit_button};
+enum buttonName {Start_button, Options_button, Exit_button, Menu};
 
 typedef struct	s_button
 {
@@ -29,7 +29,7 @@ typedef struct	s_button
 }				t_button;
 
 t_button	initButton(t_data data, int x, int y);
-void		drawButton(t_data data, t_button button);
 SDL_Rect	setButton(t_button button, int x, int y);
+void		drawButton(t_data *data, int buttonPressed, int press);
 
 #endif
