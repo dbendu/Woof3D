@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 14:24:00 by user              #+#    #+#             */
-/*   Updated: 2020/04/30 01:05:33 by user             ###   ########.fr       */
+/*   Updated: 2020/05/03 14:53:31 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
   #include <time.h>
 
 #include "libft.h"
-#include"Woof3D.h"
+#include "Woof3D.h"
 #include "WoofDefines.h"
 #include "ray.h"
 #include <SDL2/SDL.h>

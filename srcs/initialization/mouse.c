@@ -1,6 +1,9 @@
 #include "data.h"
 #include "WoofDefines.h"
 #include "init_all.h"
+#include "mouse.h"
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL.h>
 
 double	clampYaw(double y)
 {
@@ -11,14 +14,37 @@ double	clampYaw(double y)
 
 void	mouseCapture(t_data *data, SDL_MouseMotionEvent mouse)
 {
-	double		deltaX;
-	double		deltaY;
-	const double sensitivity = 0.001f; 
-	double		yaw = 0.0;
+	// if (mouse.xrel != -1 || mouse.xrel != 1)
+	// 	mouse.xrel = 0;
+	if (data->gameState == Play)
+	{
+		data->map.hero.pov += mouse.xrel;
+		if (data->map.hero.pov >= 360)
+			data->map.hero.pov -= 360;
+		else if (data->map.hero.pov < 0)
+			data->map.hero.pov += 360;
+		printf("xrel = %d\n", mouse.x);
+	}
+}
 
-	deltaX = (double)(mouse.xrel - WND_WIDTH);
-	// deltaY = (double)(mouse.y - WND_HEIGHT / 2);
-	yaw = clampYaw(yaw + sensitivity * deltaX);
-	data->map.hero.pov += yaw;
-	printf("x = %d, y = %d\t\t\tyaw = %f\n\n", mouse.xrel, mouse.xrel, yaw);
+t_mouse		mouseInit(t_data data)
+{
+	t_mouse		m;
+
+	m.texture = IMG_LoadTexture(data.wnd.renderer, "textures/cursor.png");
+	m.cursor.h = 50;
+	m.cursor.w = 50;
+	m.cursor.x = 0;
+	m.cursor.y = 0;
+	m.tip.h = 1;
+	m.tip.w = 1;
+	m.tip.x = 0;
+	m.tip.y = 0;
+	return (m);
+}
+
+void	drawMouse(t_data data)
+{
+	if (SDL_RenderCopy(data.wnd.renderer, data.menu.mouse.texture, NULL, &data.menu.mouse.cursor) < 0)
+		ft_error(SDL_GetError(), "cannot render the mouse", 0);
 }

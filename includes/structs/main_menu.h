@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimap.h                                          :+:      :+:    :+:   */
+/*   main_menu.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/26 11:05:59 by user              #+#    #+#             */
-/*   Updated: 2020/05/03 13:55:34 by konsolka         ###   ########.fr       */
+/*   Created: 2020/05/04 02:18:20 by konsolka          #+#    #+#             */
+/*   Updated: 2020/05/04 17:19:07 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIMAP_H
-# define MINIMAP_H
+#ifndef MAIN_MENU_H
+# define MAIN_MENU_H
 
 # include <SDL2/SDL.h>
-# include <stdbool.h>
-# include "WoofDefines.h"
+# include "data.h"
+# include "button.h"
+# include "mouse.h"
 
-typedef struct		s_minimap
+typedef struct	s_menu
 {
-	SDL_Surface		*surface;
-	SDL_Rect		viewport;
-	bool			show;
-}					t_minimap;
+	SDL_Texture		*textureButton;
+	t_button		button[3];
+	t_mouse			mouse;
+}				t_menu;
+
+t_menu		menuInit(t_data data);
+void drawMenu(t_data data);
 
 #endif

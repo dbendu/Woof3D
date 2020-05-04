@@ -2,6 +2,8 @@
 #include "Woof3D.h"
 #include "WoofDefines.h"
 #include "libft.h"
+#include "button.h"
+#include "main_menu.h"
 
 static void	usage(void)
 {
@@ -29,7 +31,13 @@ static void	game_cycle(t_data data)
 {
 	while (data.quit == false)
 	{
-		draw(&data);
+		// draw(&data);
+		if (data.gameState == Play)
+			draw(&data);
+		else if (data.gameState == Options)
+			;
+		else if (data.gameState == Menu)
+			drawMenu(data);
 		process_input(&data);
 		playerUpdate(&data, &data.map.hero);
 	}
@@ -47,6 +55,7 @@ static void	print_map(t_map *map)
 		printf("\n");
 	}
 }
+
 
 
 int main(int argc, const char **argv)

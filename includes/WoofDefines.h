@@ -22,6 +22,8 @@
 # define WND_MIN_HEIGHT		240
 # define WND_TITLE			"Woof3D"
 
+
+enum gameState {Play, Menu, Options};
 /*
 ** game
 */
@@ -40,5 +42,6 @@
 # define RAYS_BY_ANGLE		5	// only integer, not fractional!
 # define MAX_RAY_MULTIPLYER	6	// same
 
-
+# define START_BUTTON		0
+# define EXIT_BUTTON		1
 #endif

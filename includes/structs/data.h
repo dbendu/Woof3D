@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 12:44:06 by user              #+#    #+#             */
-/*   Updated: 2020/04/29 23:45:52 by user             ###   ########.fr       */
+/*   Updated: 2020/05/04 16:07:23 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 # define DATA_H
 
 # include <stdbool.h>
-# include "keyboard.h"
-# include "minimap.h"
 # include "wnd.h"
+# include "keyboard.h"
 # include "map.h"
+# include "minimap.h"
+# include "main_menu.h"
 # include "ray.h"
 
 typedef struct		s_data
@@ -26,7 +27,9 @@ typedef struct		s_data
 	t_keyboard		keyboard;
 	t_map			map;
 	t_minimap		minimap;
+	t_menu			menu;
 	bool			quit;
+	int				gameState;
 }					t_data;
 
 #endif

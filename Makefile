@@ -20,7 +20,9 @@ SRCS =				main.c								\
 					quit/map_quit.c						\
 					quit/minimap_quit.c					\
 					quit/wnd_quit.c						\
-					quit/woof_quit.c
+					quit/woof_quit.c					\
+					controls/button.c					\
+					menu.c
 
 
 SRCS_DIR =			srcs
@@ -84,7 +86,7 @@ HEADERS +=			$(addprefix $(INCLUDES_STR_DIR), $(HEADERS_STR_LIST))
 
 FLAGS_COMPILE =		-Wall -Wextra -g
 
-FLAGS_LINK =		-L libft -lft -lSDL2 -lm
+FLAGS_LINK =		-L libft -lft -lSDL2 -lm -lSDL2_image
 
 
 all: $(NAME)

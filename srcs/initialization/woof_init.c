@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   woof_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:33:46 by user              #+#    #+#             */
-/*   Updated: 2020/04/29 23:58:54 by user             ###   ########.fr       */
+/*   Updated: 2020/05/04 15:59:13 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #include "WoofDefines.h"
 #include "init_all.h"
 #include "libft.h"
+#include "button.h"
+#include <SDL2/SDL_image.h>
+#include "main_menu.h"
 
 static void	sdl_init(void)
 {
@@ -30,7 +33,10 @@ t_data	woof_init(const char *filename)
 	data.wnd = wnd_init(WND_TITLE, WND_WIDTH, WND_HEIGHT);
 	data.minimap = minimap_init();
 	data.map = map_init(filename);
+	data.menu = menuInit(data);
 	// data.map = get_input(filename);
 	data.quit = false;
+	data.gameState = Menu;
+	
 	return (data);
 }

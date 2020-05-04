@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wnd_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:36:21 by user              #+#    #+#             */
-/*   Updated: 2020/04/29 23:58:06 by user             ###   ########.fr       */
+/*   Updated: 2020/05/03 20:51:38 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,18 @@ static void	check_args(const char *title, int width, int height)
 t_wnd		wnd_init(const char *title, int width, int height)
 {
 	t_wnd	wnd;
-	int		ret;
 
 	check_args(title, width, height);
-	ret = SDL_CreateWindowAndRenderer(width, height, 0, &wnd.window,
-														&wnd.renderer);
-	if (ret < 0)
+	if (SDL_CreateWindowAndRenderer(width, height, 0, &wnd.window,
+														&wnd.renderer) < 0)
 		ft_error(SDL_GetError(), "woof_init/wnd_init", 0);
+	// SDL_SetHintWithPriority(SDL_HINT_MOUSE_RELATIVE_MODE_WARP, "1", SDL_HINT_OVERRIDE);
+	// if (SDL_SetRelativeMouseMode(SDL_TRUE) < 0)
+	// 	ft_error(SDL_GetError(), "SDL_SetRelativeMouseMode", 0);
 	SDL_SetWindowTitle(wnd.window, title);
 	wnd.main_canvas = SDL_GetWindowSurface(wnd.window);
 	if (wnd.main_canvas == NULL)
 		ft_error(SDL_GetError(), "woof_init/wnd_init", 0);
-	if (SDL_SetRelativeMouseMode(SDL_TRUE) < 0)
-		ft_error(SDL_GetError(), "SDL_SetRelativeMouseMode", 0);
+	SDL_ShowCursor(1);
 	return (wnd);
 }

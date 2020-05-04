@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Woof3D.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 17:28:08 by user              #+#    #+#             */
-/*   Updated: 2020/04/29 23:39:29 by user             ###   ########.fr       */
+/*   Updated: 2020/05/04 16:00:22 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@ t_ray	*raycast(float pov, t_map *map);
 // double			ft_map(double value, double start_range, double end_range, double new_range_start, double new_range_end);
 // t_ray	*raycast(float pov, t_map *map);
 void	mouseCapture(t_data *data, SDL_MouseMotionEvent mouse);
+
+
 
 #endif
