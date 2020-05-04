@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:33:46 by user              #+#    #+#             */
-/*   Updated: 2020/05/04 15:59:13 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/04 21:12:47 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_data	woof_init(const char *filename)
 	data.map = map_init(filename);
 	data.menu = menuInit(data);
 	// data.map = get_input(filename);
+	SDL_ShowCursor(0);
 	data.quit = false;
 	data.gameState = Menu;
 	

@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/03 14:23:33 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/04 20:55:41 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/04 21:13:33 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void drawMenu(t_data *data)
 {
 	int		buttonPressed;
 
+	SDL_SetRenderDrawColor(data->wnd.renderer, 0x00, 0x00, 0x00, 0xff);
 	SDL_RenderClear(data->wnd.renderer);
 	buttonPressed = SDL_GetMouseState(&data->menu.mouse.cursor.x, &data->menu.mouse.cursor.y);
 	data->menu.mouse.tip.x = data->menu.mouse.cursor.x;
