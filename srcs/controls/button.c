@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/03 13:56:09 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/05 15:43:09 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/05 18:42:32 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,63 +19,43 @@
 #include "button.h"
 #include "point.h"
 #include "libft.h"
+#include <stdarg.h>
 
-void		checkSelected(t_data *data, int buttonPressed, int press)
+SDL_Color		checkSelected(t_data *data, t_button button, SDL_Color col, int press)
 {
-	if (SDL_HasIntersection(&data->menu.mouse.tip, &data->menu.button[buttonPressed].dRect))
+	Uint8		temp;
+	if (SDL_HasIntersection(&data->menu.mouse.tip, &button.dRect))
 	{
-		data->menu.button[buttonPressed].selected = true;
-		data->menu.button[buttonPressed].sRect.x = 300;
+		temp = col.r;
+		col.r = col.g;
+		col.g = col.b;
+		col.b = temp;
 		if (press == 1)
-			data->gameState = buttonPressed;
+			data->gameState = button.state;
 	}
-	else
-	{
-		data->menu.button[buttonPressed].selected = false;
-		data->menu.button[buttonPressed].sRect.x = 0;
-	}
+	return (col);
 }
 
 
 
-void		buttonDraw(t_data data, t_font font, SDL_Rect dest_rect, SDL_Color col)
+void		buttonDraw(t_data *data, t_button button, SDL_Color col, int press)
 {
 	SDL_Surface	*surf;
 	SDL_Texture	*texture;
-	// SDL_Rect	rect2;
+	SDL_Rect	rect_cpy;
 
-	// surf = SDL_CreateRGBSurface(0, dest_rect.h, dest_rect.w, 32,
-	// 										RMASK, GMASK, BMASK, AMASK);
-	SDL_SetRenderDrawColor(data.wnd.renderer, 0xff, 0xff, 0xff, 0xff);
-	SDL_RenderFillRect(data.wnd.renderer, &dest_rect);
-	SDL_SetRenderDrawColor(data.wnd.renderer, 0x00, 0x00, 0x00, 0xff);
-	
-	// SDL_FillRect(surf, &dest_rect, SDL_MapRGBA(surf->format, col.r, col.g, col.b, col.a));
-	// texture = SDL_CreateTextureFromSurface(data.wnd.renderer, surf);
-	// if (SDL_RenderCopy(data.wnd.renderer, texture, NULL, &dest_rect) < 0)
-	// 	ft_error(SDL_GetError(), "SDL_RenderCopy", 0);
-	font.rect.x = dest_rect.x + font.rect.w / 2;
-	font.rect.y = dest_rect.y + font.rect.h / 2;
-	SDL_RenderCopy(data.wnd.renderer, font.text_texture, NULL, &font.rect);
-	// SDL_FreeSurface(surf);
+	col = checkSelected(data, button, col, press);
+	SDL_SetRenderDrawColor(data->wnd.renderer, col.r, col.g, col.b, col.a);
+	SDL_RenderFillRect(data->wnd.renderer, &button.dRect);
+	SDL_SetRenderDrawColor(data->wnd.renderer, col.b, col.r, col.g, col.a);
+	rect_cpy.h = button.dRect.h - button.dRect.h / 10;
+	rect_cpy.w = button.dRect.w - button.dRect.w / 10;
+	rect_cpy.x = button.dRect.x + button.dRect.w / 20;
+	rect_cpy.y = button.dRect.y + button.dRect.h / 20;
+	SDL_RenderFillRect(data->wnd.renderer, &rect_cpy);
+	SDL_SetRenderDrawColor(data->wnd.renderer, 0x00, 0x00, 0x00, 0xff);
+	SDL_RenderCopy(data->wnd.renderer, button.font.text_texture, NULL, &rect_cpy);
 }
-
-t_button	initButton(t_data data, int x, int y)
-{
-	t_button	b;
-
-	b.selected = false;
-	b.sRect.x = x;
-	b.sRect.y = y;
-	b.sRect.w = 300;
-	b.sRect.h = 150;
-	b.dRect.x = x;
-	b.dRect.y = y;
-	b.dRect.w = 300;
-	b.dRect.h = 150;
-	b.texture = data.menu.textureButton;
-	return (b);
-}	
 
 SDL_Rect	setButton(t_button button, int x, int y)
 {
@@ -87,9 +67,28 @@ SDL_Rect	setButton(t_button button, int x, int y)
 	return (rect);
 }
 
-void	drawButton(t_data *data, int buttonPressed, int press)
+t_button	*startButtonsInit(t_data data, int size, ...)
 {
-	checkSelected(data, buttonPressed, press);
-	SDL_RenderCopy(data->wnd.renderer, data->menu.textureButton,
-		&data->menu.button[buttonPressed].sRect, &data->menu.button[buttonPressed].dRect);
+	t_button	*but;
+	int			i;
+	va_list		ap;
+	char		*s;
+
+	i = 0;
+	but = (t_button *)malloc(sizeof(t_button) * size);
+	va_start(ap, size);
+	while (i < size)
+	{
+		s = va_arg(ap, char *);
+		but[i].font = fontInit(data, 100, s, setColor(255, 255, 255, 255));
+		but[i].dRect.h = 100;
+		but[i].dRect.w = 200;
+		but[i].dRect.x = WND_WIDTH / 2 - but[i].dRect.w / 2;
+		but[i].dRect.y = WND_HEIGHT / 4 + but[i].dRect.h * i + 10 * i;
+		but[i].state = i;
+		i++;
+	}
+	va_end(ap);
+	
+	return (but);
 }

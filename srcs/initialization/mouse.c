@@ -16,15 +16,12 @@ void	mouseCapture(t_data *data, SDL_MouseMotionEvent mouse)
 {
 	// if (mouse.xrel != -1 || mouse.xrel != 1)
 	// 	mouse.xrel = 0;
-	if (data->gameState == Start_button)
-	{
-		data->map.hero.pov += mouse.xrel;
-		if (data->map.hero.pov >= 360)
-			data->map.hero.pov -= 360;
-		else if (data->map.hero.pov < 0)
-			data->map.hero.pov += 360;
-		printf("xrel = %d\n", mouse.x);
-	}
+	data->map.hero.pov += mouse.xrel;
+	if (data->map.hero.pov >= 360)
+		data->map.hero.pov -= 360;
+	else if (data->map.hero.pov < 0)
+		data->map.hero.pov += 360;
+	printf("xrel = %d\n", mouse.x);
 }
 
 t_mouse		mouseInit(t_data data)

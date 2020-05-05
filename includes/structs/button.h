@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/03 13:52:16 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/05 15:18:49 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/05 18:47:28 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,19 @@
 # include "data.h"
 # include "font.h"
 
-enum buttonName {Start_button, Options_button, Exit_button, Menu, Continue_button};
+enum buttonName {Continue_button, Start_button, Options_button, Exit_button, Menu_button};
 
 typedef struct	s_button
 {
-	SDL_Rect	sRect;
+	t_font		font;
 	SDL_Rect	dRect;
-	bool		selected;
-	SDL_Texture	*texture;
+	int			state;
 }				t_button;
 
 t_button	initButton(t_data data, int x, int y);
 SDL_Rect	setButton(t_button button, int x, int y);
 void		drawButton(t_data *data, int buttonPressed, int press);
+t_button	*startButtonsInit(t_data data, int size, ...);
+void		buttonDraw(t_data *data, t_button button, SDL_Color col, int press);
 
 #endif

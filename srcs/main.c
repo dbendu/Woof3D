@@ -35,10 +35,12 @@ static void	game_cycle(t_data data)
 		if (data.gameState == Start_button)
 			;
 		if (data.gameState == Continue_button)
+		{
 			draw(&data);
+		}
 		else if (data.gameState == Options_button)
 			;
-		else if (data.gameState == Menu)
+		else if (data.gameState == Menu_button)
 			drawMenu(&data);
 		process_input(&data);
 		playerUpdate(&data, &data.map.hero);

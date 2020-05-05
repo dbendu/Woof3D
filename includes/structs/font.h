@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 13:42:23 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/05 15:18:52 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/05 17:16:34 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,5 @@ typedef struct	s_font
 
 t_font	fontInit(t_data data, int font_size, const char *message, SDL_Color color);
 void		fontDraw(t_data data, t_font font, int x, int y);
-void		buttonDraw(t_data data, t_font font, SDL_Rect dest_rect, SDL_Color col);
 
 #endif

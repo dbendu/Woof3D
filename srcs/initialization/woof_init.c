@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:33:46 by user              #+#    #+#             */
-/*   Updated: 2020/05/05 14:43:19 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/05 18:46:58 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ t_data	woof_init(const char *filename)
 	data.wnd = wnd_init(WND_TITLE, WND_WIDTH, WND_HEIGHT);
 	data.minimap = minimap_init();
 	data.map = map_init(filename);
-	data.menu = menuInit(data);
 	// data.map = get_input(filename);
 	SDL_ShowCursor(0);
 	data.quit = false;
-	data.gameState = Menu;
-	
+	data.gameState = Menu_button;
+	data.menu.button = startButtonsInit(data, 5, "Continue", "Start", "Options", "Exit", "Menu");
+	data.menu.mouse = mouseInit(data);
 	return (data);
 }

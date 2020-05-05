@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/04 02:18:20 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/04 20:37:50 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/05 17:52:04 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@
 
 typedef struct	s_menu
 {
-	SDL_Texture		*textureButton;
-	t_button		button[3];
+	t_button		*button;
 	t_mouse			mouse;
 }				t_menu;
 

@@ -6,15 +6,15 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 13:43:25 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/05 15:32:38 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/05 17:48:31 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include "libft.h"
-#include "font.h"
 #include "data.h"
+#include "font.h"
 
 t_font	fontInit(t_data data, int font_size, const char *message, SDL_Color color)
 {
@@ -31,7 +31,6 @@ t_font	fontInit(t_data data, int font_size, const char *message, SDL_Color color
 	SDL_FreeSurface(surf);
 	if (SDL_QueryTexture(ret.text_texture, NULL, NULL, &ret.rect.w, &ret.rect.h) < 0)
 		ft_error(SDL_GetError(), "SDL_QueryTexture", 0);
-	printf("w = %d, h = %d\n", ret.rect.w, ret.rect.h);
 	ret.rect.x = 0;
 	ret.rect.y = 0;
 	return (ret);
