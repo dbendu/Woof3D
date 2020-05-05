@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/03 13:52:16 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/04 20:50:04 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/05 15:18:49 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 # include <stdbool.h>
 # include "WoofDefines.h"
 # include "data.h"
+# include "font.h"
 
-enum buttonName {Start_button, Options_button, Exit_button, Menu};
+enum buttonName {Start_button, Options_button, Exit_button, Menu, Continue_button};
 
 typedef struct	s_button
 {

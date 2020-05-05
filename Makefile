@@ -5,7 +5,10 @@ SRCS =				main.c								\
 					player_update.c						\
 					raycasting.c						\
 					utils.c								\
+					menu.c								\
 					controls/keyboard.c					\
+					controls/button.c					\
+					initialization/font.c				\
 					initialization/keyboard_init.c		\
 					initialization/map_init.c			\
 					initialization/minimap_init.c		\
@@ -20,9 +23,7 @@ SRCS =				main.c								\
 					quit/map_quit.c						\
 					quit/minimap_quit.c					\
 					quit/wnd_quit.c						\
-					quit/woof_quit.c					\
-					controls/button.c					\
-					menu.c
+					quit/woof_quit.c
 
 
 SRCS_DIR =			srcs
@@ -86,7 +87,7 @@ HEADERS +=			$(addprefix $(INCLUDES_STR_DIR), $(HEADERS_STR_LIST))
 
 FLAGS_COMPILE =		-Wall -Wextra -g
 
-FLAGS_LINK =		-L libft -lft -lSDL2 -lm -lSDL2_image
+FLAGS_LINK =		-L libft -lft -lSDL2 -lm -lSDL2_image -lSDL2_ttf
 
 
 all: $(NAME)

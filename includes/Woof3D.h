@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 17:28:08 by user              #+#    #+#             */
-/*   Updated: 2020/05/04 16:00:22 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/05 14:46:15 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ void	playerUpdate(t_data *data, t_hero *hero);
 void	draw(t_data *data);
 
 t_ray	*raycast(float pov, t_map *map);
-
-
+SDL_Color	setColor(int r, int g, int b, int a);
 
 
 // void	draw(t_data *data);

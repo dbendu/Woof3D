@@ -6,19 +6,22 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/03 13:56:09 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/04 20:59:00 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/05 15:43:09 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include "Woof3D.h"
+#include "WoofDefines.h"
 #include "data.h"
+#include "font.h"
 #include "button.h"
-
+#include "point.h"
+#include "libft.h"
 
 void		checkSelected(t_data *data, int buttonPressed, int press)
 {
-	data->menu.button[buttonPressed];
 	if (SDL_HasIntersection(&data->menu.mouse.tip, &data->menu.button[buttonPressed].dRect))
 	{
 		data->menu.button[buttonPressed].selected = true;
@@ -31,6 +34,30 @@ void		checkSelected(t_data *data, int buttonPressed, int press)
 		data->menu.button[buttonPressed].selected = false;
 		data->menu.button[buttonPressed].sRect.x = 0;
 	}
+}
+
+
+
+void		buttonDraw(t_data data, t_font font, SDL_Rect dest_rect, SDL_Color col)
+{
+	SDL_Surface	*surf;
+	SDL_Texture	*texture;
+	// SDL_Rect	rect2;
+
+	// surf = SDL_CreateRGBSurface(0, dest_rect.h, dest_rect.w, 32,
+	// 										RMASK, GMASK, BMASK, AMASK);
+	SDL_SetRenderDrawColor(data.wnd.renderer, 0xff, 0xff, 0xff, 0xff);
+	SDL_RenderFillRect(data.wnd.renderer, &dest_rect);
+	SDL_SetRenderDrawColor(data.wnd.renderer, 0x00, 0x00, 0x00, 0xff);
+	
+	// SDL_FillRect(surf, &dest_rect, SDL_MapRGBA(surf->format, col.r, col.g, col.b, col.a));
+	// texture = SDL_CreateTextureFromSurface(data.wnd.renderer, surf);
+	// if (SDL_RenderCopy(data.wnd.renderer, texture, NULL, &dest_rect) < 0)
+	// 	ft_error(SDL_GetError(), "SDL_RenderCopy", 0);
+	font.rect.x = dest_rect.x + font.rect.w / 2;
+	font.rect.y = dest_rect.y + font.rect.h / 2;
+	SDL_RenderCopy(data.wnd.renderer, font.text_texture, NULL, &font.rect);
+	// SDL_FreeSurface(surf);
 }
 
 t_button	initButton(t_data data, int x, int y)

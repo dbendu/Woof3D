@@ -33,6 +33,8 @@ static void	game_cycle(t_data data)
 	{
 		// draw(&data);
 		if (data.gameState == Start_button)
+			;
+		if (data.gameState == Continue_button)
 			draw(&data);
 		else if (data.gameState == Options_button)
 			;

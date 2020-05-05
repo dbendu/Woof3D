@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   font.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/05 14:44:43 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/05 14:45:59 by konsolka         ###   ########.fr       */
+/*   Created: 2020/05/05 13:42:23 by konsolka          #+#    #+#             */
+/*   Updated: 2020/05/05 15:18:52 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "SDL2/SDL.h"
+#ifndef FONT_H
+# define FONT_H
+# include <SDL2/SDL.h>
+# include "data.h"
 
-SDL_Color	setColor(int r, int g, int b, int a)
+typedef struct	s_font
 {
-	SDL_Color	color;
+	SDL_Texture	*text_texture;
+	SDL_Rect	rect;
+}				t_font;
 
-	color.r = r;
-	color.g = g;
-	color.b = b;
-	color.a = a;
-	return (color);
-}
+t_font	fontInit(t_data data, int font_size, const char *message, SDL_Color color);
+void		fontDraw(t_data data, t_font font, int x, int y);
+void		buttonDraw(t_data data, t_font font, SDL_Rect dest_rect, SDL_Color col);
 
-// int32_t    pack_color(int alpha, int red, int green, int blue)
-// {
-//     return ((alpha << 24) | (red << 16) | (green << 8) | blue);
-// }
+#endif

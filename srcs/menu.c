@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/03 14:23:33 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/04 21:13:33 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/05 15:37:30 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 #include "WoofDefines.h"
 #include "main_menu.h"
 #include "button.h"
+#include "font.h"
+#include "Woof3D.h"
 
 t_menu		menuInit(t_data data)
 {
 	t_menu	menu;
 
-	menu.textureButton = IMG_LoadTexture(data.wnd.renderer, "textures/buttons.png");
+	menu.textureButton = IMG_LoadTexture(data.wnd.renderer, "res/textures/buttons.png");
 	menu.button[Start_button] = initButton(data, 0, 0);
 	menu.button[Options_button] = initButton(data, 0, 150);
 	menu.button[Exit_button] = initButton(data, 0, 300);
@@ -34,9 +36,23 @@ t_menu		menuInit(t_data data)
 void drawMenu(t_data *data)
 {
 	int		buttonPressed;
+	SDL_Rect	rect;
+	t_font	font;
+	SDL_Color	col;
 
 	SDL_SetRenderDrawColor(data->wnd.renderer, 0x00, 0x00, 0x00, 0xff);
+	col.a = 255;
+	col.b = 0;
+	col.g = 0;
+	col.r = 255;
+	font = fontInit(*data, 72, "KEK", col);
 	SDL_RenderClear(data->wnd.renderer);
+	// fontDraw(*data, font, 0, 0);
+	rect.h = 150;
+	rect.w = 300;
+	rect.x = 200;
+	rect.y = 200;
+	buttonDraw(*data, font, rect, setColor(255, 255, 255, 255));
 	buttonPressed = SDL_GetMouseState(&data->menu.mouse.cursor.x, &data->menu.mouse.cursor.y);
 	data->menu.mouse.tip.x = data->menu.mouse.cursor.x;
 	data->menu.mouse.tip.y = data->menu.mouse.cursor.y;

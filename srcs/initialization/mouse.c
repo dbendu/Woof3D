@@ -31,7 +31,7 @@ t_mouse		mouseInit(t_data data)
 {
 	t_mouse		m;
 
-	m.texture = IMG_LoadTexture(data.wnd.renderer, "textures/cursor.png");
+	m.texture = IMG_LoadTexture(data.wnd.renderer, "res/textures/cursor.png");
 	m.cursor.h = 50;
 	m.cursor.w = 50;
 	m.cursor.x = 0;
