@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/03 13:52:16 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/06 23:44:02 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/07 02:48:35 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,14 @@ typedef struct	s_button
 {
 	t_font		font;
 	SDL_Rect	dRect;
+	char		*name;
 	int			state;
 }				t_button;
 
 t_button	initButton(t_data data, int x, int y);
 SDL_Rect	setButton(t_button button, int x, int y);
 void		drawButton(t_data *data, int buttonPressed, int press);
-t_button	*startButtonsInit(t_data data, int size, ...);
+t_button	*startButtonsInit(t_data data, int size, t_point_xy xy, ...);
 void		buttonDraw(t_data *data, t_button button, SDL_Color col, int press);
 
 #endif

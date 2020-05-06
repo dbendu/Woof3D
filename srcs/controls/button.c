@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/03 13:56:09 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/05 18:42:32 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/07 02:49:08 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ SDL_Rect	setButton(t_button button, int x, int y)
 	return (rect);
 }
 
-t_button	*startButtonsInit(t_data data, int size, ...)
+t_button	*startButtonsInit(t_data data, int size, t_point_xy xy, ...)
 {
 	t_button	*but;
 	int			i;
@@ -76,16 +76,17 @@ t_button	*startButtonsInit(t_data data, int size, ...)
 
 	i = 0;
 	but = (t_button *)malloc(sizeof(t_button) * size);
-	va_start(ap, size);
+	va_start(ap, xy);
 	while (i < size)
 	{
 		s = va_arg(ap, char *);
 		but[i].font = fontInit(data, 100, s, setColor(255, 255, 255, 255));
 		but[i].dRect.h = 100;
 		but[i].dRect.w = 200;
-		but[i].dRect.x = WND_WIDTH / 2 - but[i].dRect.w / 2;
-		but[i].dRect.y = WND_HEIGHT / 4 + but[i].dRect.h * i + 10 * i;
+		but[i].dRect.x = xy.x - but[i].dRect.w / 2;
+		but[i].dRect.y = xy.y + but[i].dRect.h * i + 10 * i;
 		but[i].state = i;
+		but[i].name = ft_strdup(s);
 		i++;
 	}
 	va_end(ap);

@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:33:46 by user              #+#    #+#             */
-/*   Updated: 2020/05/07 00:28:28 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/07 02:01:46 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void	sdl_init(void)
 t_data	woof_init(const char *filename)
 {
 	t_data	data;
+	t_point_xy xy;
 
 	sdl_init();
 	if (TTF_Init() < 0)
@@ -40,7 +41,9 @@ t_data	woof_init(const char *filename)
 	SDL_ShowCursor(0);
 	data.quit = false;
 	data.gameState = Menu_button;
-	data.menu.button = startButtonsInit(data, 5, "Continue", "Start", "Options", "Exit", "Menu");
+	xy.x = WND_WIDTH / 2;
+	xy.y = WND_HEIGHT / 4;
+	data.menu.button = startButtonsInit(data, 5, xy, "Continue", "Start", "Options", "Exit", "Menu");
 	data.menu.mouse = mouseInit(data);
 	data.maps = NULL;
 	return (data);

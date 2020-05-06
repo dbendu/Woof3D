@@ -16,7 +16,7 @@
 /*
 ** window
 */
-# define WND_WIDTH			1480
+# define WND_WIDTH			1280
 # define WND_HEIGHT			720
 # define WND_MIN_WIDTH		320
 # define WND_MIN_HEIGHT		240
