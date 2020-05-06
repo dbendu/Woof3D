@@ -21,7 +21,7 @@ void	mouseCapture(t_data *data, SDL_MouseMotionEvent mouse)
 		data->map.hero.pov -= 360;
 	else if (data->map.hero.pov < 0)
 		data->map.hero.pov += 360;
-	printf("xrel = %d\n", mouse.x);
+	// printf("xrel = %d\n", mouse.x);
 }
 
 t_mouse		mouseInit(t_data data)

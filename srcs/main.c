@@ -34,7 +34,7 @@ static void	game_cycle(t_data data)
 	{
 		// draw(&data);
 		if (data.gameState == Start_button)
-			startMenu(&data);
+			renderMaps(&data);
 		if (data.gameState == Continue_button)
 		{
 			draw(&data);

@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/03 13:52:16 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/05 18:47:28 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/06 23:44:02 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 # include "data.h"
 # include "font.h"
 
-enum buttonName {Continue_button, Start_button, Options_button, Exit_button, Menu_button};
+enum buttonName {Continue_button, Start_button, Options_button, Exit_button,
+	Menu_button, Update_button};
 
 typedef struct	s_button
 {

@@ -6,5 +6,6 @@ TODO: Check for colors(set defauld value)
 TODO: May be add sound
 
 -----MENU:
-TODO: Create Update button to update maps files
+TODO: Button creation must have offset values for creating Rect x and y
+	or it will create all in one position
 TODO: Make mapfile validation
