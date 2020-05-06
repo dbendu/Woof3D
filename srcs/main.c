@@ -4,6 +4,7 @@
 #include "libft.h"
 #include "button.h"
 #include "main_menu.h"
+#include "start_menu.h"
 
 static void	usage(void)
 {
@@ -33,7 +34,7 @@ static void	game_cycle(t_data data)
 	{
 		// draw(&data);
 		if (data.gameState == Start_button)
-			;
+			startMenu(&data);
 		if (data.gameState == Continue_button)
 		{
 			draw(&data);
