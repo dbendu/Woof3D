@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 12:44:06 by user              #+#    #+#             */
-/*   Updated: 2020/05/07 00:00:03 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/07 17:27:38 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "main_menu.h"
 # include "ray.h"
 # include "start_menu.h"
+# include "button.h"
 
 typedef struct		s_data
 {
@@ -29,7 +30,7 @@ typedef struct		s_data
 	t_map			map;
 	t_minimap		minimap;
 	t_menu			menu;
-	t_start_menu	*maps;
+	t_button		*maps;
 	bool			quit;
 	int				gameState;
 	int				mapsCount;

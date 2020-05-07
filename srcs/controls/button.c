@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/03 13:56:09 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/07 02:49:08 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/07 17:41:41 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,11 @@ SDL_Color		checkSelected(t_data *data, t_button button, SDL_Color col, int press
 		col.r = col.g;
 		col.g = col.b;
 		col.b = temp;
+		printf("LEL--%d\n", press);
 		if (press == 1)
+		{
 			data->gameState = button.state;
+		}
 	}
 	return (col);
 }
@@ -67,29 +70,47 @@ SDL_Rect	setButton(t_button button, int x, int y)
 	return (rect);
 }
 
-t_button	*startButtonsInit(t_data data, int size, t_point_xy xy, ...)
+t_buttonInit	buttonInitData(SDL_Rect rect, t_point_xy shift, bool map)
+{
+	t_buttonInit	ret;
+
+	ret.rect = rect;
+	ret.map = map;
+	ret.shift = shift;
+	return (ret);
+}
+
+t_button	*startButtonsInit(t_data data, int size, t_buttonInit init, ...)
 {
 	t_button	*but;
+	t_button	*new;
 	int			i;
 	va_list		ap;
 	char		*s;
 
 	i = 0;
-	but = (t_button *)malloc(sizeof(t_button) * size);
-	va_start(ap, xy);
+	but = NULL;
+	va_start(ap, init);
 	while (i < size)
 	{
+		new = (t_button *)malloc(sizeof(t_button));
 		s = va_arg(ap, char *);
-		but[i].font = fontInit(data, 100, s, setColor(255, 255, 255, 255));
-		but[i].dRect.h = 100;
-		but[i].dRect.w = 200;
-		but[i].dRect.x = xy.x - but[i].dRect.w / 2;
-		but[i].dRect.y = xy.y + but[i].dRect.h * i + 10 * i;
-		but[i].state = i;
-		but[i].name = ft_strdup(s);
+		new->font = fontInit(data, 100, s, setColor(255, 255, 255, 255));
+		new->dRect.h = init.rect.h;
+		new->dRect.w = init.rect.w;
+		new->dRect.x = init.rect.x + init.rect.w *
+			(i % init.shift.x) + 10 * (i % init.shift.x);
+		new->dRect.y = init.rect.y + init.rect.h *
+			(i / init.shift.y) + 10 * (i / init.shift.y);
+		if (init.map)
+			new->state = -1;
+		else
+			new->state = i;
+		new->name = ft_strdup(s);
+		new->next = but;
+		but = new;
 		i++;
 	}
 	va_end(ap);
-	
 	return (but);
 }

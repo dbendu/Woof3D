@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:33:46 by user              #+#    #+#             */
-/*   Updated: 2020/05/07 02:01:46 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/07 17:30:43 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <SDL2/SDL_image.h>
 #include "main_menu.h"
 #include <SDL2/SDL_ttf.h>
+#include "Woof3D.h"
 
 static void	sdl_init(void)
 {
@@ -43,7 +44,13 @@ t_data	woof_init(const char *filename)
 	data.gameState = Menu_button;
 	xy.x = WND_WIDTH / 2;
 	xy.y = WND_HEIGHT / 4;
-	data.menu.button = startButtonsInit(data, 5, xy, "Continue", "Start", "Options", "Exit", "Menu");
+	data.menu.button = startButtonsInit(data,
+		4,
+		buttonInitData(
+			setRect(WND_WIDTH / 2 - 100, WND_HEIGHT / 5, 200, 100),
+			xyInit(1, 1),
+			0),
+			"Continue", "Start", "Options", "Exit");
 	data.menu.mouse = mouseInit(data);
 	data.maps = NULL;
 	return (data);

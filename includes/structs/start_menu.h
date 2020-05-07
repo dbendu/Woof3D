@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 18:13:11 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/07 00:10:22 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/07 17:20:54 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define START_MENU_H
 
 # include "data.h"
+# include "button.h"
 
 typedef struct	s_start_menu
 {
@@ -22,10 +23,6 @@ typedef struct	s_start_menu
 	struct s_start_menu	*next;
 }				t_start_menu;
 
-typedef struct	s_button_maps
-{
-	
-}				t_button_maps;
 void		renderMaps(t_data *data);
 
 #endif

@@ -6,17 +6,17 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/03 14:23:33 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/05 18:38:39 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/07 17:23:41 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <SDL2/SDL_image.h>
 #include "data.h"
 #include "WoofDefines.h"
-#include "main_menu.h"
 #include "button.h"
 #include "font.h"
 #include "Woof3D.h"
+#include "main_menu.h"
 
 // t_menu		menuInit(t_data data)
 // {
@@ -43,13 +43,11 @@ void drawMenu(t_data *data)
 	SDL_SetRenderDrawColor(data->wnd.renderer, 0x00, 0x00, 0x00, 0xff);
 	SDL_RenderClear(data->wnd.renderer);
 	buttonPressed = SDL_GetMouseState(&data->menu.mouse.cursor.x, &data->menu.mouse.cursor.y);
-	if (data->map.map)
-		buttonDraw(data, data->menu.button[Continue_button], setColor(45, 138, 41, 255), buttonPressed);
-	buttonDraw(data, data->menu.button[Start_button], setColor(45, 138, 41, 255), buttonPressed);
-	buttonDraw(data, data->menu.button[Options_button], setColor(45, 138, 41, 255), buttonPressed);
-	buttonDraw(data, data->menu.button[Exit_button], setColor(45, 138, 41, 255), buttonPressed);
 	data->menu.mouse.tip.x = data->menu.mouse.cursor.x;
 	data->menu.mouse.tip.y = data->menu.mouse.cursor.y;
+	if (data->map.map)
+		buttonDraw(data, data->menu.button[Continue_button], setColor(45, 138, 41, 255), buttonPressed);
+	renderButtons(data, data->menu.button, buttonPressed);
 	drawMouse(*data);
 	SDL_RenderPresent(data->wnd.renderer);
 }
