@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 17:28:08 by user              #+#    #+#             */
-/*   Updated: 2020/05/07 16:58:07 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/07 18:58:51 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_point_xy	xyInit(int x, int y);
 // double			ft_map(double value, double start_range, double end_range, double new_range_start, double new_range_end);
 // t_ray	*raycast(float pov, t_map *map);
 void	mouseCapture(t_data *data, SDL_MouseMotionEvent mouse);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 
 #endif

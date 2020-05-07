@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 18:01:05 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/07 17:42:22 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/07 18:38:35 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void		startMenu(t_data *data)
 			rect.w = 200;
 			rect.h = 100;
 			new = (t_button *)malloc(sizeof(t_button));
+			new->name = ft_strdup(entry->d_name);
 			new = startButtonsInit(*data, 1, buttonInitData(rect, xyInit(1, 1), 1), new->name);		//SEGFAULT
 			new->next = data->maps;
 			data->maps = new;
@@ -74,7 +75,7 @@ void		renderButtons(t_data *data, t_button *button, int buttonPress)
 		return ;
 	if (button->next)
 		renderButtons(data, button->next, buttonPress);
-	buttonDraw(data, button[0], setColor(45, 138, 41, 255), buttonPress);
+	buttonDraw(data, button, setColor(45, 138, 41, 255), buttonPress);
 }
 
 void		renderMaps(t_data *data)

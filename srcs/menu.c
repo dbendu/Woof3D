@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/03 14:23:33 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/07 17:23:41 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/07 18:48:03 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void drawMenu(t_data *data)
 	data->menu.mouse.tip.x = data->menu.mouse.cursor.x;
 	data->menu.mouse.tip.y = data->menu.mouse.cursor.y;
 	if (data->map.map)
-		buttonDraw(data, data->menu.button[Continue_button], setColor(45, 138, 41, 255), buttonPressed);
+		buttonDraw(data, &data->menu.button[Continue_button], setColor(45, 138, 41, 255), buttonPressed);
 	renderButtons(data, data->menu.button, buttonPressed);
 	drawMouse(*data);
 	SDL_RenderPresent(data->wnd.renderer);

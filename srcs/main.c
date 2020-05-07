@@ -5,11 +5,7 @@
 #include "button.h"
 #include "main_menu.h"
 #include "start_menu.h"
-
-static void	usage(void)
-{
-	write(2, "usage: ./a.out [map]\n", 21);
-}
+#include "init_all.h"
 
 void		process_input(t_data *data)
 {
@@ -27,6 +23,22 @@ void		process_input(t_data *data)
 			mouseCapture(data, event.motion);
 	}
 }
+void		initMap(t_data *data, t_button *button)
+{
+	char	*file;
+	if (!button)
+		data->gameState = Menu_button;
+	if (button->selected)
+	{
+		data->gameState = Continue_button;
+		file = ft_strjoin("maps/", button->name);
+		data->map = map_init(file);
+		free(file);
+		return ;
+	}
+	else if (button->next)
+		initMap(data, button->next);
+}
 
 static void	game_cycle(t_data data)
 {
@@ -35,14 +47,14 @@ static void	game_cycle(t_data data)
 		// draw(&data);
 		if (data.gameState == Start_button)
 			renderMaps(&data);
-		if (data.gameState == Continue_button)
-		{
+		if (data.gameState == Continue_button && data.map.map)
 			draw(&data);
-		}
 		else if (data.gameState == Options_button)
 			;
 		else if (data.gameState == Menu_button)
 			drawMenu(&data);
+		else if (data.gameState == -1)
+			initMap(&data, data.maps);
 		process_input(&data);
 		playerUpdate(&data, &data.map.hero);
 	}
@@ -67,14 +79,9 @@ int main(int argc, const char **argv)
 {
 	t_data	data;
 
-	if (argc == 2)
-	{
-		data = woof_init(argv[1]);
-		print_map(&data.map);
-		game_cycle(data);
-		woof_quit(&data);
-	}
-	else
-		usage();
+	data = woof_init(argv[1]);
+	// print_map(&data.map);
+	game_cycle(data);
+	woof_quit(&data);
 	return (0);
 }
