@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/03 13:56:09 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/07 18:59:24 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/08 21:04:23 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ SDL_Color		checkSelected(t_data *data, t_button *button, SDL_Color col, int pres
 		col.r = col.g;
 		col.g = col.b;
 		col.b = temp;
-		printf("LEL--%d\n", press);
 		if (press == 1)
 		{
 			data->gameState = button->state;

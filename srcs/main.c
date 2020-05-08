@@ -6,6 +6,7 @@
 #include "main_menu.h"
 #include "start_menu.h"
 #include "init_all.h"
+#include "quit_all.h"
 
 void		process_input(t_data *data)
 {
@@ -32,8 +33,11 @@ void		initMap(t_data *data, t_button *button)
 	{
 		data->gameState = Continue_button;
 		file = ft_strjoin("maps/", button->name);
+		if (data->map.map)
+			map_quit(&data->map);
 		data->map = map_init(file);
 		free(file);
+		button->selected = false;
 		return ;
 	}
 	else if (button->next)
