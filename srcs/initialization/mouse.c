@@ -16,7 +16,7 @@ void	mouseCapture(t_data *data, SDL_MouseMotionEvent mouse)
 {
 	// if (mouse.xrel != -1 || mouse.xrel != 1)
 	// 	mouse.xrel = 0;
-	data->map.hero.pov += mouse.xrel;
+	data->map.hero.pov -= mouse.xrel;
 	if (data->map.hero.pov >= 360)
 		data->map.hero.pov -= 360;
 	else if (data->map.hero.pov < 0)

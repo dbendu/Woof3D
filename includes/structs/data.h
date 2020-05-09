@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 12:44:06 by user              #+#    #+#             */
-/*   Updated: 2020/05/07 17:27:38 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/09 06:22:02 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include "ray.h"
 # include "start_menu.h"
 # include "button.h"
+# include <SDL2/SDL.h>
 
 typedef struct		s_data
 {
@@ -32,6 +33,7 @@ typedef struct		s_data
 	t_menu			menu;
 	t_button		*maps;
 	bool			quit;
+	SDL_Texture		*texture;
 	int				gameState;
 	int				mapsCount;
 }					t_data;

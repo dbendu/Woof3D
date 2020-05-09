@@ -6,19 +6,20 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:33:46 by user              #+#    #+#             */
-/*   Updated: 2020/05/07 19:09:25 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/09 06:24:40 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
 #include "initialization.h"
 #include "WoofDefines.h"
 #include "init_all.h"
 #include "libft.h"
 #include "button.h"
-#include <SDL2/SDL_image.h>
 #include "main_menu.h"
-#include <SDL2/SDL_ttf.h>
 #include "Woof3D.h"
+#include "data.h"
 
 static void	sdl_init(void)
 {
@@ -51,6 +52,7 @@ t_data	woof_init(const char *filename)
 			xyInit(1, 1),
 			0),
 			"Continue", "Start", "Options", "Exit");
+	data.texture = IMG_LoadTexture(data.wnd.renderer, "res/textures/wolftextures.png");
 	data.menu.mouse = mouseInit(data);
 	data.maps = NULL;
 	return (data);

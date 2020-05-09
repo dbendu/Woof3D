@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 14:24:00 by user              #+#    #+#             */
-/*   Updated: 2020/05/07 19:07:45 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/09 07:18:07 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,36 +64,54 @@
 // 	SDL_DestroyTexture(texture);
 // }
 
-void setup_color(t_data *data, int x_, t_ray *ray)
+SDL_Rect	setup_color(t_data *data, int x_, t_ray *ray)
 {
 	const int x = ray[x_].x / CELL_SIZE;
 	const int y = ray[x_].y / CELL_SIZE;
+	SDL_Rect		rect;
 
-	if (data->map.map[y][x].wall_c == 1)
-		SDL_SetRenderDrawColor(data->wnd.renderer, 0xff, 0x00, 0x00, 0xff);
-	else if (data->map.map[y][x].wall_c == 2)
-		SDL_SetRenderDrawColor(data->wnd.renderer, 0x0, 0xff, 0x00, 0xff);
-	else if (data->map.map[y][x].wall_c == 3)
-		SDL_SetRenderDrawColor(data->wnd.renderer, 0x0, 0x00, 0xff, 0xff);
-	else if (data->map.map[y][x].wall_c == 4)
-		SDL_SetRenderDrawColor(data->wnd.renderer, 0xff, 0x00, 0xff, 0xff);
-
+	// if (data->map.map[y][x].wall_c == 1)
+	// 	SDL_SetRenderDrawColor(data->wnd.renderer, 0xff, 0x00, 0x00, 0xff);
+	// else if (data->map.map[y][x].wall_c == 2)
+	// 	SDL_SetRenderDrawColor(data->wnd.renderer, 0x0, 0xff, 0x00, 0xff);
+	// else if (data->map.map[y][x].wall_c == 3)
+	// 	SDL_SetRenderDrawColor(data->wnd.renderer, 0x0, 0x00, 0xff, 0xff);
+	// else if (data->map.map[y][x].wall_c == 4)
+	// 	SDL_SetRenderDrawColor(data->wnd.renderer, 0xff, 0x00, 0xff, 0xff);
+	// else
+	// 	SDL_SetRenderDrawColor(data->wnd.renderer, 150, 2, 82, 255);
+	rect.x = data->map.map[y][x].wall_c * 64;
+	rect.y = 0;
+	rect.h = 64;
+	rect.w = 64;
+	return (rect);
 }
 
 void			d3Render(t_data *data, t_ray *ray)
 {
 	int			up;
 	int			down;
-	float		distance = WND_WIDTH / 2 / tan(to_rad(data->map.hero.fov / 2));
-	const		float wall_height = WND_HEIGHT / 12;
+	double		distance = WND_WIDTH / 2 / tan(to_rad(data->map.hero.fov / 2));
+	const		double wall_height = WND_HEIGHT / 12;
+	SDL_Rect	rect;
+	SDL_Rect	src;
 
 	for (int x = 0; x < WND_WIDTH; ++x)
 	{
-		setup_color(data, x, ray);
-		float height = wall_height / ray[x].len * distance;
-		up = WND_HEIGHT / 2 - height / 2;
-		down = WND_HEIGHT / 2 + height / 2;
-		SDL_RenderDrawLine(data->wnd.renderer, x, up, x, down);
+		rect.x = x;
+		rect.w = 1;
+		rect.h = wall_height / ray[x].len * distance;
+		rect.y = WND_HEIGHT / 2 - rect.h / 2;
+		// setup_color(data, x, ray);
+		// double height = wall_height / ray[x].len * distance;
+		// up = WND_HEIGHT / 2 - height / 2;
+		// down = WND_HEIGHT / 2 + height / 2;
+		// drawStart - h / 2 + lineHeight / 2)
+		src = setup_color(data, rect.x, ray);
+		// ? 1.0 * texHeight / lineHeight;
+		src.x += rect.y - WND_HEIGHT / 2 + rect.h / 2 + src.h / rect.h;
+		SDL_RenderCopy(data->wnd.renderer, data->texture, &src, &rect);
+		// SDL_RenderDrawLine(data->wnd.renderer, x, up, x, down);
 	}
 }
 

@@ -24,6 +24,7 @@ void		process_input(t_data *data)
 			mouseCapture(data, event.motion);
 	}
 }
+
 void		initMap(t_data *data, t_button *button)
 {
 	char	*file;
