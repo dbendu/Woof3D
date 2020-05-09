@@ -38,7 +38,7 @@
 /*
 ** game
 */
-# define CELL_SIZE			64
+# define CELL_SIZE			128
 # define MINIMAP_SZ			300
 /*
 ** hero

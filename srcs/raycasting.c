@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 21:25:37 by user              #+#    #+#             */
-/*   Updated: 2020/05/09 05:44:47 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/09 09:08:42 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ t_ray	*raycast(float pov,
 		float lenx = sqrt((rayx.x - pos.x) * (rayx.x - pos.x) + (rayx.y - pos.y) * (rayx.y - pos.y)) * cos(to_rad(ray_number * map->hero.fov / rays_count - map->hero.fov / 2));
 		float leny = sqrt((rayy.x - pos.x) * (rayy.x - pos.x) + (rayy.y - pos.y) * (rayy.y - pos.y)) * cos(to_rad(ray_number * map->hero.fov / rays_count - map->hero.fov / 2));
 
+		rayx.side = 0;
+		rayy.side = 1;
 		rayx.len = lenx;
 		rayy.len = leny;
 		if (lenx < leny)
