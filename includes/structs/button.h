@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/03 13:52:16 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/07 18:39:43 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/10 07:41:17 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ typedef struct	s_buttonInit
 
 t_button	initButton(t_data data, int x, int y);
 SDL_Rect	setButton(t_button button, int x, int y);
-void		drawButton(t_data *data, int buttonPressed, int press);
 void		buttonDraw(t_data *data, t_button *button, SDL_Color col, int press);
 t_buttonInit	buttonInitData(SDL_Rect rect, t_point_xy shift, bool map);
 t_button	*startButtonsInit(t_data data, int size, t_buttonInit init, ...);

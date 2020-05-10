@@ -55,7 +55,7 @@ static void	game_cycle(t_data data)
 		if (data.gameState == Continue_button && data.map.map)
 			draw(&data);
 		else if (data.gameState == Options_button)
-			;
+			drawOptions(&data);
 		else if (data.gameState == Menu_button)
 			drawMenu(&data);
 		else if (data.gameState == -1)

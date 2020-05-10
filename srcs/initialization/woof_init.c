@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:33:46 by user              #+#    #+#             */
-/*   Updated: 2020/05/09 06:24:40 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/10 07:38:35 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ t_data	woof_init(const char *filename)
 			0),
 			"Continue", "Start", "Options", "Exit");
 	data.texture = IMG_LoadTexture(data.wnd.renderer, "res/textures/wolftextures.png");
+	data.options = initOptions(data);
 	data.menu.mouse = mouseInit(data);
 	data.maps = NULL;
 	return (data);

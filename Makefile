@@ -24,7 +24,8 @@ SRCS =				main.c								\
 					quit/minimap_quit.c					\
 					quit/wnd_quit.c						\
 					quit/woof_quit.c					\
-					start_menu.c
+					start_menu.c						\
+					options.c
 
 
 SRCS_DIR =			srcs
