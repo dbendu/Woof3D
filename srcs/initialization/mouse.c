@@ -1,6 +1,6 @@
 #include "data.h"
 #include "WoofDefines.h"
-#include "init_all.h"
+
 #include "mouse.h"
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL.h>
@@ -24,11 +24,11 @@ void	mouseCapture(t_data *data, SDL_MouseMotionEvent mouse)
 	// printf("xrel = %d\n", mouse.x);
 }
 
-t_mouse		mouseInit(t_data data)
+t_mouse		mouseInit(t_data data, const char *path)
 {
 	t_mouse		m;
 
-	m.texture = IMG_LoadTexture(data.wnd.renderer, "res/textures/cursor.png");
+	m.texture = IMG_LoadTexture(data.wnd.renderer, path);
 	m.cursor.h = 50;
 	m.cursor.w = 50;
 	m.cursor.x = 0;

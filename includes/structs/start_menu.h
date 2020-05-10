@@ -6,14 +6,13 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 18:13:11 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/07 17:20:54 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/10 11:43:38 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef START_MENU_H
 # define START_MENU_H
 
-# include "data.h"
 # include "button.h"
 
 typedef struct	s_start_menu
@@ -23,6 +22,5 @@ typedef struct	s_start_menu
 	struct s_start_menu	*next;
 }				t_start_menu;
 
-void		renderMaps(t_data *data);
 
 #endif

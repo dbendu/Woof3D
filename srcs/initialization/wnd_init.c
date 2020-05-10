@@ -6,12 +6,14 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:36:21 by user              #+#    #+#             */
-/*   Updated: 2020/05/03 20:51:38 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/10 11:57:43 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_all.h"
-
+#include <SDL2/SDL.h>
+#include "WoofDefines.h"
+#include "ft_utils.h"
+#include "wnd.h"
 
 static void	check_args(const char *title, int width, int height)
 {

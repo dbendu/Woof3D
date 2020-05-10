@@ -3,28 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:46:33 by user              #+#    #+#             */
-/*   Updated: 2020/04/29 23:58:15 by user             ###   ########.fr       */
+/*   Updated: 2020/05/10 11:56:19 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_all.h"
+#include <SDL2/SDL.h>
 
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-# define RMASK	0xff000000
-# define GMASK	0x00ff0000
-# define BMASK	0x0000ff00
-# define AMASK	0x000000ff
-#else
-# define RMASK	0x000000ff
-# define GMASK	0x0000ff00
-# define BMASK	0x00ff0000
-# define AMASK	0xff000000
-#endif
+#include "WoofDefines.h"
+#include "Woof3D.h"
+#include "mouse.h"
+#include "minimap.h"
+#include "ft_utils.h"
 
-t_minimap	minimap_init(void)
+t_minimap	minimap_init(t_data data)
 {
 	t_minimap	minimap;
 
@@ -37,5 +31,6 @@ t_minimap	minimap_init(void)
 	minimap.viewport.h = MINIMAP_SZ;
 	minimap.viewport.w = MINIMAP_SZ;
 	minimap.show = true;
+	minimap.playerTex = mouseInit(data, "res/textures/player.png");
 	return (minimap);
 }

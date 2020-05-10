@@ -5,7 +5,6 @@
 #include "button.h"
 #include "main_menu.h"
 #include "start_menu.h"
-#include "init_all.h"
 #include "quit_all.h"
 
 void		process_input(t_data *data)

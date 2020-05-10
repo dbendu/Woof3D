@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/10 07:18:22 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/10 08:02:39 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/10 11:52:09 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ typedef struct	s_options
 	t_optionButton	*controlButton;
 }				t_options;
 
-t_options		initOptions(t_data data);
-void	drawOptions(t_data *data);
+
 
 #endif

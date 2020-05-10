@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   map_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:59:04 by user              #+#    #+#             */
-/*   Updated: 2020/04/30 00:00:13 by user             ###   ########.fr       */
+/*   Updated: 2020/05/10 11:54:23 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_all.h"
+
 #include "input.h"
+#include "Woof3D.h"
 
 t_map	map_init(const char *filename)
 {

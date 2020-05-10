@@ -6,20 +6,17 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:33:46 by user              #+#    #+#             */
-/*   Updated: 2020/05/10 07:38:35 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/10 11:58:53 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
-#include "initialization.h"
-#include "WoofDefines.h"
-#include "init_all.h"
 #include "libft.h"
-#include "button.h"
-#include "main_menu.h"
-#include "Woof3D.h"
+#include "WoofDefines.h"
 #include "data.h"
+#include "point.h"
+#include "Woof3D.h"
 
 static void	sdl_init(void)
 {
@@ -37,7 +34,7 @@ t_data	woof_init(const char *filename)
 		ft_error(TTF_GetError(), "TTF_Init()", 0);
 	data.keyboard = keyboard_init();
 	data.wnd = wnd_init(WND_TITLE, WND_WIDTH, WND_HEIGHT);
-	data.minimap = minimap_init();
+	data.minimap = minimap_init(data);
 	// data.map = get_input(filename);
 	SDL_ShowCursor(0);
 	data.quit = false;
@@ -54,7 +51,7 @@ t_data	woof_init(const char *filename)
 			"Continue", "Start", "Options", "Exit");
 	data.texture = IMG_LoadTexture(data.wnd.renderer, "res/textures/wolftextures.png");
 	data.options = initOptions(data);
-	data.menu.mouse = mouseInit(data);
+	data.menu.mouse = mouseInit(data, "res/textures/cursor.png");
 	data.maps = NULL;
 	return (data);
 }
