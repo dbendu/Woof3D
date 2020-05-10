@@ -87,7 +87,7 @@ HEADERS +=			$(addprefix $(INCLUDES_STR_DIR), $(HEADERS_STR_LIST))
 #									FLAGS
 #-------------------------------------------------------------------------------
 
-FLAGS_COMPILE =		-Wall -Wextra -g
+FLAGS_COMPILE =		-Wall -Wextra -g -Werror
 
 FLAGS_LINK =		-L libft -lft -lSDL2 -lm -lSDL2_image -lSDL2_ttf
 

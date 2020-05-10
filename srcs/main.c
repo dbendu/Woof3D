@@ -64,27 +64,26 @@ static void	game_cycle(t_data data)
 	}
 }
 
-static void	print_map(t_map *map)
-{
-	for (int row = 0; row < vec_size(&map->map); ++row) {
-		for (int col = 0; col < vec_size(&map->map[row]); ++col) {
-			if (map->hero.position.y / CELL_SIZE == row && map->hero.position.x / CELL_SIZE == col)
-				printf("X");
-			else
-				printf("%c", map->map[row][col].wall ? '#' : ' ');
-		}
-		printf("\n");
-	}
-}
+// static void	print_map(t_map *map)
+// {
+// 	for (int row = 0; row < vec_size(&map->map); ++row) {
+// 		for (int col = 0; col < vec_size(&map->map[row]); ++col) {
+// 			if (map->hero.position.y / CELL_SIZE == row && map->hero.position.x / CELL_SIZE == col)
+// 				printf("X");
+// 			else
+// 				printf("%c", map->map[row][col].wall ? '#' : ' ');
+// 		}
+// 		printf("\n");
+// 	}
+// }
 
 
 
-int main(int argc, const char **argv)
+int main(void)
 {
 	t_data	data;
 
-	data = woof_init(argv[1]);
-	// print_map(&data.map);
+	data = woof_init();
 	game_cycle(data);
 	woof_quit(&data);
 	return (0);

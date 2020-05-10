@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:46:33 by user              #+#    #+#             */
-/*   Updated: 2020/05/10 11:56:19 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/10 12:27:06 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ t_minimap	minimap_init(t_data data)
 	minimap.viewport.h = MINIMAP_SZ;
 	minimap.viewport.w = MINIMAP_SZ;
 	minimap.show = true;
-	minimap.playerTex = mouseInit(data, "res/textures/player.png");
+	minimap.playerTex = mouseInit(data, "res/textures/player.png", 15, 15);
 	return (minimap);
 }

@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/10 07:15:44 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/10 08:11:58 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/10 12:23:27 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,17 @@ t_options		initOptions(t_data data)
 
 void	drawOptions(t_data *data)
 {
-	int		buttonPressed;
+	// int		buttonPressed;
 
 	SDL_SetRenderDrawColor(data->wnd.renderer, 0x00, 0x00, 0x00, 0xff);
 	SDL_RenderClear(data->wnd.renderer);
-	buttonPressed = SDL_GetMouseState(&data->menu.mouse.cursor.x, &data->menu.mouse.cursor.y);
+	// buttonPressed = SDL_GetMouseState(&data->menu.mouse.cursor.x, &data->menu.mouse.cursor.y);
+	SDL_GetMouseState(&data->menu.mouse.cursor.x, &data->menu.mouse.cursor.y);
 	data->menu.mouse.tip.x = data->menu.mouse.cursor.x;
 	data->menu.mouse.tip.y = data->menu.mouse.cursor.y;
 	renderButtons(data, data->options.messageButton->button, 0);
 	renderButtons(data, data->options.controlButton->button, 0);
-	drawMouse(*data);
+	drawMouse(*data, data->menu.mouse);
 	SDL_RenderPresent(data->wnd.renderer);
 
 }

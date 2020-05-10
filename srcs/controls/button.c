@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/03 13:56:09 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/08 21:04:23 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/10 12:21:01 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ SDL_Color		checkSelected(t_data *data, t_button *button, SDL_Color col, int pres
 
 void		buttonDraw(t_data *data, t_button *button, SDL_Color col, int press)
 {
-	SDL_Surface	*surf;
-	SDL_Texture	*texture;
 	SDL_Rect	rect_cpy;
 
 	col = checkSelected(data, button, col, press);

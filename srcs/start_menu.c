@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 18:01:05 by konsolka          #+#    #+#             */
-/*   Updated: 2020/05/07 18:38:35 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/10 12:13:13 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,6 @@ void		renderMaps(t_data *data)
 	data->menu.mouse.tip.x = data->menu.mouse.cursor.x;
 	data->menu.mouse.tip.y = data->menu.mouse.cursor.y;
 	renderButtons(data, data->maps, buttonPressed);
-	drawMouse(*data);
+	drawMouse(*data, data->menu.mouse);
 	SDL_RenderPresent(data->wnd.renderer);
 }

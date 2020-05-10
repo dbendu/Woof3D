@@ -1,9 +1,10 @@
 #include "data.h"
 #include "WoofDefines.h"
 
-#include "mouse.h"
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL.h>
+#include "ft_utils.h"
+#include "mouse.h"
 
 double	clampYaw(double y)
 {
@@ -24,13 +25,13 @@ void	mouseCapture(t_data *data, SDL_MouseMotionEvent mouse)
 	// printf("xrel = %d\n", mouse.x);
 }
 
-t_mouse		mouseInit(t_data data, const char *path)
+t_mouse		mouseInit(t_data data, const char *path, int w, int h)
 {
 	t_mouse		m;
 
 	m.texture = IMG_LoadTexture(data.wnd.renderer, path);
-	m.cursor.h = 50;
-	m.cursor.w = 50;
+	m.cursor.h = h;
+	m.cursor.w = w;
 	m.cursor.x = 0;
 	m.cursor.y = 0;
 	m.tip.h = 1;
@@ -40,8 +41,8 @@ t_mouse		mouseInit(t_data data, const char *path)
 	return (m);
 }
 
-void	drawMouse(t_data data)
+void	drawMouse(t_data data, t_mouse mouse)
 {
-	if (SDL_RenderCopy(data.wnd.renderer, data.menu.mouse.texture, NULL, &data.menu.mouse.cursor) < 0)
+	if (SDL_RenderCopy(data.wnd.renderer, mouse.texture, NULL, &mouse.cursor) < 0)
 		ft_error(SDL_GetError(), "cannot render the mouse", 0);
 }

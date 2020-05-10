@@ -6,18 +6,18 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 14:24:00 by user              #+#    #+#             */
-/*   Updated: 2020/05/09 09:24:21 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/10 12:28:06 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
   #include <stdio.h>
   #include <time.h>
 
-#include "libft.h"
-#include "Woof3D.h"
-#include "WoofDefines.h"
-#include "ray.h"
 #include <SDL2/SDL.h>
+#include "libft.h"
+#include "WoofDefines.h"
+#include "Woof3D.h"
+#include "ft_utils.h"
 
 // double			ft_map(double value, double start_range, double end_range, double new_range_start, double new_range_end)
 // {
@@ -93,8 +93,6 @@ SDL_Rect	setup_color(t_data *data, int x_, t_ray *ray)
 
 void			d3Render(t_data *data, t_ray *ray)
 {
-	int			up;
-	int			down;
 	double		distance = WND_WIDTH / 2 / tan(to_rad(data->map.hero.fov / 2));
 	const		double wall_height = WND_HEIGHT / 12;
 	SDL_Rect	rect;
@@ -145,7 +143,9 @@ static void	draw_game(t_data *data, const t_ray *rays)
 							rays[ray].x / CELL_SIZE * rect.h, rays[ray].y / CELL_SIZE * rect.h);
 
 	}
-	(void)rays;
+	// data->minimap.playerTex.cursor.x = hero.position.x / CELL_SIZE * rect.h - rect.h / 2;
+	// data->minimap.playerTex.cursor.y = hero.position.y / CELL_SIZE * rect.h - rect.h / 2;
+	// drawMouse(*data, data->minimap.playerTex);
 }
 
 

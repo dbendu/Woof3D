@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 17:28:08 by user              #+#    #+#             */
-/*   Updated: 2020/05/10 11:52:13 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/10 12:19:09 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "data.h"
 # include "WoofDefines.h"
 
-t_data	woof_init(const char *filename);
+t_data	woof_init();
 void	woof_quit(t_data *data);
 
 void	playerUpdate(t_data *data, t_hero *hero);
@@ -42,9 +42,8 @@ void		renderMaps(t_data *data);
 void		renderButtons(t_data *data, t_button *button, int buttonPress);
 t_font	fontInit(t_data data, int font_size, const char *message, SDL_Color color);
 void		fontDraw(t_data data, t_font font, int x, int y);
-t_mouse		mouseInit(t_data data, const char *path);
-t_data		woof_init(const char *filename);
-void		drawMouse(t_data data);
+t_mouse		mouseInit(t_data data, const char *path, int w, int h);
+void	drawMouse(t_data data, t_mouse mouse);
 t_wnd		wnd_init(const char *title, int width, int height);
 t_map		map_init(const char *filename);
 t_keyboard	keyboard_init(void);

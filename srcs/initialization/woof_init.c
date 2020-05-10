@@ -6,7 +6,7 @@
 /*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:33:46 by user              #+#    #+#             */
-/*   Updated: 2020/05/10 11:58:53 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/05/10 12:22:36 by konsolka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,9 @@ static void	sdl_init(void)
 		ft_error(SDL_GetError(), "woof_init", 0);
 }
 
-t_data	woof_init(const char *filename)
+t_data	woof_init()
 {
 	t_data	data;
-	t_point_xy xy;
 
 	sdl_init();
 	if (TTF_Init() < 0)
@@ -35,12 +34,9 @@ t_data	woof_init(const char *filename)
 	data.keyboard = keyboard_init();
 	data.wnd = wnd_init(WND_TITLE, WND_WIDTH, WND_HEIGHT);
 	data.minimap = minimap_init(data);
-	// data.map = get_input(filename);
 	SDL_ShowCursor(0);
 	data.quit = false;
 	data.gameState = Menu_button;
-	xy.x = WND_WIDTH / 2;
-	xy.y = WND_HEIGHT / 4;
 	data.map.map = NULL;
 	data.menu.button = startButtonsInit(data,
 		4,
@@ -51,7 +47,7 @@ t_data	woof_init(const char *filename)
 			"Continue", "Start", "Options", "Exit");
 	data.texture = IMG_LoadTexture(data.wnd.renderer, "res/textures/wolftextures.png");
 	data.options = initOptions(data);
-	data.menu.mouse = mouseInit(data, "res/textures/cursor.png");
+	data.menu.mouse = mouseInit(data, "res/textures/cursor.png", 50, 50);
 	data.maps = NULL;
 	return (data);
 }
