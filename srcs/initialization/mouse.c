@@ -12,8 +12,7 @@ double	clampYaw(double y)
 void	mouseCapture(t_data *data, SDL_MouseMotionEvent mouse)
 {
 	double		deltaX;
-	double		deltaY;
-	const double sensitivity = 0.001f; 
+	const double sensitivity = 0.001f;
 	double		yaw = 0.0;
 
 	deltaX = (double)(mouse.xrel - WND_WIDTH);

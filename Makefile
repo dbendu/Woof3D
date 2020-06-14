@@ -20,7 +20,22 @@ SRCS =				main.c								\
 					quit/map_quit.c						\
 					quit/minimap_quit.c					\
 					quit/wnd_quit.c						\
-					quit/woof_quit.c
+					quit/woof_quit.c					\
+					menu/srcs/menu_add_button.c			\
+					menu/srcs/menu_create.c				\
+					menu/srcs/menu_destroy.c			\
+					menu/srcs/menu_draw.c				\
+					menu/srcs/menu_select_button.c		\
+					menu/srcs/menu_select_next.c		\
+					menu/srcs/menu_select_prev.c		\
+					menu/srcs/menu_selectd_uid.c		\
+					button/srcs/button_add_title.c		\
+					button/srcs/button_create.c			\
+					button/srcs/button_deselect.c		\
+					button/srcs/button_destroy.c		\
+					button/srcs/button_draw.c			\
+					button/srcs/button_select.c			\
+					button/srcs/button_uid.c
 
 
 SRCS_DIR =			srcs
@@ -40,12 +55,15 @@ INCLUDES_STR_DIR =	$(INCLUDES_DIR)structs/
 INCLUDES_INIT_DIR =	$(INCLUDES_DIR)initialization/
 INCLUDES_INP_DIR =	$(INCLUDES_DIR)initialization/input/
 INCLUDES_QUIT_DIR =	$(INCLUDES_DIR)quit/
+INCLUDES_BUTTON =	button/includes
+INCLUDES_MENU =		menu/includes
 
 
 INCLUDES =			-I $(INCLUDES_DIR) -I $(INCLUDES_CON_DIR)
 INCLUDES +=			-I $(INCLUDES_LIBFT) -I $(INCLUDES_GR_DIR)
 INCLUDES +=			-I $(INCLUDES_INP_DIR) -I $(INCLUDES_STR_DIR)
 INCLUDES +=			-I $(INCLUDES_INIT_DIR) -I $(INCLUDES_QUIT_DIR)
+INCLUDES +=			-I $(INCLUDES_BUTTON) -I $(INCLUDES_MENU)
 
 #-------------------------------------------------------------------------------
 #									HEADERS
@@ -87,7 +105,15 @@ FLAGS_COMPILE =		-Wall -Wextra -g
 FLAGS_LINK =		-L libft -lft -lSDL2 -lm
 
 
-all: $(NAME)
+all:
+	gcc -Wall -Werror -Wextra -g												\
+	-I includes -I includes/controls -I includes/graphic -I includes/quit		\
+	-I includes/initialization -I libft/includes -I menu/includes				\
+	-I button/includes -I includes/structs -I includes/initialization/input		\
+	srcs/*.c srcs/controls/*.c srcs/initialization/*.c srcs/quit/*.c			\
+	button/srcs/*.c menu/srcs/*.c srcs/initialization/input/*.c					\
+	-L libft -lft -lSDL2 -lSDL2_ttf -lm
+# all: $(NAME)
 
 $(OBJS_DIR):
 	mkdir -p $(OBJS_DIR)
@@ -95,8 +121,16 @@ $(OBJS_DIR):
 	mkdir -p $(OBJS_DIR)/controls
 	mkdir -p $(OBJS_DIR)/initialization
 	mkdir -p $(OBJS_DIR)/quit
+	mkdir -p $(OBJS_DIR)/button/srcs
+	mkdir -p $(OBJS_DIR)/menu/srcs
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c #$(HEADERS)
+	gcc $(FLAGS_COMPILE) $(INCLUDES) -o $@ -c $<
+
+$(OBJS_DIR)/menu/srcs/%.o: $(SRCS_DIR)/%.c #$(HEADERS)
+	gcc $(FLAGS_COMPILE) $(INCLUDES) -o $@ -c $<
+
+$(OBJS_DIR)/button/srcs/%.o: $(SRCS_DIR)/%.c #$(HEADERS)
 	gcc $(FLAGS_COMPILE) $(INCLUDES) -o $@ -c $<
 
 $(NAME): $(OBJS_DIR) $(OBJS)

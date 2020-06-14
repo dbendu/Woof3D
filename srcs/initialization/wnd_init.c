@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:36:21 by user              #+#    #+#             */
-/*   Updated: 2020/04/29 23:58:06 by user             ###   ########.fr       */
+/*   Updated: 2020/06/14 22:54:37 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ t_wnd		wnd_init(const char *title, int width, int height)
 	if (ret < 0)
 		ft_error(SDL_GetError(), "woof_init/wnd_init", 0);
 	SDL_SetWindowTitle(wnd.window, title);
-	wnd.main_canvas = SDL_GetWindowSurface(wnd.window);
-	if (wnd.main_canvas == NULL)
-		ft_error(SDL_GetError(), "woof_init/wnd_init", 0);
-	if (SDL_SetRelativeMouseMode(SDL_TRUE) < 0)
-		ft_error(SDL_GetError(), "SDL_SetRelativeMouseMode", 0);
+	// if (SDL_SetRelativeMouseMode(SDL_TRUE) < 0)
+	// 	ft_error(SDL_GetError(), "SDL_SetRelativeMouseMode", 0);
 	return (wnd);
 }

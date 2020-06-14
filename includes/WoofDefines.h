@@ -31,7 +31,7 @@
 ** hero
 */
 # define HERO_ROTATE        1
-# define HERO_FOV_DEFAULT	66			// field of view, in degrees
+# define HERO_FOV_DEFAULT	60			// field of view, in degrees
 # define HERO_FOV_MAX		170
 # define HERO_FOV_MIN		30
 # define HERO_STEP_SPEED	CELL_SIZE * 0.025
