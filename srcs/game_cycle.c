@@ -1,5 +1,5 @@
 #include "Woof3D.h"
-#include "menu.h"
+#include "sdl_menu.h"
 #include "libft.h"
 
 static

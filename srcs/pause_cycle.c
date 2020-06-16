@@ -1,5 +1,5 @@
 #include "Woof3D.h"
-#include "menu.h"
+#include "sdl_menu.h"
 
 static
 void	input_handle(const SDL_Event *event, t_data *data)

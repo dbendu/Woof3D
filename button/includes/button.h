@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
+#include <stdbool.h>
 
 typedef struct s_button*	t_button;
 
@@ -18,4 +19,5 @@ void			button_add_title(t_button button, const char *title,
 								 TTF_Font *font);
 void			button_draw(t_button button);
 
+void			check_hover(t_button button, SDL_Rect *rect);
 #endif
