@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 12:45:42 by user              #+#    #+#             */
-/*   Updated: 2020/06/14 21:54:32 by user             ###   ########.fr       */
+/*   Updated: 2020/06/19 16:06:37 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <SDL2/SDL.h>
 
-# define KEYS_BINDED	(6)
+# define KEYS_BINDED	(7)
 
 # define TURN_LEFT		(0)
 # define MOVE_FORWARD	(1)
@@ -23,6 +23,7 @@
 # define MOVE_BACK		(3)
 # define FOV_DECREASE	(4)
 # define FOV_INCREASE	(5)
+# define RUN			(6)
 
 typedef struct	s_keyboard
 {

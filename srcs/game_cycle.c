@@ -13,6 +13,8 @@ void	handle_key_press(t_keyboard *keyboard, SDL_Keycode key)
 		keyboard->key[TURN_LEFT] = true;
 	} else if (key == SDLK_d) {
 		keyboard->key[TURN_RIGHT] = true;
+	} else if (key == SDLK_LSHIFT) {
+		keyboard->key[RUN] = true;
 	}
 }
 
@@ -27,6 +29,8 @@ void	handle_key_release(t_keyboard *keyboard, SDL_Keycode key)
 		keyboard->key[TURN_LEFT] = false;
 	} else if (key == SDLK_d) {
 		keyboard->key[TURN_RIGHT] = false;
+	} else if (key == SDLK_LSHIFT) {
+		keyboard->key[RUN] = true;
 	}
 }
 
@@ -56,17 +60,42 @@ void	setup_color(SDL_Renderer *render, t_point *point)
 	}
 }
 
-void	draw_vis(SDL_Renderer *render, t_ray *rays, int fov, t_vector_point *map)
+void	draw_vis(t_wnd *sdl, t_ray *rays, int fov, t_point **map)
 {
 	const int wall_height = 60;
 	const float distance = WND_WIDTH / 2 / tan(to_rad(fov / 2));
 
 	for (int x = 0; x < WND_WIDTH; ++x) {
+		int texture_ind = map[(int)rays[x].y / CELL_SIZE][(int)rays[x].x / CELL_SIZE].wall_c - 1;
+		uint32_t *dst_pixels = sdl->main_canvas->pixels;
+		uint32_t *src_pixels = sdl->textures[texture_ind].pixels;
 		int height = wall_height / rays[x].len * distance;
-		int up = WND_HEIGHT / 2 - height / 2;
+		int up = (WND_HEIGHT / 2) - (height  / 2);
 		int down = up + height;
-		setup_color(render, &map[(int)rays[x].y / CELL_SIZE][(int)rays[x].x / CELL_SIZE]);
-		SDL_RenderDrawLine(render, x, up, x, down);
+		float y_increase = sdl->textures[0].h / (float)height;
+		float wnd_y = up;
+		float texture_y = 0;
+		int texture_x;
+
+		if (rays[x].side == X_SIDE) {
+			texture_x = (int)rays[x].x % sdl->textures[0].w;
+		} else {
+			texture_x = (int)rays[x].y % sdl->textures[0].w;
+		}
+
+		if (wnd_y < 0) {
+			texture_y += -wnd_y * y_increase;
+			wnd_y = 0;
+		}
+		if (down > WND_HEIGHT) {
+			down = WND_HEIGHT;
+		}
+		int i_down = down;
+		while (wnd_y < i_down) {
+			dst_pixels[(int)wnd_y * WND_WIDTH + x] = src_pixels[(int)texture_y * sdl->textures[0].w + texture_x];
+			wnd_y += 1;
+			texture_y += y_increase;
+		}
 	}
 }
 
@@ -121,7 +150,7 @@ void	render(t_data *data, bool map)
 	t_ray *rays = raycast(fov, data->map.hero.pov, data->map.hero.position, data->map.map);
 
 
-	draw_vis(data->wnd.renderer, rays, fov, data->map.map);
+	draw_vis(&data->wnd, rays, fov, data->map.map);
 	if (map) {
 		draw_map(data->wnd.renderer, data->map.map);
 		draw_rays(data->wnd.renderer, rays, data->map.hero.position);
@@ -130,15 +159,16 @@ void	render(t_data *data, bool map)
 
 	free(rays);
 
-	SDL_RenderPresent(data->wnd.renderer);
+	SDL_UpdateWindowSurface(data->wnd.window);
 }
 
 static
 void	update(t_data *data)
 {
 	if (data->keyboard.key[MOVE_FORWARD]) {
-		float new_fx = data->map.hero.position.x + 2 * cos(to_rad(data->map.hero.pov));
-		float new_fy = data->map.hero.position.y - 2 * sin(to_rad(data->map.hero.pov));
+		int mult = data->keyboard.key[RUN] ? 4 : 2;
+		float new_fx = data->map.hero.position.x + mult * cos(to_rad(data->map.hero.pov));
+		float new_fy = data->map.hero.position.y - mult * sin(to_rad(data->map.hero.pov));
 		int old_x = data->map.hero.position.x / CELL_SIZE;
 		int old_y = data->map.hero.position.y / CELL_SIZE;
 		int new_x = new_fx / CELL_SIZE;

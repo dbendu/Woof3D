@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 21:25:37 by user              #+#    #+#             */
-/*   Updated: 2020/06/14 22:59:07 by user             ###   ########.fr       */
+/*   Updated: 2020/06/19 15:51:47 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,10 @@ t_ray	*raycast(int fov, float pov, t_position start, t_vector_point *map)
 
 		if (rayx.len < rayy.len) {
 			rays[x] = rayx;
+			rays[x].side = X_SIDE;
 		} else {
 			rays[x] = rayy;
+			rays[x].side = Y_SIDE;
 		}
 		dir -= diff;
 		if (dir < 0) {

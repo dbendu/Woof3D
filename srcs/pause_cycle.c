@@ -47,6 +47,7 @@ void	pause_cycle(t_data *data)
 	while (true)
 	{
 		menu_draw(data->menus.pause);
+		SDL_UpdateWindowSurface(data->wnd.window);
 		SDL_WaitEvent(&event);
 		input_handle(&event, data);
 		if (data->jumps.exit) {

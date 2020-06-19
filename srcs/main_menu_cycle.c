@@ -49,6 +49,7 @@ void	main_menu_cycle(t_data *data)
 	while (true)
 	{
 		menu_draw(data->menus.main);
+		SDL_UpdateWindowSurface(data->wnd.window);
 		SDL_WaitEvent(&event);
 		handle_event(&event, data);
 		if (data->jumps.exit)

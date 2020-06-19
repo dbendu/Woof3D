@@ -12,5 +12,4 @@ void	menu_draw(t_menu menu)
 		button_draw(menu->buttons[i]);
 	}
 	drawMouse(menu->render, menu->mouse);
-	SDL_RenderPresent(menu->render);
 }
