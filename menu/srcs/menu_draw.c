@@ -1,15 +1,22 @@
 #include "private_menu.h"
 #include "sdl_menu.h"
 #include "mouse.h"
+#include <stdbool.h>
 
-void	menu_draw(t_menu menu)
+bool	menu_draw(t_menu menu)
 {
+	int		press;
+	bool	cont;
+
+	cont = 0;
 	SDL_SetRenderDrawColor(menu->render, 0, 0, 0, 0xff);
 	SDL_RenderClear(menu->render);
-	update_mouse(&menu->mouse);
+	press = update_mouse(&menu->mouse);
 	for (int i = 0; i < menu->buttons_count; ++i) {
-		check_hover(menu->buttons[i], &menu->mouse.tip);
+		cont += check_hover(menu->buttons[i], &menu->mouse.tip, press, menu);
 		button_draw(menu->buttons[i]);
 	}
+	printf("cont = %d\n", cont);
 	drawMouse(menu->render, menu->mouse);
+	return (cont);
 }

@@ -107,7 +107,7 @@ FLAGS_LINK =		-L libft -lft -lSDL2 -lm
 
 
 all:
-	gcc -Wall -Werror -Wextra -g												\
+	gcc -Wall -Wextra -g												\
 	-I includes -I ./include -I includes/controls -I includes/graphic -I includes/quit		\
 	-I includes/initialization -I libft/includes -I menu/includes				\
 	-I button/includes -I includes/structs -I includes/initialization/input		\

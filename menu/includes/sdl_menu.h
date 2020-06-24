@@ -16,7 +16,7 @@ void		menu_select_next(t_menu menu);
 void		menu_select_prev(t_menu menu);
 int32_t		menu_selected_uid(t_menu menu);
 
-
-void		menu_draw(t_menu menu);
+bool			check_hover(t_button button, SDL_Rect *rect, int press, t_menu menu);
+bool		menu_draw(t_menu menu);
 
 #endif
