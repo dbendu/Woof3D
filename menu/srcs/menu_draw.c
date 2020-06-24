@@ -16,7 +16,6 @@ bool	menu_draw(t_menu menu)
 		cont += check_hover(menu->buttons[i], &menu->mouse.tip, press, menu);
 		button_draw(menu->buttons[i]);
 	}
-	printf("cont = %d\n", cont);
 	drawMouse(menu->render, menu->mouse);
 	return (cont);
 }
