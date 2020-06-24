@@ -44,6 +44,7 @@ t_point			find_hero_position(const t_vector_char *lines)
 
 	hero_founded = false;
 	line_index = 0;
+	ft_memset(&hero_position, 0, sizeof(t_point));
 	while (line_index < lines_count)
 	{
 		if (ft_strchr(lines[line_index], 'X') != NULL)

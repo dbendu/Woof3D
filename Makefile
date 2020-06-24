@@ -64,6 +64,7 @@ INCLUDES +=			-I $(INCLUDES_LIBFT) -I $(INCLUDES_GR_DIR)
 INCLUDES +=			-I $(INCLUDES_INP_DIR) -I $(INCLUDES_STR_DIR)
 INCLUDES +=			-I $(INCLUDES_INIT_DIR) -I $(INCLUDES_QUIT_DIR)
 INCLUDES +=			-I $(INCLUDES_BUTTON) -I $(INCLUDES_MENU)
+INCLUDES +=			-I ./include/
 
 #-------------------------------------------------------------------------------
 #									HEADERS
@@ -107,12 +108,12 @@ FLAGS_LINK =		-L libft -lft -lSDL2 -lm
 
 all:
 	gcc -Wall -Werror -Wextra -g												\
-	-I includes -I includes/controls -I includes/graphic -I includes/quit		\
+	-I includes -I ./include -I includes/controls -I includes/graphic -I includes/quit		\
 	-I includes/initialization -I libft/includes -I menu/includes				\
 	-I button/includes -I includes/structs -I includes/initialization/input		\
 	srcs/*.c srcs/controls/*.c srcs/initialization/*.c srcs/quit/*.c			\
 	button/srcs/*.c menu/srcs/*.c srcs/initialization/input/*.c					\
-	-L libft -lft -lSDL2 -lSDL2_ttf -lSDL2_image -lm
+	-L ./libft/ -lft -L ./lib/ -lSDL2 -lSDL2_ttf -lSDL2_image -lm
 # all: $(NAME)
 
 $(OBJS_DIR):
