@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 15:13:02 by mburl             #+#    #+#             */
-/*   Updated: 2020/06/29 15:13:17 by mburl            ###   ########.fr       */
+/*   Updated: 2020/06/29 15:37:33 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_menu	menu_create(SDL_Renderer *render, bool cycling)
 	t_menu	menu;
 
 	menu = malloc(sizeof(struct s_menu));
-	menu->mouse = mouseInit(render);
+	menu->mouse = mouse_init(render);
 	menu->render = render;
 	menu->cycling = cycling;
 	menu->buttons_allocated = BUTTONS_INCREASE;

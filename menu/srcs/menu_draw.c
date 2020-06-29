@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 15:13:04 by mburl             #+#    #+#             */
-/*   Updated: 2020/06/29 15:19:38 by mburl            ###   ########.fr       */
+/*   Updated: 2020/06/29 15:38:00 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ bool	menu_draw(t_menu menu)
 		cont += check_hover(menu->buttons[i], &menu->mouse.tip, press, menu);
 		button_draw(menu->buttons[i++]);
 	}
-	drawMouse(menu->render, menu->mouse);
+	draw_mouse(menu->render, menu->mouse);
 	return (cont);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_input.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 17:47:55 by user              #+#    #+#             */
-/*   Updated: 2020/04/25 19:22:28 by user             ###   ########.fr       */
+/*   Updated: 2020/06/29 15:40:41 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ t_map		get_input(const char *filename)
 	t_vector_char	*lines;
 
 	lines = read_file(filename);
-	// analysis_file(lines);
-	// all else: textures reading, soundl loading, etc.
 	map.map = convert_file_to_map(lines);
 	map.hero = init_hero(find_hero_position(lines));
 	free_file(lines);

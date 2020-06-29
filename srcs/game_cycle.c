@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 15:00:33 by mburl             #+#    #+#             */
-/*   Updated: 2020/06/29 15:00:34 by mburl            ###   ########.fr       */
+/*   Updated: 2020/06/29 16:00:03 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 #include "sdl_menu.h"
 #include "libft.h"
 
-static
-void	handle_key_press(t_keyboard *keyboard, SDL_Keycode key)
+static void	handle_key_press(t_keyboard *keyboard, SDL_Keycode key)
 {
 	if (key == SDLK_w) {
 		keyboard->key[MOVE_FORWARD] = true;
@@ -30,8 +29,7 @@ void	handle_key_press(t_keyboard *keyboard, SDL_Keycode key)
 	}
 }
 
-static
-void	handle_key_release(t_keyboard *keyboard, SDL_Keycode key)
+static void	handle_key_release(t_keyboard *keyboard, SDL_Keycode key)
 {
 	if (key == SDLK_w) {
 		keyboard->key[MOVE_FORWARD] = false;
@@ -46,38 +44,32 @@ void	handle_key_release(t_keyboard *keyboard, SDL_Keycode key)
 	}
 }
 
-
-
-void	setup_color(SDL_Renderer *render, t_point *point)
+void		setup_color(SDL_Renderer *render, t_point *point)
 {
-	switch (point->wall_c) {
-		case 1:
-			SDL_SetRenderDrawColor(render, 0xff, 0, 0, 0xff);
-			break;
-		case 2:
-			SDL_SetRenderDrawColor(render, 0, 0xff, 0, 0xff);
-			break;
-		case 3:
-			SDL_SetRenderDrawColor(render, 0, 0, 0xff, 0xff);
-			break;
-		case 4:
-			SDL_SetRenderDrawColor(render, 0xff, 0, 0xff, 0xff);
-			break;
-		case 0:
-			SDL_SetRenderDrawColor(render, 0xff, 0xff, 0xff, 0xff);
-			break;
-		default:
-			SDL_SetRenderDrawColor(render, 0xff, 0xff, 0, 0xff);
-			break;
-	}
+	if (point->wall_c == 1)
+		SDL_SetRenderDrawColor(render, 0xff, 0, 0, 0xff);
+	if (point->wall_c == 2)
+		SDL_SetRenderDrawColor(render, 0, 0xff, 0, 0xff);
+	if (point->wall_c == 3)
+		SDL_SetRenderDrawColor(render, 0, 0, 0xff, 0xff);
+	else if (point->wall_c == 4)
+		SDL_SetRenderDrawColor(render, 0xff, 0, 0xff, 0xff);
+	else if (point->wall_c == 0)
+		SDL_SetRenderDrawColor(render, 0xff, 0xff, 0xff, 0xff);
+	else
+		SDL_SetRenderDrawColor(render, 0xff, 0xff, 0, 0xff);
 }
 
 void	draw_vis(t_wnd *sdl, t_ray *rays, int fov, t_point **map)
 {
 	const int wall_height = 60;
 	const float distance = WND_WIDTH / 2 / tan(to_rad(fov / 2));
+	int		x;
+	int texture_x;
 
-	for (int x = 0; x < WND_WIDTH; ++x) {
+	x = -1;
+	while (++x < WND_WIDTH)
+	{
 		int texture_ind = map[(int)rays[x].y / CELL_SIZE][(int)rays[x].x / CELL_SIZE].wall_c - 1;
 		uint32_t *dst_pixels = sdl->main_canvas->pixels;
 		uint32_t *src_pixels = sdl->textures[texture_ind].pixels;
@@ -87,7 +79,6 @@ void	draw_vis(t_wnd *sdl, t_ray *rays, int fov, t_point **map)
 		float y_increase = sdl->textures[0].h / (float)height;
 		float wnd_y = up;
 		float texture_y = 0;
-		int texture_x;
 
 		if (rays[x].side == X_SIDE) {
 			texture_x = (int)rays[x].x % sdl->textures[0].w;
@@ -108,7 +99,6 @@ void	draw_vis(t_wnd *sdl, t_ray *rays, int fov, t_point **map)
 			wnd_y += 1;
 			texture_y += y_increase;
 		}
-	}
 }
 
 void	draw_map(SDL_Renderer *render, t_vector_point *map)

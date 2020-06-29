@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_hero_position.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 18:29:35 by user              #+#    #+#             */
-/*   Updated: 2020/04/29 23:39:29 by user             ###   ########.fr       */
+/*   Updated: 2020/06/29 15:41:16 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static t_point	get_hero_position(const char *line, size_t y_position)
 		while (*line == ' ' || *line == '\t')
 			line += 1;
 		if (*line == 'X')
-			break;
+			break ;
 		else
 		{
 			while (ft_isdigit(*line))
@@ -55,7 +55,7 @@ t_point			find_hero_position(const t_vector_char *lines)
 		}
 		line_index += 1;
 	}
-	if (hero_founded == false)		// then it'll checked in other function, but now i must be sure that hero exist
+	if (hero_founded == false)
 		ft_error("can\'t find a hero", "find_hero_position", 0);
 	return (hero_position);
 }

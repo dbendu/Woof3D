@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   woof_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:33:46 by user              #+#    #+#             */
-/*   Updated: 2020/06/14 22:46:05 by user             ###   ########.fr       */
+/*   Updated: 2020/06/29 15:52:38 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,14 @@
 #include "init_all.h"
 #include "libft.h"
 
-static void	sdl_init(void)
+static void		sdl_init(void)
 {
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 		ft_error(SDL_GetError(), "woof_init", 0);
 	TTF_Init();
 }
 
-static
-t_menu	pause_init(SDL_Renderer *render, TTF_Font *font)
+static t_menu	pause_init(SDL_Renderer *render, TTF_Font *font)
 {
 	t_menu			pause;
 	const SDL_Rect	rects[PAUSE_MENU_BUTTONS] = {
@@ -48,8 +47,7 @@ t_menu	pause_init(SDL_Renderer *render, TTF_Font *font)
 	return (pause);
 }
 
-static
-t_menu	main_init(SDL_Renderer *render, TTF_Font *font)
+static t_menu	main_init(SDL_Renderer *render, TTF_Font *font)
 {
 	t_menu			main;
 	const SDL_Rect	rects[MAIN_MENU_BUTTONS] = {
@@ -74,20 +72,18 @@ t_menu	main_init(SDL_Renderer *render, TTF_Font *font)
 	return (main);
 }
 
-static
-t_menus	menus_init(SDL_Renderer *render)
+static t_menus	menus_init(SDL_Renderer *render)
 {
 	t_menus	menus;
 
 	menus.big = TTF_OpenFont("anon.ttf", 30);
 	menus.main = main_init(render, menus.big);
 	menus.settings = NULL;
-	// menus.settings = settings_init();
 	menus.pause = pause_init(render, menus.big);
 	return (menus);
 }
 
-t_data	woof_init(const char *filename)
+t_data			woof_init(const char *filename)
 {
 	t_data	data;
 
@@ -100,7 +96,6 @@ t_data	woof_init(const char *filename)
 	data.jumps.to_game = false;
 	data.jumps.to_main = false;
 	data.menus = menus_init(data.wnd.renderer);
-	// data.map = get_input(filename);
 	data.quit = false;
 	return (data);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_hero.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 18:00:42 by user              #+#    #+#             */
-/*   Updated: 2020/04/30 00:41:00 by user             ###   ########.fr       */
+/*   Updated: 2020/06/29 15:40:15 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ t_hero	init_hero(t_point hero_position)
 	hero.position.y = hero_position.y * CELL_SIZE + CELL_SIZE / 2;
 	hero.fov = HERO_FOV_DEFAULT;
 	hero.speed = CELL_SIZE * 0.15;
-	hero.pov = 90;	// in degrees: [0; 360). Zero means hero looks to the east,
-	return (hero);	// 90 -- to the north...
+	hero.pov = 90;
+	return (hero);
 }

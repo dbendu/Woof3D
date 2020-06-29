@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 15:30:39 by user              #+#    #+#             */
-/*   Updated: 2020/04/29 23:39:29 by user             ###   ########.fr       */
+/*   Updated: 2020/06/29 15:25:14 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	key_pressed(t_data *data, SDL_Keycode button)
 		data->map.hero.speed = CELL_SIZE * 0.3;
 }
 
-void			key_release(t_data *data, SDL_Keycode button)
+void	key_release(t_data *data, SDL_Keycode button)
 {
 	if (button == 'w')
 		data->keyboard.key[MOVE_FORWARD] = false;

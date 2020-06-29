@@ -27,6 +27,7 @@
 */
 # define CELL_SIZE			64
 # define MINIMAP_SZ			300
+# define TEXTURES_COUNT		5
 /*
 ** hero
 */
