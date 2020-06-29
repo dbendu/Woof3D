@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Woof3D.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 17:28:08 by user              #+#    #+#             */
-/*   Updated: 2020/06/14 22:35:43 by user             ###   ########.fr       */
+/*   Updated: 2020/06/29 15:10:32 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ void	mouseCapture(t_data *data, SDL_MouseMotionEvent mouse);
 void	main_menu_cycle(t_data *data);
 void	game_cycle(t_data *data);
 void	pause_cycle(t_data *data);
-// void	settings_cycle(t_data *data);
+SDL_Color init_SDL_Color(int r, int g, int b, int a);
 
 #endif
