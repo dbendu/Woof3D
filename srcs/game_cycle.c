@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 15:00:33 by mburl             #+#    #+#             */
-/*   Updated: 2020/06/29 16:00:03 by mburl            ###   ########.fr       */
+/*   Updated: 2020/06/29 16:00:40 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ void	draw_vis(t_wnd *sdl, t_ray *rays, int fov, t_point **map)
 			wnd_y += 1;
 			texture_y += y_increase;
 		}
+	}
 }
 
 void	draw_map(SDL_Renderer *render, t_vector_point *map)
