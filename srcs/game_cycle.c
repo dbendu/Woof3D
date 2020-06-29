@@ -165,6 +165,9 @@ void	render(t_data *data, bool map)
 static
 void	update(t_data *data)
 {
+	int		xrel;
+	int		yrel;
+
 	if (data->keyboard.key[MOVE_FORWARD]) {
 		int mult = data->keyboard.key[RUN] ? 4 : 2;
 		float new_fx = data->map.hero.position.x + mult * cos(to_rad(data->map.hero.pov));
@@ -194,18 +197,42 @@ void	update(t_data *data)
 			data->map.hero.position.y = new_fy;
 		}
 	}
-	if (data->keyboard.key[TURN_LEFT]) {
-		data->map.hero.pov += 1.3;
-		if (data->map.hero.pov >= 360) {
-			data->map.hero.pov -= 360;
+	if (data->keyboard.key[TURN_LEFT])
+	{
+		float new_fx = data->map.hero.position.x - cos(to_rad(data->map.hero.pov - 90));
+		float new_fy = data->map.hero.position.y + sin(to_rad(data->map.hero.pov - 90));
+		int old_x = data->map.hero.position.x / CELL_SIZE;
+		int old_y = data->map.hero.position.y / CELL_SIZE;
+		int new_x = new_fx / CELL_SIZE;
+		int new_y = new_fy / CELL_SIZE;
+		if (data->map.map[old_y][new_x].wall == false) {
+			data->map.hero.position.x = new_fx;
+		}
+		if (data->map.map[new_y][old_x].wall == false) {
+			data->map.hero.position.y = new_fy;
 		}
 	}
-	if (data->keyboard.key[TURN_RIGHT]) {
-		data->map.hero.pov -= 1.3;
-		if (data->map.hero.pov < 0) {
-			data->map.hero.pov += 360;
+	if (data->keyboard.key[TURN_RIGHT])
+	{
+		float new_fx = data->map.hero.position.x - cos(to_rad(data->map.hero.pov + 90));
+		float new_fy = data->map.hero.position.y + sin(to_rad(data->map.hero.pov + 90));
+		int old_x = data->map.hero.position.x / CELL_SIZE;
+		int old_y = data->map.hero.position.y / CELL_SIZE;
+		int new_x = new_fx / CELL_SIZE;
+		int new_y = new_fy / CELL_SIZE;
+		if (data->map.map[old_y][new_x].wall == false) {
+			data->map.hero.position.x = new_fx;
+		}
+		if (data->map.map[new_y][old_x].wall == false) {
+			data->map.hero.position.y = new_fy;
 		}
 	}
+	SDL_GetRelativeMouseState(&xrel, &yrel);
+	data->map.hero.pov -= xrel;
+	if (data->map.hero.pov >= 360)
+		data->map.hero.pov -= 360;
+	else if (data->map.hero.pov <= 360)
+		data->map.hero.pov += 360;
 }
 
 static
@@ -236,15 +263,18 @@ void	game_cycle(t_data *data)
 	SDL_Event	event;
 	bool		draw_map = false;
 
+	SDL_SetRelativeMouseMode(1);
 	while (true) {
-		SDL_PollEvent(&event);
-		if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_m) {
-			draw_map = !draw_map;
-		} else {
-			event_handle(&event, data);
+		if (SDL_PollEvent(&event))
+		{
+			if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_m) {
+				draw_map = !draw_map;
+			} else {
+				event_handle(&event, data);
+			}
+			if (data->jumps.to_main || data->jumps.exit)
+				break ;
 		}
-		if (data->jumps.to_main || data->jumps.exit)
-			break ;
 		update(data);
 		render(data, draw_map);
 		SDL_Delay(7);

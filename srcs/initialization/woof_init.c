@@ -27,9 +27,9 @@ t_menu	pause_init(SDL_Renderer *render, TTF_Font *font)
 {
 	t_menu			pause;
 	const SDL_Rect	rects[PAUSE_MENU_BUTTONS] = {
-			{50, 50, 150, 80},
-			{350, 350, 150, 80},
-			{700, 700, 150, 80}
+			{WND_WIDTH / 2 - 150 / 2, WND_HEIGHT / 2 - 140, 150, 80},
+			{WND_WIDTH / 2 - 150 / 2, WND_HEIGHT / 2 - 40, 150, 80},
+			{WND_WIDTH / 2 - 150 / 2, WND_HEIGHT / 2 + 60, 150, 80}
 	};
 	const char		titles[PAUSE_MENU_BUTTONS][10] = {
 			"Continue", "Main menu", "Exit"
@@ -53,9 +53,9 @@ t_menu	main_init(SDL_Renderer *render, TTF_Font *font)
 {
 	t_menu			main;
 	const SDL_Rect	rects[MAIN_MENU_BUTTONS] = {
-		{50, 50, 150, 80},
-		{350, 350, 150, 80},
-		{700, 700, 150, 80}
+		{WND_WIDTH / 2 - 150 / 2, WND_HEIGHT / 2 - 140, 150, 80},
+		{WND_WIDTH / 2 - 150 / 2, WND_HEIGHT / 2 - 40, 150, 80},
+		{WND_WIDTH / 2 - 150 / 2, WND_HEIGHT / 2 + 60, 150, 80}
 	};
 	const char		titles[MAIN_MENU_BUTTONS][10] = {
 		"Game", "Settings", "Exit"

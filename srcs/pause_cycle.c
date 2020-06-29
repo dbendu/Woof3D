@@ -43,5 +43,4 @@ void	pause_cycle(t_data *data)
 		}
 	}
 	data->jumps.to_game = false;
-	menu_select_button(data->menus.pause, BUTTON_CONTINUE);
 }
