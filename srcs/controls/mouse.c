@@ -31,7 +31,8 @@ t_mouse		mouse_init(SDL_Renderer *render)
 {
 	t_mouse		m;
 
-	m.texture = IMG_LoadTexture(render, "res/textures/cursor.png");
+	if ((m.texture = IMG_LoadTexture(render, "res/textures/cursor.png")) == NULL)
+		ft_error(SDL_GetError(), "mouse_init", 0);
 	m.cursor.h = 50;
 	m.cursor.w = 50;
 	m.cursor.x = 0;

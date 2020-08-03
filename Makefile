@@ -113,7 +113,7 @@ all:
 	-I button/includes -I includes/structs -I includes/initialization/input		\
 	srcs/*.c srcs/controls/*.c srcs/initialization/*.c srcs/quit/*.c			\
 	button/srcs/*.c menu/srcs/*.c srcs/initialization/input/*.c					\
-	-L ./libft/ -lft -L ./lib/ -lSDL2 -lSDL2_ttf -lSDL2_image -lm
+	-L./libft/ -lft -lSDL2 -lSDL2_ttf -lSDL2_image -lm
 # all: $(NAME)
 
 $(OBJS_DIR):

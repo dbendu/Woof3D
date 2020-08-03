@@ -18,8 +18,9 @@
 static void		sdl_init(void)
 {
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
-		ft_error(SDL_GetError(), "woof_init", 0);
-	TTF_Init();
+		ft_error(SDL_GetError(), "sdl_init", 0);
+	if (TTF_Init() < 0)
+		ft_error(SDL_GetError(), "sdl_init", 0);
 }
 
 static t_menu	pause_init(SDL_Renderer *render, TTF_Font *font)
