@@ -6,99 +6,101 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 21:25:37 by user              #+#    #+#             */
-/*   Updated: 2020/08/04 09:46:13 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 11:09:27 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "libft.h"
 #include "ray.h"
 #include "woof3d.h"
 #include "woofdefines.h"
 
-t_ray	*raycast(int fov, float pov, t_position start, t_vector_point *map)
+static t_ray	raycast_x(t_position start, t_vector_point *map,
+								float dir, float pov)
 {
-	t_ray *rays = malloc(sizeof(t_ray) * WND_WIDTH);
-	ft_memset(rays, 0, sizeof(t_ray) * WND_WIDTH);
-	t_ray rayx = {0};
-	t_ray rayy = {0};
-	float	dir = pov + fov / 2;
-	if (dir >= 360)
-		dir -= 360;
-	float	diff = fov / (float)WND_WIDTH;
 	float	dx;
 	float	dy;
+	t_ray	rayx;
 	int		map_x;
 	int		map_y;
 
-	for (int x = 0; x < WND_WIDTH; ++x) {
-		// horizont
-		if (dir == 0 || dir == 180) {
-			rayx.len = INFINITY;
-		} else {
-			if (dir > 180) {
-				rayx.y = (int)start.y / CELL_SIZE * CELL_SIZE + CELL_SIZE;
-				dy = CELL_SIZE;
-			} else {
-				rayx.y = (int)start.y / CELL_SIZE * CELL_SIZE - 0.001;
-				dy = -CELL_SIZE;
-			}
-			rayx.x = start.x + (start.y - rayx.y) / tan(to_rad(dir));
-			dx = -dy / tan(to_rad(dir));
+	rayx.y = (int)start.y / CELL_SIZE * CELL_SIZE +
+		(dir > 180 ? CELL_SIZE : -0.001);
+	dy = dir > 180 ? CELL_SIZE : -CELL_SIZE;
+	rayx.x = start.x + (start.y - rayx.y) / tan(to_rad(dir));
+	dx = -dy / tan(to_rad(dir));
+	map_x = rayx.x / CELL_SIZE;
+	map_y = rayx.y / CELL_SIZE;
+	while (map_x >= 0 && map_y >= 0 && map_x < vec_size(&map[0]) &&
+		map_y < vec_size(&map) && map[map_y][map_x].wall == false)
+	{
+		rayx.x += dx;
+		rayx.y += dy;
+		map_x = rayx.x / CELL_SIZE;
+		map_y = rayx.y / CELL_SIZE;
+	}
+	dx = rayx.x - start.x;
+	dy = rayx.y - start.y;
+	rayx.len = sqrt(dx * dx + dy * dy) * cos(to_rad(pov - dir));
+	return (rayx);
+}
 
-			map_x = rayx.x / CELL_SIZE;
-			map_y = rayx.y / CELL_SIZE;
+static t_ray	raycast_y(t_position start, t_vector_point *map,
+								float dir, float pov)
+{
+	float	dx;
+	float	dy;
+	t_ray	rayy;
+	int		map_x;
+	int		map_y;
 
-			while (map_x >= 0 && map_y >= 0 && map_x < vec_size(&map[0]) && map_y < vec_size(&map) && map[map_y][map_x].wall == false) {
-				rayx.x += dx;
-				rayx.y += dy;
-				map_x = rayx.x / CELL_SIZE;
-				map_y = rayx.y / CELL_SIZE;
-			}
-			dx = rayx.x - start.x;
-			dy = rayx.y - start.y;
-			rayx.len = sqrt(dx * dx + dy * dy) * cos(to_rad(pov - dir));
-		}
+	rayy.x = (int)start.x / CELL_SIZE * CELL_SIZE +
+		((dir > 270 || dir < 90) ? CELL_SIZE : -0.001);
+	dx = (dir > 270 || dir < 90) ? CELL_SIZE : -CELL_SIZE;
+	rayy.y = start.y + (start.x - rayy.x) * tan(to_rad(dir));
+	dy = -dx * tan(to_rad(dir));
+	map_x = rayy.x / CELL_SIZE;
+	map_y = rayy.y / CELL_SIZE;
+	while (map_x >= 0 && map_y >= 0 && map_x < vec_size(&map[0]) &&
+		map_y < vec_size(&map) && map[map_y][map_x].wall == false)
+	{
+		rayy.x += dx;
+		rayy.y += dy;
+		map_x = rayy.x / CELL_SIZE;
+		map_y = rayy.y / CELL_SIZE;
+	}
+	dx = rayy.x - start.x;
+	dy = rayy.y - start.y;
+	rayy.len = sqrt(dx * dx + dy * dy) * cos(to_rad(pov - dir));
+	return (rayy);
+}
 
-		// vertical
-		if (dir == 90 || dir == 270) {
-			rayy.len = INFINITY;
-		} else {
-			if (dir > 270 || dir < 90) {
-				rayy.x = (int)start.x / CELL_SIZE * CELL_SIZE + CELL_SIZE;
-				dx = CELL_SIZE;
-			} else {
-				rayy.x = (int)start.x / CELL_SIZE * CELL_SIZE - 0.001;
-				dx = -CELL_SIZE;
-			}
-			rayy.y = start.y + (start.x - rayy.x) * tan(to_rad(dir));
-			dy = -dx * tan(to_rad(dir));
+t_ray			*raycast(int fov, float pov,
+							t_position start, t_vector_point *map)
+{
+	t_ray	*rays;
+	t_ray	rayx;
+	t_ray	rayy;
+	float	dir;
+	int		x;
 
-			map_x = rayy.x / CELL_SIZE;
-			map_y = rayy.y / CELL_SIZE;
-
-			while (map_x >= 0 && map_y >= 0 && map_x < vec_size(&map[0]) && map_y < vec_size(&map) && map[map_y][map_x].wall == false) {
-				rayy.x += dx;
-				rayy.y += dy;
-				map_x = rayy.x / CELL_SIZE;
-				map_y = rayy.y / CELL_SIZE;
-			}
-			dx = rayy.x - start.x;
-			dy = rayy.y - start.y;
-			rayy.len = sqrt(dx * dx + dy * dy) * cos(to_rad(pov - dir));
-		}
-
-		if (rayx.len < rayy.len) {
-			rays[x] = rayx;
-			rays[x].side = X_SIDE;
-		} else {
-			rays[x] = rayy;
-			rays[x].side = Y_SIDE;
-		}
-		dir -= diff;
-		if (dir < 0) {
-			dir += 360;
-		}
+	dir = pov + fov / 2;
+	dir -= dir >= 360 ? 360 : 0;
+	rays = malloc(sizeof(t_ray) * WND_WIDTH);
+	ft_memset(rays, 0, sizeof(t_ray) * WND_WIDTH);
+	x = -1;
+	while (++x < WND_WIDTH)
+	{
+		rayx.len = INFINITY;
+		if (!(dir == 0 || dir == 180))
+			rayx = raycast_x(start, map, dir, pov);
+		rayy.len = INFINITY;
+		if (!(dir == 90 || dir == 270))
+			rayy = raycast_y(start, map, dir, pov);
+		rays[x] = rayx.len < rayy.len ? rayx : rayy;
+		rays[x].side = rayx.len < rayy.len ? X_SIDE : Y_SIDE;
+		dir -= fov / (float)WND_WIDTH;
+		dir += dir < 0 ? 360 : 0;
 	}
 	return (rays);
 }
