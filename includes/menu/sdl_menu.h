@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 15:12:56 by mburl             #+#    #+#             */
-/*   Updated: 2020/06/29 15:23:04 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 15:56:50 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <SDL2/SDL.h>
 # include <stdbool.h>
-# include "button.h"
+# include "button/button.h"
 
 typedef struct s_menu*	t_menu;
 

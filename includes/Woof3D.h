@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Woof3D.h                                           :+:      :+:    :+:   */
+/*   woof3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 17:28:08 by user              #+#    #+#             */
-/*   Updated: 2020/08/04 12:34:00 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 16:01:34 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WOOF3D_H
 # define WOOF3D_H
 
-# include "data.h"
+# include "structs/data.h"
 # include "woofdefines.h"
 
 t_data		woof_init(const char *filename);

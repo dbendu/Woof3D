@@ -6,14 +6,14 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 00:14:23 by user              #+#    #+#             */
-/*   Updated: 2020/08/04 07:48:56 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 16:01:34 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef QUIT_H
 # define QUIT_H
 
-# include "data.h"
+# include "structs/data.h"
 
 void	woof_quit(t_data *data);
 

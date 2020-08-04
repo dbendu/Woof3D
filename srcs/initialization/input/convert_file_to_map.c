@@ -6,12 +6,12 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 17:56:34 by user              #+#    #+#             */
-/*   Updated: 2020/08/04 07:58:20 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 15:59:05 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "woofdefines.h"
-#include "input_utils.h"
+#include "initialization/input/input_utils.h"
 
 static void				get_point(const char **lineptr, t_point *point)
 {

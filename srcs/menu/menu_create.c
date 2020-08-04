@@ -6,13 +6,13 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 15:13:02 by mburl             #+#    #+#             */
-/*   Updated: 2020/06/29 15:37:33 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 16:04:00 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "private_menu.h"
-#include "sdl_menu.h"
-#include "mouse.h"
+#include "menu/private_menu.h"
+#include "menu/sdl_menu.h"
+#include "controls/mouse.h"
 
 t_menu	menu_create(SDL_Renderer *render, bool cycling)
 {

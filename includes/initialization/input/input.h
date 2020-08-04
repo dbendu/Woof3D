@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   input.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 17:37:02 by user              #+#    #+#             */
-/*   Updated: 2020/06/14 22:32:44 by user             ###   ########.fr       */
+/*   Updated: 2020/08/04 16:01:55 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INPUT_H
 # define INPUT_H
 
-# include "map.h"
+# include "structs/map.h"
 
 t_map	get_input(const char *filename);
 

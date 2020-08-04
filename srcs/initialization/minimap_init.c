@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:46:33 by user              #+#    #+#             */
-/*   Updated: 2020/04/29 23:58:15 by user             ###   ########.fr       */
+/*   Updated: 2020/08/04 15:59:24 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_all.h"
+#include "initialization/init_all.h"
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
 # define RMASK	0xff000000

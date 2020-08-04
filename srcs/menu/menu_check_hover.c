@@ -6,16 +6,16 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 15:13:00 by mburl             #+#    #+#             */
-/*   Updated: 2020/06/29 15:16:36 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 16:01:34 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
-#include "private_button.h"
-#include "button.h"
+#include "button/private_button.h"
+#include "button/button.h"
 #include <SDL2/SDL.h>
-#include "data.h"
-#include "private_menu.h"
+#include "structs/data.h"
+#include "menu/private_menu.h"
 
 bool	check_hover(t_button button, SDL_Rect *rect, int press, t_menu menu)
 {

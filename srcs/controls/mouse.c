@@ -6,14 +6,14 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 15:25:24 by mburl             #+#    #+#             */
-/*   Updated: 2020/08/04 07:58:19 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 16:04:00 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "data.h"
+#include "structs/data.h"
 #include "woofdefines.h"
-#include "init_all.h"
-#include "mouse.h"
+#include "initialization/init_all.h"
+#include "controls/mouse.h"
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL.h>
 

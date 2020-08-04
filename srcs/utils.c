@@ -6,12 +6,12 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 15:08:06 by mburl             #+#    #+#             */
-/*   Updated: 2020/08/04 09:46:53 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 16:02:05 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <SDL2/SDL.h>
-#include "point.h"
+#include "structs/point.h"
 
 SDL_Color	init_sdl_color(int r, int g, int b, int a)
 {

@@ -6,12 +6,12 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 15:02:02 by mburl             #+#    #+#             */
-/*   Updated: 2020/06/29 15:04:02 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 15:56:50 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "private_button.h"
-#include "button.h"
+#include "button/private_button.h"
+#include "button/button.h"
 
 inline void	button_deselect(t_button button)
 {

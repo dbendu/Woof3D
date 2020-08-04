@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 18:04:49 by user              #+#    #+#             */
-/*   Updated: 2020/04/30 00:13:03 by user             ###   ########.fr       */
+/*   Updated: 2020/08/04 15:58:49 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/stat.h>
 #include <fcntl.h>
-#include "input.h"
+#include "initialization/input/input.h"
 #include "libft.h"
 
 static bool		is_dir(const char *filename)

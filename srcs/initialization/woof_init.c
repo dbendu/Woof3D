@@ -6,13 +6,13 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:33:46 by user              #+#    #+#             */
-/*   Updated: 2020/08/04 12:39:46 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 15:59:38 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "initialization.h"
+#include "initialization/initialization.h"
 #include "woofdefines.h"
-#include "init_all.h"
+#include "initialization/init_all.h"
 #include "libft.h"
 
 static void		sdl_init(void)

@@ -6,12 +6,12 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 15:13:08 by mburl             #+#    #+#             */
-/*   Updated: 2020/06/29 15:21:41 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 16:00:32 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "private_menu.h"
-#include "sdl_menu.h"
+#include "menu/private_menu.h"
+#include "menu/sdl_menu.h"
 
 void	menu_select_next(t_menu menu)
 {

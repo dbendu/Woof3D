@@ -6,12 +6,12 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 08:05:41 by mburl             #+#    #+#             */
-/*   Updated: 2020/08/04 08:52:57 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 16:00:32 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "woof3d.h"
-#include "sdl_menu.h"
+#include "menu/sdl_menu.h"
 #include "libft.h"
 
 void	update_position(t_data *data, int mult, int rot)

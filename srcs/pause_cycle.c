@@ -6,12 +6,12 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 15:00:47 by mburl             #+#    #+#             */
-/*   Updated: 2020/08/04 09:40:48 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 16:00:32 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "woof3d.h"
-#include "sdl_menu.h"
+#include "menu/sdl_menu.h"
 
 static void	input_handle(t_data *data)
 {

@@ -6,12 +6,12 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 17:47:55 by user              #+#    #+#             */
-/*   Updated: 2020/06/29 15:40:41 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 15:59:05 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "input.h"
-#include "input_utils.h"
+#include "initialization/input/input.h"
+#include "initialization/input/input_utils.h"
 
 static void	free_file(t_vector_char *lines)
 {

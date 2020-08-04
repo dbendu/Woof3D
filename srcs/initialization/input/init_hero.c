@@ -6,15 +6,15 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 18:00:42 by user              #+#    #+#             */
-/*   Updated: 2020/08/04 07:58:20 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 16:01:55 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "woofdefines.h"
-#include "hero.h"
-#include "input_utils.h"
-#include "map.h"
-#include "data.h"
+#include "structs/hero.h"
+#include "initialization/input/input_utils.h"
+#include "structs/map.h"
+#include "structs/data.h"
 
 t_hero	init_hero(t_point hero_position)
 {

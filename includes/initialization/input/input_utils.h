@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   input_utils.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 17:56:55 by user              #+#    #+#             */
-/*   Updated: 2020/04/30 00:11:39 by user             ###   ########.fr       */
+/*   Updated: 2020/08/04 16:02:05 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INPUT_UTILS_H
 # define INPUT_UTILS_H
 
-# include "hero.h"
-# include "point.h"
+# include "structs/hero.h"
+# include "structs/point.h"
 # include "libft.h"
 
 t_vector_char	*read_file(const char *filename);

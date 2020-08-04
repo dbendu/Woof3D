@@ -6,18 +6,18 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:55:20 by user              #+#    #+#             */
-/*   Updated: 2020/08/04 07:58:19 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 16:02:49 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INIT_ALL_H
 # define INIT_ALL_H
 
-# include "wnd.h"
-# include "map.h"
+# include "graphic/wnd.h"
+# include "structs/map.h"
 # include "libft.h"
-# include "minimap.h"
-# include "keyboard.h"
+# include "graphic/minimap.h"
+# include "controls/keyboard.h"
 # include "woofdefines.h"
 
 t_wnd		wnd_init(const char *title, int width, int height);

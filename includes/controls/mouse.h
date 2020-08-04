@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/16 15:46:30 by konsolka          #+#    #+#             */
-/*   Updated: 2020/08/04 07:47:13 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 16:01:34 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define MOUSE_H
 
 # include <SDL2/SDL.h>
-# include "data.h"
+# include "structs/data.h"
 
 typedef struct	s_mouse
 {

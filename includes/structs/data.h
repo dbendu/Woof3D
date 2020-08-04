@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 12:44:06 by user              #+#    #+#             */
-/*   Updated: 2020/08/04 07:49:44 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 16:02:49 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 # include <SDL2/SDL_ttf.h>
 # include <stdbool.h>
-# include "keyboard.h"
-# include "minimap.h"
-# include "wnd.h"
-# include "map.h"
-# include "ray.h"
-# include "sdl_menu.h"
+# include "controls/keyboard.h"
+# include "graphic/minimap.h"
+# include "graphic/wnd.h"
+# include "structs/map.h"
+# include "structs/ray.h"
+# include "menu/sdl_menu.h"
 
 typedef struct		s_menus
 {

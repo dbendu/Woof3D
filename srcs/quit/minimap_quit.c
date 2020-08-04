@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_quit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 00:21:05 by user              #+#    #+#             */
-/*   Updated: 2020/04/30 00:21:42 by user             ###   ########.fr       */
+/*   Updated: 2020/08/04 16:01:12 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "quit_all.h"
+#include "quit/quit_all.h"
 
 void	minimap_quit(t_minimap *minimap)
 {

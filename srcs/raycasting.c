@@ -6,12 +6,12 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 21:25:37 by user              #+#    #+#             */
-/*   Updated: 2020/08/04 12:32:23 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 16:02:15 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ray.h"
+#include "structs/ray.h"
 #include "woof3d.h"
 #include "woofdefines.h"
 

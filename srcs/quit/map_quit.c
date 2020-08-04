@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_quit.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 00:18:14 by user              #+#    #+#             */
-/*   Updated: 2020/04/30 00:35:01 by user             ###   ########.fr       */
+/*   Updated: 2020/08/04 16:01:12 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "quit_all.h"
+#include "quit/quit_all.h"
 
 void	map_quit(t_map *map)
 {

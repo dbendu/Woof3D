@@ -6,11 +6,11 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:36:21 by user              #+#    #+#             */
-/*   Updated: 2020/08/04 12:40:35 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 15:59:24 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_all.h"
+#include "initialization/init_all.h"
 #include "woofdefines.h"
 
 static void	check_args(const char *title, int width, int height)
