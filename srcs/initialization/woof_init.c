@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:33:46 by user              #+#    #+#             */
-/*   Updated: 2020/08/04 11:20:52 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 12:39:46 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static t_menus	menus_init(SDL_Renderer *render)
 {
 	t_menus	menus;
 
-	menus.big = TTF_OpenFont("anon.ttf", 30);
+	menus.big = TTF_OpenFont("res/font/anon.ttf", 30);
 	main_init(render, menus.big, &menus.main);
 	menus.settings = NULL;
 	pause_init(render, menus.big, &menus.pause);

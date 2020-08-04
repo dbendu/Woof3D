@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:36:21 by user              #+#    #+#             */
-/*   Updated: 2020/08/04 07:58:20 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 12:40:35 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ t_texture	*load_textures(SDL_Window *wnd)
 	SDL_Surface	*srf;
 	int			i;
 	const char	texs[TEXTURES_COUNT][40] = {
-		"Earth.bmp",
-		"Grey.bmp",
-		"Stone.bmp",
-		"Window.bmp",
-		"Adolf.bmp"
+		"res/textures/Earth.bmp",
+		"res/textures/Grey.bmp",
+		"res/textures/Stone.bmp",
+		"res/textures/Window.bmp",
+		"res/textures/Adolf.bmp"
 	};
 
 	textures = malloc(sizeof(t_texture) * TEXTURES_COUNT);
