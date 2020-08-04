@@ -41,7 +41,7 @@ SRCS		=		button/button_add_title.c\
 					player_update.c\
 					raycasting.c\
 					update.c\
-					utils.c\
+					utils.c
 
 
 SRCS_DIR 	=		srcs
@@ -53,8 +53,8 @@ OBJS		=		$(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 #									INCLUDES
 #-------------------------------------------------------------------------------
 
-INCLUDES_LIBFT		=	libft/includes/
-INCLUDES_DIR =		includes/
+INCLUDES_LIBFT		=	./libft/includes/
+INCLUDES_DIR =			./includes/
 
 INCLUDES =			-I $(INCLUDES_DIR) -I $(INCLUDES_LIBFT) -I ./include/
 
@@ -93,7 +93,7 @@ HEADERS =			$(addprefix $(INCLUDES_DIR), $(HEADERS_LIST))
 
 FLAGS_COMPILE =		-Wall -Wextra -Werror
 
-FLAGS_LINK =		-lm -L./libft/ -lft -L./lib/ -lSDL2 -lSDL2_ttf -lSDL2_image
+FLAGS_LINK =		-lm -L./libft/ -lft -lSDL2 -lSDL2_ttf -lSDL2_image
 
 
 # all:
