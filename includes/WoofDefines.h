@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WoofDefines.h                                     :+:      :+:    :+:   */
+/*   woofdefines.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/25 18:23:48 by user              #+#    #+#             */
-/*   Updated: 2020/04/29 23:09:32 by user             ###   ########.fr       */
+/*   Created: 2020/08/04 07:57:07 by mburl             #+#    #+#             */
+/*   Updated: 2020/08/04 08:18:48 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WoofDefines_H
-# define WoofDefines_H
+#ifndef WOOFDEFINES_H
+# define WOOFDEFINES_H
 
 /*
 ** window
@@ -25,21 +25,28 @@
 /*
 ** game
 */
-# define CELL_SIZE			64
+# define CELL_SIZE			62
 # define MINIMAP_SZ			300
 # define TEXTURES_COUNT		5
+
 /*
 ** hero
 */
 # define HERO_ROTATE        1
-# define HERO_FOV_DEFAULT	60			// field of view, in degrees
+
+/*
+** field of view, in degrees
+*/
+# define HERO_FOV_DEFAULT	60
 # define HERO_FOV_MAX		170
 # define HERO_FOV_MIN		30
 # define HERO_STEP_SPEED	CELL_SIZE * 0.025
 # define HERO_RUN_SPEED		1.6
 
-# define RAYS_BY_ANGLE		5	// only integer, not fractional!
-# define MAX_RAY_MULTIPLYER	6	// same
-
+/*
+** only integer, not fractional for bouth
+*/
+# define RAYS_BY_ANGLE		5
+# define MAX_RAY_MULTIPLYER	6
 
 #endif

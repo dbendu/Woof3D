@@ -6,21 +6,20 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:33:46 by user              #+#    #+#             */
-/*   Updated: 2020/06/29 15:52:38 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 07:58:20 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "initialization.h"
-#include "WoofDefines.h"
+#include "woofdefines.h"
 #include "init_all.h"
 #include "libft.h"
 
 static void		sdl_init(void)
 {
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
-		ft_error(SDL_GetError(), "sdl_init", 0);
-	if (TTF_Init() < 0)
-		ft_error(SDL_GetError(), "sdl_init", 0);
+		ft_error(SDL_GetError(), "woof_init", 0);
+	TTF_Init();
 }
 
 static t_menu	pause_init(SDL_Renderer *render, TTF_Font *font)

@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   quit.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 00:14:23 by user              #+#    #+#             */
-/*   Updated: 2020/04/30 00:15:32 by user             ###   ########.fr       */
+/*   Updated: 2020/08/04 07:48:56 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef QUIT
-# define QUIT
+#ifndef QUIT_H
+# define QUIT_H
 
 # include "data.h"
 

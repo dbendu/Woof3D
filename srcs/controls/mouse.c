@@ -6,12 +6,12 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 15:25:24 by mburl             #+#    #+#             */
-/*   Updated: 2020/06/29 15:38:23 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 07:58:19 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "data.h"
-#include "WoofDefines.h"
+#include "woofdefines.h"
 #include "init_all.h"
 #include "mouse.h"
 #include <SDL2/SDL_image.h>
@@ -31,8 +31,7 @@ t_mouse		mouse_init(SDL_Renderer *render)
 {
 	t_mouse		m;
 
-	if ((m.texture = IMG_LoadTexture(render, "res/textures/cursor.png")) == NULL)
-		ft_error(SDL_GetError(), "mouse_init", 0);
+	m.texture = IMG_LoadTexture(render, "res/textures/cursor.png");
 	m.cursor.h = 50;
 	m.cursor.w = 50;
 	m.cursor.x = 0;

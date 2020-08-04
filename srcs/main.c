@@ -6,13 +6,13 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 15:00:40 by mburl             #+#    #+#             */
-/*   Updated: 2020/06/29 15:00:41 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 07:58:19 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include "Woof3D.h"
-#include "WoofDefines.h"
+#include "woof3d.h"
+#include "woofdefines.h"
 #include "libft.h"
 
 static void	usage(void)

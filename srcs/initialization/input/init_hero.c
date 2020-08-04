@@ -6,11 +6,11 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 18:00:42 by user              #+#    #+#             */
-/*   Updated: 2020/06/29 15:40:15 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 07:58:20 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "WoofDefines.h"
+#include "woofdefines.h"
 #include "hero.h"
 #include "input_utils.h"
 #include "map.h"

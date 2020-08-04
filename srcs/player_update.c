@@ -6,13 +6,13 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 20:59:56 by user              #+#    #+#             */
-/*   Updated: 2020/06/29 15:00:52 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 07:58:19 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "Woof3D.h"
-#include "WoofDefines.h"
+#include "woof3d.h"
+#include "woofdefines.h"
 
 static void			move_hero_if_possible(t_vector_point *map, t_hero *hero,
 										float estimated_x, float estimated_y)
@@ -39,7 +39,7 @@ void				updatePosition(t_map *map, bool forward)
 	move_hero_if_possible(map->map, &map->hero, new_x, new_y);
 }
 
-void				playerUpdate(t_data *data, t_hero *hero)
+void				player_update(t_data *data, t_hero *hero)
 {
 	if (data->keyboard.key[MOVE_FORWARD] ^ data->keyboard.key[MOVE_BACK])	// xor returns true only if hero moving
 		updatePosition(&data->map, data->keyboard.key[MOVE_FORWARD]);		// only in one direction at the moment

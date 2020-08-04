@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialization.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:31:44 by user              #+#    #+#             */
-/*   Updated: 2020/04/29 23:55:37 by user             ###   ########.fr       */
+/*   Updated: 2020/08/04 07:48:18 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,5 @@
 # include "keyboard.h"
 
 t_data		woof_init(const char *filename);
-
 
 #endif

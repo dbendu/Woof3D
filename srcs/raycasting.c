@@ -6,15 +6,15 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 21:25:37 by user              #+#    #+#             */
-/*   Updated: 2020/06/29 15:00:56 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 07:58:19 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "libft.h"
 #include "ray.h"
-#include "Woof3D.h"
-#include "WoofDefines.h"
+#include "woof3d.h"
+#include "woofdefines.h"
 
 
 t_ray	*raycast(int fov, float pov, t_position start, t_vector_point *map)

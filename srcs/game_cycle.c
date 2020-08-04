@@ -6,11 +6,11 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 15:00:33 by mburl             #+#    #+#             */
-/*   Updated: 2020/06/29 16:00:40 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 08:18:35 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Woof3D.h"
+#include "woof3d.h"
 #include "sdl_menu.h"
 #include "libft.h"
 
@@ -44,25 +44,9 @@ static void	handle_key_release(t_keyboard *keyboard, SDL_Keycode key)
 	}
 }
 
-void		setup_color(SDL_Renderer *render, t_point *point)
-{
-	if (point->wall_c == 1)
-		SDL_SetRenderDrawColor(render, 0xff, 0, 0, 0xff);
-	if (point->wall_c == 2)
-		SDL_SetRenderDrawColor(render, 0, 0xff, 0, 0xff);
-	if (point->wall_c == 3)
-		SDL_SetRenderDrawColor(render, 0, 0, 0xff, 0xff);
-	else if (point->wall_c == 4)
-		SDL_SetRenderDrawColor(render, 0xff, 0, 0xff, 0xff);
-	else if (point->wall_c == 0)
-		SDL_SetRenderDrawColor(render, 0xff, 0xff, 0xff, 0xff);
-	else
-		SDL_SetRenderDrawColor(render, 0xff, 0xff, 0, 0xff);
-}
-
 void	draw_vis(t_wnd *sdl, t_ray *rays, int fov, t_point **map)
 {
-	const int wall_height = 60;
+	const int wall_height = 62;
 	const float distance = WND_WIDTH / 2 / tan(to_rad(fov / 2));
 	int		x;
 	int texture_x;
@@ -148,95 +132,17 @@ void	render(t_data *data, bool map)
 	SDL_SetRenderDrawColor(data->wnd.renderer, 0x57, 0x57, 0x57, 0xff);
 	SDL_RenderFillRect(data->wnd.renderer, &down);
 	int fov = 60;
-
-
 	t_ray *rays = raycast(fov, data->map.hero.pov, data->map.hero.position, data->map.map);
-
-
 	draw_vis(&data->wnd, rays, fov, data->map.map);
 	if (map) {
 		draw_map(data->wnd.renderer, data->map.map);
 		draw_rays(data->wnd.renderer, rays, data->map.hero.position);
 	}
-
-
 	free(rays);
-
 	SDL_UpdateWindowSurface(data->wnd.window);
 }
 
-static
-void	update(t_data *data)
-{
-	int		xrel;
-	int		yrel;
 
-	if (data->keyboard.key[MOVE_FORWARD]) {
-		int mult = data->keyboard.key[RUN] ? 4 : 2;
-		float new_fx = data->map.hero.position.x + mult * cos(to_rad(data->map.hero.pov));
-		float new_fy = data->map.hero.position.y - mult * sin(to_rad(data->map.hero.pov));
-		int old_x = data->map.hero.position.x / CELL_SIZE;
-		int old_y = data->map.hero.position.y / CELL_SIZE;
-		int new_x = new_fx / CELL_SIZE;
-		int new_y = new_fy / CELL_SIZE;
-		if (data->map.map[old_y][new_x].wall == false) {
-			data->map.hero.position.x = new_fx;
-		}
-		if (data->map.map[new_y][old_x].wall == false) {
-			data->map.hero.position.y = new_fy;
-		}
-	}
-	if (data->keyboard.key[MOVE_BACK]) {
-		float new_fx = data->map.hero.position.x - cos(to_rad(data->map.hero.pov));
-		float new_fy = data->map.hero.position.y + sin(to_rad(data->map.hero.pov));
-		int old_x = data->map.hero.position.x / CELL_SIZE;
-		int old_y = data->map.hero.position.y / CELL_SIZE;
-		int new_x = new_fx / CELL_SIZE;
-		int new_y = new_fy / CELL_SIZE;
-		if (data->map.map[old_y][new_x].wall == false) {
-			data->map.hero.position.x = new_fx;
-		}
-		if (data->map.map[new_y][old_x].wall == false) {
-			data->map.hero.position.y = new_fy;
-		}
-	}
-	if (data->keyboard.key[TURN_LEFT])
-	{
-		float new_fx = data->map.hero.position.x - cos(to_rad(data->map.hero.pov - 90));
-		float new_fy = data->map.hero.position.y + sin(to_rad(data->map.hero.pov - 90));
-		int old_x = data->map.hero.position.x / CELL_SIZE;
-		int old_y = data->map.hero.position.y / CELL_SIZE;
-		int new_x = new_fx / CELL_SIZE;
-		int new_y = new_fy / CELL_SIZE;
-		if (data->map.map[old_y][new_x].wall == false) {
-			data->map.hero.position.x = new_fx;
-		}
-		if (data->map.map[new_y][old_x].wall == false) {
-			data->map.hero.position.y = new_fy;
-		}
-	}
-	if (data->keyboard.key[TURN_RIGHT])
-	{
-		float new_fx = data->map.hero.position.x - cos(to_rad(data->map.hero.pov + 90));
-		float new_fy = data->map.hero.position.y + sin(to_rad(data->map.hero.pov + 90));
-		int old_x = data->map.hero.position.x / CELL_SIZE;
-		int old_y = data->map.hero.position.y / CELL_SIZE;
-		int new_x = new_fx / CELL_SIZE;
-		int new_y = new_fy / CELL_SIZE;
-		if (data->map.map[old_y][new_x].wall == false) {
-			data->map.hero.position.x = new_fx;
-		}
-		if (data->map.map[new_y][old_x].wall == false) {
-			data->map.hero.position.y = new_fy;
-		}
-	}
-	SDL_GetRelativeMouseState(&xrel, &yrel);
-	data->map.hero.pov -= xrel;
-	if (data->map.hero.pov >= 360)
-		data->map.hero.pov -= 360;
-	else if (data->map.hero.pov <= 360)
-		data->map.hero.pov += 360;
-}
 
 static
 void	event_handle(const SDL_Event *event, t_data *data)

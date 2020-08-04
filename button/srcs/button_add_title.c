@@ -6,20 +6,20 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 15:01:58 by mburl             #+#    #+#             */
-/*   Updated: 2020/06/29 15:11:13 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 07:58:01 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "private_button.h"
 #include "button.h"
-#include "Woof3D.h"
+#include "woof3d.h"
 
 void	button_add_title(t_button button, const char *title, TTF_Font *font)
 {
 	SDL_Surface	*text_srf;
 	SDL_Color	fgcolor;
 
-	fgcolor = init_SDL_Color(0x0, 0x0, 0x0, 0xff);
+	fgcolor = init_sdl_color(0x0, 0x0, 0x0, 0xff);
 	if (button->title)
 		SDL_DestroyTexture(button->title);
 	text_srf = TTF_RenderText_Blended(font, title, fgcolor);

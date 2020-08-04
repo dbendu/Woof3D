@@ -6,11 +6,11 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 15:00:47 by mburl             #+#    #+#             */
-/*   Updated: 2020/06/29 15:00:48 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 07:58:01 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Woof3D.h"
+#include "woof3d.h"
 #include "sdl_menu.h"
 
 static

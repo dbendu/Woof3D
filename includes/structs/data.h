@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: konsolka <konsolka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 12:44:06 by user              #+#    #+#             */
-/*   Updated: 2020/06/16 16:02:36 by konsolka         ###   ########.fr       */
+/*   Updated: 2020/08/04 07:49:44 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ typedef struct		s_menus
 	t_menu			settings;
 }					t_menus;
 
-#define MAIN_MENU_BUTTONS	3
-#define PAUSE_MENU_BUTTONS	3
+# define MAIN_MENU_BUTTONS	3
+# define PAUSE_MENU_BUTTONS	3
 
-#define BUTTON_GAME			0
-#define BUTTON_SETTINGS		1
-#define BUTTON_EXIT			2
-#define BUTTON_CONTINUE		3
-#define BUTTON_TO_MAIN		4
+# define BUTTON_GAME			0
+# define BUTTON_SETTINGS		1
+# define BUTTON_EXIT			2
+# define BUTTON_CONTINUE		3
+# define BUTTON_TO_MAIN		4
 
 typedef struct		s_jumps
 {

@@ -6,12 +6,12 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 15:30:39 by user              #+#    #+#             */
-/*   Updated: 2020/06/29 15:25:14 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 07:58:19 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "data.h"
-#include "WoofDefines.h"
+#include "woofdefines.h"
 
 void	key_pressed(t_data *data, SDL_Keycode button)
 {

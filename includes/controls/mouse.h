@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/16 15:46:30 by konsolka          #+#    #+#             */
-/*   Updated: 2020/06/29 15:38:00 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 07:47:13 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ typedef struct	s_mouse
 	SDL_Texture	*texture;
 }				t_mouse;
 
-int			update_mouse(t_mouse *mouse);
-t_mouse		mouse_init(SDL_Renderer *render);
-void		draw_mouse(SDL_Renderer *render, t_mouse mouse);
+int				update_mouse(t_mouse *mouse);
+t_mouse			mouse_init(SDL_Renderer *render);
+void			draw_mouse(SDL_Renderer *render, t_mouse mouse);
 
 #endif

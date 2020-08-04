@@ -6,11 +6,11 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 18:29:35 by user              #+#    #+#             */
-/*   Updated: 2020/06/29 15:41:16 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 07:58:20 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "WoofDefines.h"
+#include "woofdefines.h"
 #include "input_utils.h"
 
 static t_point	get_hero_position(const char *line, size_t y_position)

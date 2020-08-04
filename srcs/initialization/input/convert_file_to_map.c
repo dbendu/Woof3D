@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   convert_file_to_map.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 17:56:34 by user              #+#    #+#             */
-/*   Updated: 2020/04/29 23:39:29 by user             ###   ########.fr       */
+/*   Updated: 2020/08/04 07:58:20 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "WoofDefines.h"
+#include "woofdefines.h"
 #include "input_utils.h"
 
 static void				get_point(const char **lineptr, t_point *point)
