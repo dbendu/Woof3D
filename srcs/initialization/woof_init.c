@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:33:46 by user              #+#    #+#             */
-/*   Updated: 2020/08/04 07:58:20 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 09:26:59 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,16 @@ static t_menu	pause_init(SDL_Renderer *render, TTF_Font *font)
 			BUTTON_CONTINUE, BUTTON_TO_MAIN, BUTTON_EXIT
 	};
 	t_button		button;
+	int				i;
 
 	pause = menu_create(render, true);
-	for (int i = 0; i < PAUSE_MENU_BUTTONS; ++i) {
+	i = 0;
+	while (i < PAUSE_MENU_BUTTONS)
+	{
 		button = button_create(render, &rects[i], uids[i]);
 		button_add_title(button, titles[i], font);
 		menu_add_button(pause, button);
+		i++;
 	}
 	return (pause);
 }
@@ -62,12 +66,16 @@ static t_menu	main_init(SDL_Renderer *render, TTF_Font *font)
 		BUTTON_GAME, BUTTON_SETTINGS, BUTTON_EXIT
 	};
 	t_button		button;
+	int				i;
 
 	main = menu_create(render, true);
-	for (int i = 0; i < MAIN_MENU_BUTTONS; ++i) {
+	i = 0;
+	while (i < MAIN_MENU_BUTTONS)
+	{
 		button = button_create(render, &rects[i], uids[i]);
 		button_add_title(button, titles[i], font);
 		menu_add_button(main, button);
+		i++;
 	}
 	return (main);
 }

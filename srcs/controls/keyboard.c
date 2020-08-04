@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 15:30:39 by user              #+#    #+#             */
-/*   Updated: 2020/08/04 07:58:19 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 09:21:47 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,32 @@ void	key_release(t_data *data, SDL_Keycode button)
 		data->keyboard.key[FOV_INCREASE] = false;
 	else if (button == SDLK_LSHIFT)
 		data->map.hero.speed = CELL_SIZE * 0.15;
+}
+
+void	handle_key_press(t_keyboard *keyboard, SDL_Keycode key)
+{
+	if (key == SDLK_w)
+		keyboard->key[MOVE_FORWARD] = true;
+	else if (key == SDLK_s)
+		keyboard->key[MOVE_BACK] = true;
+	else if (key == SDLK_a)
+		keyboard->key[TURN_LEFT] = true;
+	else if (key == SDLK_d)
+		keyboard->key[TURN_RIGHT] = true;
+	else if (key == SDLK_LSHIFT)
+		keyboard->key[RUN] = true;
+}
+
+void	handle_key_release(t_keyboard *keyboard, SDL_Keycode key)
+{
+	if (key == SDLK_w)
+		keyboard->key[MOVE_FORWARD] = false;
+	else if (key == SDLK_s)
+		keyboard->key[MOVE_BACK] = false;
+	else if (key == SDLK_a)
+		keyboard->key[TURN_LEFT] = false;
+	else if (key == SDLK_d)
+		keyboard->key[TURN_RIGHT] = false;
+	else if (key == SDLK_LSHIFT)
+		keyboard->key[RUN] = true;
 }

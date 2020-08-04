@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 20:59:56 by user              #+#    #+#             */
-/*   Updated: 2020/08/04 07:58:19 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 09:53:52 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,30 @@ static void			move_hero_if_possible(t_vector_point *map, t_hero *hero,
 		hero->position.x = estimated_x;
 }
 
-void				updatePosition(t_map *map, bool forward)
+static void			update_player_position(t_map *map, bool forward)
 {
 	const float		moving_vector = map->hero.speed * (forward ? 1 : -1);
 	const float		new_x = map->hero.position.x +
-							cos(to_rad(map->hero.pov)) * moving_vector;
+		cos(to_rad(map->hero.pov)) * moving_vector;
 	const float		new_y = map->hero.position.y -
-							sin(to_rad(map->hero.pov)) * moving_vector;
+		sin(to_rad(map->hero.pov)) * moving_vector;
 
 	move_hero_if_possible(map->map, &map->hero, new_x, new_y);
 }
 
+/*
+** xor returns true only if hero moving only in one direction at the moment
+** its okay if execute both conditions cause here no overhead calculations
+** like in update_position
+*/
+
 void				player_update(t_data *data, t_hero *hero)
 {
-	if (data->keyboard.key[MOVE_FORWARD] ^ data->keyboard.key[MOVE_BACK])	// xor returns true only if hero moving
-		updatePosition(&data->map, data->keyboard.key[MOVE_FORWARD]);		// only in one direction at the moment
-	if (data->keyboard.key[TURN_RIGHT])										// its okay if execute both conditions
-		hero->pov -= HERO_ROTATE;													// cause here no overhead calculations
-	if (data->keyboard.key[TURN_LEFT])										// like in updatePosition
+	if (data->keyboard.key[MOVE_FORWARD] ^ data->keyboard.key[MOVE_BACK])
+		update_player_position(&data->map, data->keyboard.key[MOVE_FORWARD]);
+	if (data->keyboard.key[TURN_RIGHT])
+		hero->pov -= HERO_ROTATE;
+	if (data->keyboard.key[TURN_LEFT])
 		hero->pov += HERO_ROTATE;
 	if (data->keyboard.key[FOV_INCREASE] && data->map.hero.fov < HERO_FOV_MAX)
 		data->map.hero.fov += 1;

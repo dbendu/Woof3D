@@ -1,41 +1,6 @@
 NAME =				a.out
 
-SRCS =				main.c								\
-					draw.c								\
-					player_update.c						\
-					raycasting.c						\
-					utils.c								\
-					controls/keyboard.c					\
-					initialization/keyboard_init.c		\
-					initialization/map_init.c			\
-					initialization/minimap_init.c		\
-					initialization/wnd_init.c			\
-					initialization/woof_init.c			\
-					initialization/mouse.c				\
-					initialization/input/convert_file_to_map.c	\
-					initialization/input/find_hero_position.c	\
-					initialization/input/get_input.c			\
-					initialization/input/init_hero.c		\
-					initialization/input/read_file.c	\
-					quit/map_quit.c						\
-					quit/minimap_quit.c					\
-					quit/wnd_quit.c						\
-					quit/woof_quit.c					\
-					menu/srcs/menu_add_button.c			\
-					menu/srcs/menu_create.c				\
-					menu/srcs/menu_destroy.c			\
-					menu/srcs/menu_draw.c				\
-					menu/srcs/menu_select_button.c		\
-					menu/srcs/menu_select_next.c		\
-					menu/srcs/menu_select_prev.c		\
-					menu/srcs/menu_selectd_uid.c		\
-					button/srcs/button_add_title.c		\
-					button/srcs/button_create.c			\
-					button/srcs/button_deselect.c		\
-					button/srcs/button_destroy.c		\
-					button/srcs/button_draw.c			\
-					button/srcs/button_select.c			\
-					button/srcs/button_uid.c
+SRCS		=
 
 
 SRCS_DIR =			srcs
@@ -55,8 +20,8 @@ INCLUDES_STR_DIR =	$(INCLUDES_DIR)structs/
 INCLUDES_INIT_DIR =	$(INCLUDES_DIR)initialization/
 INCLUDES_INP_DIR =	$(INCLUDES_DIR)initialization/input/
 INCLUDES_QUIT_DIR =	$(INCLUDES_DIR)quit/
-INCLUDES_BUTTON =	button/includes
-INCLUDES_MENU =		menu/includes
+INCLUDES_BUTTON =	$(INCLUDES_DIR)button/
+INCLUDES_MENU =		$(INCLUDES_DIR)menu/
 
 
 INCLUDES =			-I $(INCLUDES_DIR) -I $(INCLUDES_CON_DIR)
@@ -109,10 +74,10 @@ FLAGS_LINK =		-L libft -lft -lSDL2 -lm
 all:
 	gcc -Wall -Wextra -g												\
 	-I includes -I ./include -I includes/controls -I includes/graphic -I includes/quit		\
-	-I includes/initialization -I libft/includes -I menu/includes				\
-	-I button/includes -I includes/structs -I includes/initialization/input		\
+	-I includes/initialization -I libft/includes -I includes/menu				\
+	-I includes/button -I includes/structs -I includes/initialization/input		\
 	srcs/*.c srcs/controls/*.c srcs/initialization/*.c srcs/quit/*.c			\
-	button/srcs/*.c menu/srcs/*.c srcs/initialization/input/*.c					\
+	srcs/button/*.c srcs/menu/*.c srcs/initialization/input/*.c					\
 	-L ./libft/ -lft -L ./lib/ -lSDL2 -lSDL2_ttf -lSDL2_image -lm
 # all: $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 21:25:37 by user              #+#    #+#             */
-/*   Updated: 2020/08/04 07:58:19 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 09:46:13 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include "woof3d.h"
 #include "woofdefines.h"
 
-
 t_ray	*raycast(int fov, float pov, t_position start, t_vector_point *map)
 {
 	t_ray *rays = malloc(sizeof(t_ray) * WND_WIDTH);
@@ -24,9 +23,8 @@ t_ray	*raycast(int fov, float pov, t_position start, t_vector_point *map)
 	t_ray rayx = {0};
 	t_ray rayy = {0};
 	float	dir = pov + fov / 2;
-	if (dir >= 360) {
+	if (dir >= 360)
 		dir -= 360;
-	}
 	float	diff = fov / (float)WND_WIDTH;
 	float	dx;
 	float	dy;
@@ -34,7 +32,7 @@ t_ray	*raycast(int fov, float pov, t_position start, t_vector_point *map)
 	int		map_y;
 
 	for (int x = 0; x < WND_WIDTH; ++x) {
-		// horizontal
+		// horizont
 		if (dir == 0 || dir == 180) {
 			rayx.len = INFINITY;
 		} else {
