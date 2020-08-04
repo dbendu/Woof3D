@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 21:25:37 by user              #+#    #+#             */
-/*   Updated: 2020/08/04 11:09:27 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 12:32:23 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,7 @@ static t_ray	raycast_y(t_position start, t_vector_point *map,
 	return (rayy);
 }
 
-t_ray			*raycast(int fov, float pov,
-							t_position start, t_vector_point *map)
+t_ray			*raycast(float pov, t_position start, t_vector_point *map)
 {
 	t_ray	*rays;
 	t_ray	rayx;
@@ -84,7 +83,7 @@ t_ray			*raycast(int fov, float pov,
 	float	dir;
 	int		x;
 
-	dir = pov + fov / 2;
+	dir = pov + HERO_FOV_DEFAULT / 2;
 	dir -= dir >= 360 ? 360 : 0;
 	rays = malloc(sizeof(t_ray) * WND_WIDTH);
 	ft_memset(rays, 0, sizeof(t_ray) * WND_WIDTH);
@@ -99,7 +98,7 @@ t_ray			*raycast(int fov, float pov,
 			rayy = raycast_y(start, map, dir, pov);
 		rays[x] = rayx.len < rayy.len ? rayx : rayy;
 		rays[x].side = rayx.len < rayy.len ? X_SIDE : Y_SIDE;
-		dir -= fov / (float)WND_WIDTH;
+		dir -= HERO_FOV_DEFAULT / (float)WND_WIDTH;
 		dir += dir < 0 ? 360 : 0;
 	}
 	return (rays);
