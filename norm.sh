@@ -7,7 +7,8 @@ ls
 echo
 ans="*"
 global_bool=0
-echo "Show all files in folder that didn't pass the norm?"
+echo "Show all files in folder that didn't pass the norm?(y/n)
+\033[33m(It will be slower if there are a lot of files)\033[0m"
 read showing
 for file in $ans
 do
@@ -16,12 +17,12 @@ do
 	else
 		echo $file "\033[31mX\033[0m"
 		case "$ans" in
-                "y"|"Y"|"Yes"|"yes")
-                        norminette $file
-                        ;;
-                "n"|"N"|"no"|"No")
-                        ;;
-        esac
+				"y"|"Y"|"Yes"|"yes")
+						norminette $file
+						;;
+				"n"|"N"|"no"|"No")
+						;;
+		esac
 		global_bool=1
 	fi
 	echo "------------------------"
