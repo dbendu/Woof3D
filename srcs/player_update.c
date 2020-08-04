@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 20:59:56 by user              #+#    #+#             */
-/*   Updated: 2020/08/04 09:53:52 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 11:16:17 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,15 @@ static void			move_hero_if_possible(t_vector_point *map, t_hero *hero,
 
 static void			update_player_position(t_map *map, bool forward)
 {
-	const float		moving_vector = map->hero.speed * (forward ? 1 : -1);
-	const float		new_x = map->hero.position.x +
-		cos(to_rad(map->hero.pov)) * moving_vector;
-	const float		new_y = map->hero.position.y -
-		sin(to_rad(map->hero.pov)) * moving_vector;
+	float		moving_vector;
+	float		new_x;
+	float		new_y;
 
+	moving_vector = map->hero.speed * (forward ? 1 : -1);
+	new_x = map->hero.position.x +
+		cos(to_rad(map->hero.pov)) * moving_vector;
+	new_y = map->hero.position.y -
+		sin(to_rad(map->hero.pov)) * moving_vector;
 	move_hero_if_possible(map->map, &map->hero, new_x, new_y);
 }
 

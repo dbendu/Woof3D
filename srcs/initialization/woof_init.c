@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:33:46 by user              #+#    #+#             */
-/*   Updated: 2020/08/04 09:26:59 by mburl            ###   ########.fr       */
+/*   Updated: 2020/08/04 11:20:52 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ static void		sdl_init(void)
 	TTF_Init();
 }
 
-static t_menu	pause_init(SDL_Renderer *render, TTF_Font *font)
+static void		pause_init(SDL_Renderer *render, TTF_Font *font, t_menu *pause)
 {
-	t_menu			pause;
 	const SDL_Rect	rects[PAUSE_MENU_BUTTONS] = {
 			{WND_WIDTH / 2 - 150 / 2, WND_HEIGHT / 2 - 140, 150, 80},
 			{WND_WIDTH / 2 - 150 / 2, WND_HEIGHT / 2 - 40, 150, 80},
@@ -39,21 +38,19 @@ static t_menu	pause_init(SDL_Renderer *render, TTF_Font *font)
 	t_button		button;
 	int				i;
 
-	pause = menu_create(render, true);
+	*pause = menu_create(render, true);
 	i = 0;
 	while (i < PAUSE_MENU_BUTTONS)
 	{
 		button = button_create(render, &rects[i], uids[i]);
 		button_add_title(button, titles[i], font);
-		menu_add_button(pause, button);
+		menu_add_button(*pause, button);
 		i++;
 	}
-	return (pause);
 }
 
-static t_menu	main_init(SDL_Renderer *render, TTF_Font *font)
+static void		main_init(SDL_Renderer *render, TTF_Font *font, t_menu *main)
 {
-	t_menu			main;
 	const SDL_Rect	rects[MAIN_MENU_BUTTONS] = {
 		{WND_WIDTH / 2 - 150 / 2, WND_HEIGHT / 2 - 140, 150, 80},
 		{WND_WIDTH / 2 - 150 / 2, WND_HEIGHT / 2 - 40, 150, 80},
@@ -68,16 +65,15 @@ static t_menu	main_init(SDL_Renderer *render, TTF_Font *font)
 	t_button		button;
 	int				i;
 
-	main = menu_create(render, true);
+	*main = menu_create(render, true);
 	i = 0;
 	while (i < MAIN_MENU_BUTTONS)
 	{
 		button = button_create(render, &rects[i], uids[i]);
 		button_add_title(button, titles[i], font);
-		menu_add_button(main, button);
+		menu_add_button(*main, button);
 		i++;
 	}
-	return (main);
 }
 
 static t_menus	menus_init(SDL_Renderer *render)
@@ -85,9 +81,9 @@ static t_menus	menus_init(SDL_Renderer *render)
 	t_menus	menus;
 
 	menus.big = TTF_OpenFont("anon.ttf", 30);
-	menus.main = main_init(render, menus.big);
+	main_init(render, menus.big, &menus.main);
 	menus.settings = NULL;
-	menus.pause = pause_init(render, menus.big);
+	pause_init(render, menus.big, &menus.pause);
 	return (menus);
 }
 
