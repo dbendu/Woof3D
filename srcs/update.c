@@ -45,7 +45,7 @@ void	update(t_data *data)
 	if (data->keyboard.key[TURN_RIGHT])
 		update_position(data, -1, 90);
 	SDL_GetRelativeMouseState(&xrel, &yrel);
-	data->map.hero.pov -= xrel;
+	data->map.hero.pov -= xrel % 360;
 	if (data->map.hero.pov >= 360)
 		data->map.hero.pov -= 360;
 	else if (data->map.hero.pov <= 360)
