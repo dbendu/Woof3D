@@ -19,7 +19,6 @@
 t_data		woof_init(const char *filename);
 void		woof_quit(t_data *data);
 
-void		player_update(t_data *data, t_hero *hero);
 void		draw(t_data *data);
 
 t_ray		*raycast(float pov, t_position start, t_vector_point *map);

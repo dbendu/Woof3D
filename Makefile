@@ -38,7 +38,6 @@ SRCS		=		button/button_add_title.c\
 					main.c\
 					map_render.c\
 					pause_cycle.c\
-					player_update.c\
 					raycasting.c\
 					update.c\
 					utils.c
