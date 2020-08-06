@@ -90,7 +90,7 @@ HEADERS =			$(addprefix $(INCLUDES_DIR), $(HEADERS_LIST))
 #									FLAGS
 #-------------------------------------------------------------------------------
 
-FLAGS_COMPILE =		-Wall -Wextra -Werror
+FLAGS_COMPILE =		-Wall -Wextra -Werror -g
 
 FLAGS_LINK =		-lm -L./libft/ -lft -lSDL2 -lSDL2_ttf -lSDL2_image
 
