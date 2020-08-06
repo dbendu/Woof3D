@@ -41,7 +41,7 @@ bool		invalid_row(t_vector_point *map, int y, int x)
 		{
 			if (!(0 <= map[i][j].wall_c && map[i][j].wall_c < 6))
 				return (true);
-			if (!((i == 0 || i == y - 1) && map[i][j].wall == 1))
+			if ((i == 0 || i == y - 1) && !map[i][j].wall)
 				return (true);
 			j++;
 		}
