@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 15:00:40 by mburl             #+#    #+#             */
-/*   Updated: 2020/08/04 09:27:37 by mburl            ###   ########.fr       */
+/*   Updated: 2020/10/29 12:37:17 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 static void	usage(void)
 {
-	write(2, "usage: ./a.out [map]\n", 21);
+	write(2, "usage: ./wolf3d [map]\n", 22);
 }
 
 int			main(int argc, const char **argv)

@@ -85,6 +85,13 @@ HEADERS_LIST =		woof3d.h\
 
 HEADERS =			$(addprefix $(INCLUDES_DIR), $(HEADERS_LIST))
 
+#-------------------------------------------------------------------------------
+#									LIBFT
+#-------------------------------------------------------------------------------
+
+LIBFT_DIR = ./libft/
+LIBFT = $(LIBFT_DIR)libft.a
+LIBFT_LINK = -L$(LIBFT_DIR) -lft
 
 #-------------------------------------------------------------------------------
 #									FLAGS
@@ -92,18 +99,12 @@ HEADERS =			$(addprefix $(INCLUDES_DIR), $(HEADERS_LIST))
 
 FLAGS_COMPILE =		-Wall -Wextra -Werror -g
 
-FLAGS_LINK =		-lm -L./libft/ -lft -lSDL2 -lSDL2_ttf -lSDL2_image
+FLAGS_LINK =		$(LIBFT_LINK) -L./lib/ -lSDL2 -lSDL2_ttf -lSDL2_image -lm
 
-
-# all:
-# 	gcc -Wall -Wextra -g												\
-# 	-I includes -I ./include -I includes/controls -I includes/graphic -I includes/quit		\
-# 	-I includes/initialization -I libft/includes -I includes/menu				\
-# 	-I includes/button -I includes/structs -I includes/initialization/input		\
-# 	srcs/*.c srcs/controls/*.c srcs/initialization/*.c srcs/quit/*.c			\
-# 	srcs/button/*.c srcs/menu/*.c srcs/initialization/input/*.c					\
-# 	-lm -Llibft/ -lft -Llib/ -lSDL2 -lSDL2_ttf -lSDL2_image
 all: $(NAME)
+
+$(LIBFT):
+	make -C $(LIBFT_DIR)
 
 $(OBJS_DIR):
 	mkdir -p $(OBJS_DIR)
@@ -117,16 +118,19 @@ $(OBJS_DIR):
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c $(HEADERS)
 	gcc $(FLAGS_COMPILE) $(INCLUDES) -o $@ -c $<
 
-$(NAME): $(OBJS_DIR) $(OBJS)
+$(NAME): $(LIBFT) $(OBJS_DIR) $(OBJS)
 	gcc $(OBJS) $(FLAGS_LINK) -o $(NAME)
 
 clean:
 	rm -rf $(OBJS_DIR)
+	make clean -C $(LIBFT_DIR)
 
 c: clean
 
-fclean: clean
-	rm -f $(NAME)
+fclean:
+	rm -rf $(OBJS_DIR)
+	rm -rf $(NAME)
+	make fclean -C $(LIBFT_DIR)
 
 f: clean
 

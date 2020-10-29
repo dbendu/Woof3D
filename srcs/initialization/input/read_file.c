@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 18:04:49 by user              #+#    #+#             */
-/*   Updated: 2020/08/04 15:58:49 by mburl            ###   ########.fr       */
+/*   Updated: 2020/10/29 12:38:02 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,6 @@
 #include <fcntl.h>
 #include "initialization/input/input.h"
 #include "libft.h"
-
-static bool		is_dir(const char *filename)
-{
-	struct stat	statbuf;
-
-	if (stat(filename, &statbuf) != 0)
-		return (false);
-	if (S_ISDIR(statbuf.st_mode))
-		return (true);
-	else
-		return (false);
-}
 
 static bool		useless_line(const char *line)
 {
