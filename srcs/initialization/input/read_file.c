@@ -15,6 +15,18 @@
 #include "initialization/input/input.h"
 #include "libft.h"
 
+static bool		is_dir(const char *filename)
+{
+	struct stat	statbuf;
+
+	if (stat(filename, &statbuf) != 0)
+		return (false);
+	if (S_ISDIR(statbuf.st_mode))
+		return (true);
+	else
+		return (false);
+}
+
 static bool		useless_line(const char *line)
 {
 	while (*line == ' ' || *line == '\t')
