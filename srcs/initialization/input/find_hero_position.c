@@ -50,6 +50,8 @@ t_point			find_hero_position(const t_vector_char *lines)
 		if (ft_strchr(lines[line_index], 'X') != NULL)
 		{
 			hero_position = get_hero_position(lines[line_index], line_index);
+			hero_position.x++;
+			hero_position.y++;
 			hero_founded = true;
 			break ;
 		}
