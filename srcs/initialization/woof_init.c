@@ -80,9 +80,8 @@ static t_menus	menus_init(SDL_Renderer *render)
 {
 	t_menus	menus;
 
-	menus.big = TTF_OpenFont("res/font/anon.ttf", 30);
+	menus.big = TTF_OpenFont("/home/user/Woof3D/res/font/anon.ttf", 30);
 	main_init(render, menus.big, &menus.main);
-	menus.settings = NULL;
 	pause_init(render, menus.big, &menus.pause);
 	return (menus);
 }
@@ -96,9 +95,7 @@ t_data			woof_init(const char *filename)
 	data.wnd = wnd_init(WND_TITLE, WND_WIDTH, WND_HEIGHT);
 	data.minimap = minimap_init();
 	data.map = map_init(filename);
-	data.jumps.exit = false;
-	data.jumps.to_game = false;
-	data.jumps.to_main = false;
+	ft_memset(&data.actions, 0, sizeof(t_actions));
 	data.menus = menus_init(data.wnd.renderer);
 	data.quit = false;
 	return (data);

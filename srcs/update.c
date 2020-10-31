@@ -36,13 +36,14 @@ void	update(t_data *data)
 	int		xrel;
 	int		yrel;
 
-	if (data->keyboard.key[MOVE_FORWARD])
-		update_position(data, data->keyboard.key[RUN] ? 4 : 2, 0);
-	if (data->keyboard.key[MOVE_BACK])
+	if (data->actions.move_forward) {
+		update_position(data, data->actions.run ? 4 : 2, 0);
+	}
+	if (data->actions.move_back)
 		update_position(data, -2, 0);
-	if (data->keyboard.key[TURN_LEFT])
+	if (data->actions.move_left)
 		update_position(data, -1, -90);
-	if (data->keyboard.key[TURN_RIGHT])
+	if (data->actions.move_right)
 		update_position(data, -1, 90);
 	SDL_GetRelativeMouseState(&xrel, &yrel);
 	data->map.hero.pov -= xrel % 360;

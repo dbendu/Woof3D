@@ -15,7 +15,8 @@
 #include "libft.h"
 #include <time.h>
 
-static void	render(t_data *data, bool map)
+
+static void	render(t_data *data)
 {
 	static const SDL_Rect	up = {0, 0, WND_WIDTH, WND_HEIGHT / 2};
 	static const SDL_Rect	dn = {0, WND_HEIGHT / 2, WND_WIDTH, WND_HEIGHT / 2};
@@ -28,51 +29,40 @@ static void	render(t_data *data, bool map)
 	SDL_SetRenderDrawColor(data->wnd.renderer, 0x57, 0x57, 0x57, 0xff);
 	SDL_RenderFillRect(data->wnd.renderer, &dn);
 	rays = raycast(data->map.hero.pov,
-		data->map.hero.position, data->map.map);
+				   data->map.hero.position, data->map.map);
 	draw_vis(&data->wnd, rays, data->map.map);
-	if (map)
-	{
-		draw_map(data->wnd.renderer, data->map.map);
-		draw_rays(data->wnd.renderer, rays, data->map.hero.position);
-	}
+//	if (map)
+//	{
+//		draw_map(data->wnd.renderer, data->map.map);
+//		draw_rays(data->wnd.renderer, rays, data->map.hero.position);
+//	}
 	free(rays);
 	SDL_UpdateWindowSurface(data->wnd.window);
 }
 
-static void	event_handle(const SDL_Event *event, t_data *data)
+static void	update_actions(t_actions *actions, t_keyboard *keyboard)
 {
-	if (event->type == SDL_QUIT)
-		data->jumps.exit = true;
-	else if (event->type == SDL_KEYDOWN)
-	{
-		if (event->key.keysym.sym == SDLK_ESCAPE)
-			pause_cycle(data);
-		else
-			handle_key_press(&data->keyboard, event->key.keysym.sym);
-	}
-	else if (event->type == SDL_KEYUP)
-		handle_key_release(&data->keyboard, event->key.keysym.sym);
+	actions->move_forward = keyboard->keys_state[MOVE_FORWARD];
+	actions->move_back = keyboard->keys_state[MOVE_BACK];
+	actions->move_left = keyboard->keys_state[MOVE_LEFT];
+	actions->move_right = keyboard->keys_state[MOVE_RIGHT];
+	actions->run = keyboard->keys_state[RUN];
+	actions->to_pause = keyboard->keys_state[ESC];
 }
 
 void		game_cycle(t_data *data)
 {
 	SDL_Event	event;
-	bool		draw_map;
-
-	SDL_SetRelativeMouseMode(1);
-	draw_map = false;
-	while (true)
-	{
-		if (SDL_PollEvent(&event))
-		{
-			if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_m)
-				draw_map = !draw_map;
-			else
-				event_handle(&event, data);
-			if (data->jumps.to_main || data->jumps.exit)
-				break ;
+//	SDL_SetRelativeMouseMode(1);
+	while (true) {
+		SDL_PumpEvents();
+		// time elapsed
+		update_actions(&data->actions, &data->keyboard);
+		if (data->actions.to_pause) {
+			break;
 		}
 		update(data);
-		render(data, draw_map);
+		render(data);
+//		SDL_Delay(10);
 	}
 }

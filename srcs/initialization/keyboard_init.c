@@ -16,6 +16,6 @@ t_keyboard	keyboard_init(void)
 {
 	t_keyboard	keyboard;
 
-	ft_memset(&keyboard, 0, sizeof(t_keyboard));
+	keyboard.keys_state = SDL_GetKeyboardState(NULL);
 	return (keyboard);
 }

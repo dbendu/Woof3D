@@ -31,7 +31,7 @@ t_mouse		mouse_init(SDL_Renderer *render)
 {
 	t_mouse		m;
 
-	m.texture = IMG_LoadTexture(render, "res/textures/cursor.png");
+	m.texture = IMG_LoadTexture(render, "/home/user/Woof3D/res/textures/cursor.png");
 	m.cursor.h = 50;
 	m.cursor.w = 50;
 	m.cursor.x = 0;

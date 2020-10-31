@@ -49,12 +49,12 @@ t_texture	*load_textures(SDL_Window *wnd)
 	t_texture	*textures;
 	SDL_Surface	*srf;
 	int			i;
-	const char	texs[TEXTURES_COUNT][40] = {
-		"res/textures/Earth.bmp",
-		"res/textures/Grey.bmp",
-		"res/textures/Stone.bmp",
-		"res/textures/Window.bmp",
-		"res/textures/Adolf.bmp"
+	const char	texs[TEXTURES_COUNT][43] = {
+		"/home/user/Woof3D/res/textures/Earth.bmp",
+		"/home/user/Woof3D/res/textures/Grey.bmp",
+		"/home/user/Woof3D/res/textures/Stone.bmp",
+		"/home/user/Woof3D/res/textures/Window.bmp",
+		"/home/user/Woof3D/res/textures/Adolf.bmp"
 	};
 
 	textures = malloc(sizeof(t_texture) * TEXTURES_COUNT);
