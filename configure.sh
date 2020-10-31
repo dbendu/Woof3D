@@ -13,21 +13,15 @@ cd build_SDL2_image
 ../temp_src/SDL2_image/configure --prefix $(PWD)/../SDL2_lib/
 make
 make install
-cd ..
-git clone https://github.com/Kain2250/sdl2.git temp_src/SDL2_mixer
-mkdir -p build_SDL2_mixer
-cd build_SDL2_mixer
-../temp_src/SDL2_mixer/configure --prefix $(PWD)/../SDL2_lib/
-make
-make install
 
 cd ..
-git clone https://github.com/SDL-mirror/SDL_ttf.git temp_src/SDL2_ttf
+curl -L https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.15.tar.gz -o temp_src/SDL2_ttf-2.0.15.tar.gz
+cd temp_src
+tar xvzf SDL2_ttf-2.0.15.tar.gz
+cd ..
+rm -rf temp_src/SDL2_ttf-2.0.15.tar.gz
 mkdir -p build_SDL2_ttf
 cd build_SDL2_ttf
-../temp_src/SDL2_ttf/configure --prefix $(PWD)/../SDL2_lib/
+../temp_src/SDL2_ttf-2.0.15/configure --prefix $(PWD)/../SDL2_lib/
 make
 make install
-
-cd ..
-rm -rf temp_src
