@@ -74,6 +74,5 @@ void		game_cycle(t_data *data)
 		}
 		update(data);
 		render(data, draw_map);
-		SDL_Delay(7);
 	}
 }

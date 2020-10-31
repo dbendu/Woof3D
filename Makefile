@@ -54,7 +54,7 @@ OBJS		=		$(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 
 INCLUDES_LIBFT		=	./libft/includes/
 INCLUDES_DIR =			./includes/
-INCLUDES_SDL2		=	SDL2_lib/include/SDL2/
+INCLUDES_SDL2		=	./SDL2_lib/include/
 
 INCLUDES =			-I $(INCLUDES_DIR) -I $(INCLUDES_LIBFT) -I $(INCLUDES_SDL2)
 
@@ -100,7 +100,7 @@ LIBFT_LINK = -L$(LIBFT_DIR) -lft
 
 SDL2_FLAGS = -lSDL2 -lSDL2_image -lSDL2_ttf
 LIBSDL2_DIR = ./SDL2_lib/
-LIBSDL2			= $(LIBSDL2_DIR)/lib
+LIBSDL2			= $(LIBSDL2_DIR)lib
 
 LINK_SDL2 		= -L$(LIBSDL2) $(SDL2_FLAGS)
 #-------------------------------------------------------------------------------
@@ -109,7 +109,7 @@ LINK_SDL2 		= -L$(LIBSDL2) $(SDL2_FLAGS)
 
 FLAGS_COMPILE =		-Wall -Wextra -Werror -g
 
-FLAGS_LINK =		-lm $(LIBFT_LINK) $(SDL_2_FLAGS) 
+FLAGS_LINK =		-lm $(LIBFT_LINK) $(SDL_2_FLAGS) $(LINK_SDL2)
 
 all: $(NAME)
 
@@ -128,14 +128,14 @@ $(OBJS_DIR):
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c $(HEADERS)
 	gcc $(FLAGS_COMPILE) $(INCLUDES) -o $@ -c $<
 
-$(NAME): $(LIBFT) $(OBJS_DIR) $(OBJS) $(LIBSDL2)
+$(NAME): $(LIBFT) $(OBJS_DIR) $(OBJS)
 	gcc $(OBJS) $(FLAGS_LINK) -o $(NAME)
 
 clean:
 	rm -rf $(OBJS_DIR)
 	make clean -C $(LIBFT_DIR)
 
-$(LIBSDL2):
+sdl:
 	sh ./configure.sh
 
 c: clean

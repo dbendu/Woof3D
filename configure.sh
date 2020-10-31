@@ -1,5 +1,4 @@
 #!bin/sh
-cd allLibs
 mkdir -p temp_src
 git clone https://github.com/Kain2250/sdl2-2.git temp_src/SDL2-2
 mkdir -p build_SDL2
@@ -31,5 +30,4 @@ make
 make install
 
 cd ..
-git clone https://github.com/aseprite/freetype2.git temp_src/freetype2
-mkdir -p build_freetype2
+rm -rf temp_src
