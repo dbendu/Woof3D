@@ -47,7 +47,6 @@ typedef struct		s_data
 	t_map			map;
 	t_minimap		minimap;
 	t_menus			menus;
-	bool			quit;
 }					t_data;
 
 #endif

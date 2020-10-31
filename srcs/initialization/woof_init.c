@@ -76,6 +76,7 @@ static void		main_init(SDL_Renderer *render, TTF_Font *font, t_menu *main)
 	}
 }
 
+// TODO: убрать полный путь
 static t_menus	menus_init(SDL_Renderer *render)
 {
 	t_menus	menus;
@@ -86,17 +87,17 @@ static t_menus	menus_init(SDL_Renderer *render)
 	return (menus);
 }
 
+// TODO: сделать норм
 t_data			woof_init(const char *filename)
 {
 	t_data	data;
 
 	sdl_init();
 	data.keyboard = keyboard_init();
-	data.wnd = wnd_init(WND_TITLE, WND_WIDTH, WND_HEIGHT);
+	data.wnd = wnd_init();
 	data.minimap = minimap_init();
 	data.map = map_init(filename);
 	ft_memset(&data.actions, 0, sizeof(t_actions));
 	data.menus = menus_init(data.wnd.renderer);
-	data.quit = false;
 	return (data);
 }

@@ -20,7 +20,7 @@
 # include "controls/keyboard.h"
 # include "woofdefines.h"
 
-t_wnd		wnd_init(const char *title, int width, int height);
+t_wnd		wnd_init(void);
 t_map		map_init(const char *filename);
 t_keyboard	keyboard_init(void);
 t_minimap	minimap_init(void);

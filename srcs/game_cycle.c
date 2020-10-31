@@ -40,29 +40,28 @@ static void	render(t_data *data)
 	SDL_UpdateWindowSurface(data->wnd.window);
 }
 
-static void	update_actions(t_actions *actions, t_keyboard *keyboard)
+static void	update_actions(t_actions *actions, t_keyboard keyboard)
 {
-	actions->move_forward = keyboard->keys_state[MOVE_FORWARD];
-	actions->move_back = keyboard->keys_state[MOVE_BACK];
-	actions->move_left = keyboard->keys_state[MOVE_LEFT];
-	actions->move_right = keyboard->keys_state[MOVE_RIGHT];
-	actions->run = keyboard->keys_state[RUN];
-	actions->to_pause = keyboard->keys_state[ESC];
+	actions->move_forward = keyboard[MOVE_FORWARD];
+	actions->move_back = keyboard[MOVE_BACK];
+	actions->move_left = keyboard[MOVE_LEFT];
+	actions->move_right = keyboard[MOVE_RIGHT];
+	actions->run = keyboard[RUN];
+	actions->to_pause = keyboard[ESC];
+	actions->sonic_mode = keyboard[SONIC_MODE];
 }
 
 void		game_cycle(t_data *data)
 {
-	SDL_Event	event;
-//	SDL_SetRelativeMouseMode(1);
+	SDL_SetRelativeMouseMode(1);
 	while (true) {
 		SDL_PumpEvents();
 		// time elapsed
-		update_actions(&data->actions, &data->keyboard);
+		update_actions(&data->actions, data->keyboard);
 		if (data->actions.to_pause) {
 			break;
 		}
 		update(data);
 		render(data);
-//		SDL_Delay(10);
 	}
 }

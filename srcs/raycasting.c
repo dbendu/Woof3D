@@ -83,7 +83,7 @@ t_ray			*raycast(float pov, t_position start, t_vector_point *map)
 	float	dir;
 	int		x;
 
-	dir = pov + HERO_FOV_DEFAULT / 2;
+	dir = pov + HERO_FOV / 2;
 	dir = dir > 360 ? (int)dir % 360 : dir;
 	rays = malloc(sizeof(t_ray) * WND_WIDTH);
 	ft_memset(rays, 0, sizeof(t_ray) * WND_WIDTH);
@@ -98,7 +98,7 @@ t_ray			*raycast(float pov, t_position start, t_vector_point *map)
 			rayy = raycast_y(start, map, dir, pov);
 		rays[x] = rayx.len < rayy.len ? rayx : rayy;
 		rays[x].side = rayx.len < rayy.len ? X_SIDE : Y_SIDE;
-		dir -= HERO_FOV_DEFAULT / (float)WND_WIDTH;
+		dir -= HERO_FOV / (float)WND_WIDTH;
 		dir += dir < 0 ? 360 : 0;
 	}
 	return (rays);

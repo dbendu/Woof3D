@@ -37,7 +37,13 @@ void	update(t_data *data)
 	int		yrel;
 
 	if (data->actions.move_forward) {
-		update_position(data, data->actions.run ? 4 : 2, 0);
+		if (data->actions.sonic_mode) {
+			update_position(data, 16, 0);
+		} else if (data->actions.run) {
+			update_position(data, 4, 0);
+		} else {
+			update_position(data, 2, 0);
+		}
 	}
 	if (data->actions.move_back)
 		update_position(data, -2, 0);

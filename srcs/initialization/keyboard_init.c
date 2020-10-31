@@ -16,6 +16,6 @@ t_keyboard	keyboard_init(void)
 {
 	t_keyboard	keyboard;
 
-	keyboard.keys_state = SDL_GetKeyboardState(NULL);
+	keyboard = SDL_GetKeyboardState(NULL);
 	return (keyboard);
 }

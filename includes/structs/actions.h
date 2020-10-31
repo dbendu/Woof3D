@@ -11,6 +11,7 @@ typedef struct		s_actions
 	bool			move_right;
 
 	bool			run;
+	bool			sonic_mode;
 
 	bool			to_pause;
 	bool			to_main;

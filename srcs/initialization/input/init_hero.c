@@ -22,7 +22,7 @@ t_hero	init_hero(t_point hero_position)
 
 	hero.position.x = hero_position.x * CELL_SIZE + CELL_SIZE / 2;
 	hero.position.y = hero_position.y * CELL_SIZE + CELL_SIZE / 2;
-	hero.fov = HERO_FOV_DEFAULT;
+	hero.fov = HERO_FOV;
 	hero.speed = CELL_SIZE * 0.15;
 	hero.pov = 45;
 	return (hero);

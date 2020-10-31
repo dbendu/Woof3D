@@ -13,14 +13,6 @@
 #include "initialization/init_all.h"
 #include "woofdefines.h"
 
-static void	check_args(const char *title, int width, int height)
-{
-	if (!title || *title == '\0')
-		ft_error(SDL_GetError(), "woof_init/wnd_init", 0);
-	if (width < WND_MIN_WIDTH || height < WND_MIN_HEIGHT)
-		ft_error("too small window", "woof_init/wnd_init", 0);
-}
-
 uint32_t	*convert(SDL_Surface *srf)
 {
 	uint32_t	*src_pixels;
@@ -73,16 +65,15 @@ t_texture	*load_textures(SDL_Window *wnd)
 	return (textures);
 }
 
-t_wnd		wnd_init(const char *title, int width, int height)
+t_wnd		wnd_init()
 {
 	t_wnd	wnd;
 
-	check_args(title, width, height);
-	wnd.window = SDL_CreateWindow("Woof", SDL_WINDOWPOS_CENTERED,
-								SDL_WINDOWPOS_CENTERED, width, height, 0);
+	wnd.window = SDL_CreateWindow(WND_TITLE,
+					SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+					WND_WIDTH, WND_HEIGHT, 0);
 	wnd.main_canvas = SDL_GetWindowSurface(wnd.window);
 	wnd.renderer = SDL_CreateSoftwareRenderer(wnd.main_canvas);
 	wnd.textures = load_textures(wnd.window);
-	SDL_SetWindowTitle(wnd.window, title);
 	return (wnd);
 }

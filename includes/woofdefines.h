@@ -18,8 +18,6 @@
 */
 # define WND_WIDTH			1480
 # define WND_HEIGHT			720
-# define WND_MIN_WIDTH		320
-# define WND_MIN_HEIGHT		240
 # define WND_TITLE			"Woof3D"
 
 /*
@@ -30,23 +28,8 @@
 # define TEXTURES_COUNT		5
 
 /*
-** hero
-*/
-# define HERO_ROTATE        1
-
-/*
 ** field of view, in degrees
 */
-# define HERO_FOV_DEFAULT	60
-# define HERO_FOV_MAX		170
-# define HERO_FOV_MIN		30
-# define HERO_STEP_SPEED	CELL_SIZE * 0.025
-# define HERO_RUN_SPEED		1.6
-
-/*
-** only integer, not fractional for bouth
-*/
-# define RAYS_BY_ANGLE		5
-# define MAX_RAY_MULTIPLYER	6
+# define HERO_FOV	60
 
 #endif
