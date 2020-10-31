@@ -138,6 +138,11 @@ clean:
 sdl:
 	sh ./configure.sh
 
+clean_sdl:
+	rm -rf temp_src
+	rm -rf build*
+	rm -rf SDL2_lib
+
 c: clean
 
 fclean:
