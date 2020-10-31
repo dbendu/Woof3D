@@ -39,3 +39,20 @@ void		setup_color(SDL_Renderer *render, t_point *point)
 	else
 		SDL_SetRenderDrawColor(render, 0xff, 0xff, 0, 0xff);
 }
+
+void		count_cols(const char *line, size_t *max_size)
+{
+	size_t		cols;
+
+	cols = 0;
+	while (true)
+	{
+		while (*line == ' ' || *line == '\t')
+			line += 1;
+		if (*line == '\0')
+			break ;
+		cols++;
+		line++;
+	}
+	*max_size = (cols > *max_size) ? cols : *max_size;
+}

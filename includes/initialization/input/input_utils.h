@@ -21,5 +21,6 @@ t_vector_char	*read_file(const char *filename);
 t_vector_point	*convert_file_to_map(const t_vector_char *lines);
 t_hero			init_hero(t_point hero_position);
 t_point			find_hero_position(const t_vector_char *lines);
+void			count_cols(const char *line, size_t *max_size);
 
 #endif
