@@ -23,7 +23,7 @@
 /*
 ** game
 */
-# define CELL_SIZE			62
+# define CELL_SIZE			64
 # define MINIMAP_SZ			300
 # define TEXTURES_COUNT		5
 

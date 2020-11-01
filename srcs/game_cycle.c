@@ -53,6 +53,8 @@ static void	update_actions(t_actions *actions, t_keyboard keyboard)
 
 void		game_cycle(t_data *data)
 {
+	SDL_GetRelativeMouseState(NULL, NULL);
+	data->map.hero.pov = 90;
 	SDL_SetRelativeMouseMode(1);
 	while (true) {
 		SDL_PumpEvents();

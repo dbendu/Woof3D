@@ -88,7 +88,7 @@ static t_menus	menus_init(SDL_Renderer *render)
 }
 
 // TODO: сделать норм
-t_data			woof_init(const char *filename)
+t_data			woof_init(const char *map_file)
 {
 	t_data	data;
 
@@ -96,8 +96,9 @@ t_data			woof_init(const char *filename)
 	data.keyboard = keyboard_init();
 	data.wnd = wnd_init();
 	data.minimap = minimap_init();
-	data.map = map_init(filename);
-	ft_memset(&data.actions, 0, sizeof(t_actions));
+	data.map = map_init(map_file);
+	data.actions = actions_init();
+
 	data.menus = menus_init(data.wnd.renderer);
 	return (data);
 }

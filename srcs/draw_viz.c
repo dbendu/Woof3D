@@ -70,6 +70,12 @@ void				draw_vis_while(t_wnd *sdl, t_ray *rays,
 void				draw_vis(t_wnd *sdl, t_ray *rays, t_point **map)
 {
 	int			x;
+//	float distance = WND_WIDTH / 2 / tan(HERO_FOV / 2);
+//	float delta = WND_WIDTH / (float)HERO_FOV;
+//	float *angles = malloc(sizeof(float) * WND_WIDTH);
+//	for (int x = 0; x < WND_WIDTH; ++x) {
+//		angles[x] = delta * x *
+//	}
 
 	x = -1;
 	while (++x < WND_WIDTH)

@@ -19,10 +19,12 @@
 # include "graphic/minimap.h"
 # include "controls/keyboard.h"
 # include "woofdefines.h"
+# include "actions.h"
 
 t_wnd		wnd_init(void);
 t_map		map_init(const char *filename);
 t_keyboard	keyboard_init(void);
 t_minimap	minimap_init(void);
+t_actions	actions_init(void);
 
 #endif

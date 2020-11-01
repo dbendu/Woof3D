@@ -24,13 +24,12 @@ int			main(int argc, const char **argv)
 {
 	t_data	data;
 
-	if (argc == 2)
-	{
+	if (argc == 2) {
 		data = woof_init(argv[1]);
 		main_menu_cycle(&data);
 		woof_quit(&data);
-	}
-	else
+	} else {
 		usage();
+	}
 	return (0);
 }
