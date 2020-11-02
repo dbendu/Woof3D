@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:36:21 by user              #+#    #+#             */
-/*   Updated: 2020/08/04 15:59:24 by mburl            ###   ########.fr       */
+/*   Updated: 2020/11/02 16:25:02 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ t_texture	*load_textures(SDL_Window *wnd)
 	SDL_Surface	*srf;
 	int			i;
 	const char	texs[TEXTURES_COUNT][43] = {
-		"/home/user/Woof3D/res/textures/Earth.bmp",
-		"/home/user/Woof3D/res/textures/Grey.bmp",
-		"/home/user/Woof3D/res/textures/Stone.bmp",
-		"/home/user/Woof3D/res/textures/Window.bmp",
-		"/home/user/Woof3D/res/textures/Adolf.bmp"
+		"./res/textures/Earth.bmp",
+		"./res/textures/Grey.bmp",
+		"./res/textures/Stone.bmp",
+		"./res/textures/Window.bmp",
+		"./res/textures/Adolf.bmp"
 	};
 
 	textures = malloc(sizeof(t_texture) * TEXTURES_COUNT);
@@ -72,8 +72,12 @@ t_wnd		wnd_init()
 	wnd.window = SDL_CreateWindow(WND_TITLE,
 					SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
 					WND_WIDTH, WND_HEIGHT, 0);
-	wnd.main_canvas = SDL_GetWindowSurface(wnd.window);
-	wnd.renderer = SDL_CreateSoftwareRenderer(wnd.main_canvas);
+	if (wnd.window == NULL)
+		ft_error("Could not create window", SDL_GetError(), -1);
+	if (!(wnd.main_canvas = SDL_GetWindowSurface(wnd.window)))
+		ft_error("Could not create main_canvas", SDL_GetError(), -1);
+	if (!(wnd.renderer = SDL_CreateSoftwareRenderer(wnd.main_canvas)))
+		ft_error("Could not create renderrer", SDL_GetError(), -1);
 	wnd.textures = load_textures(wnd.window);
 	return (wnd);
 }

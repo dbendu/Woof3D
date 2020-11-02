@@ -1,4 +1,4 @@
-#include "initialization.h"
+#include "initialization/initialization.h"
 #include "ft_memory.h"
 
 t_actions	actions_init(void)

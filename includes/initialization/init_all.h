@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:55:20 by user              #+#    #+#             */
-/*   Updated: 2020/08/04 16:02:49 by mburl            ###   ########.fr       */
+/*   Updated: 2020/11/02 16:12:01 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "graphic/minimap.h"
 # include "controls/keyboard.h"
 # include "woofdefines.h"
-# include "actions.h"
+# include "structs/actions.h"
 
 t_wnd		wnd_init(void);
 t_map		map_init(const char *filename);

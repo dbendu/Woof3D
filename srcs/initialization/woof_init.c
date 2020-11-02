@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:33:46 by user              #+#    #+#             */
-/*   Updated: 2020/08/04 15:59:38 by mburl            ###   ########.fr       */
+/*   Updated: 2020/11/02 16:11:19 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static t_menus	menus_init(SDL_Renderer *render)
 {
 	t_menus	menus;
 
-	menus.big = TTF_OpenFont("/home/user/Woof3D/res/font/anon.ttf", 30);
+	menus.big = TTF_OpenFont("./res/font/anon.ttf", 30);
 	main_init(render, menus.big, &menus.main);
 	pause_init(render, menus.big, &menus.pause);
 	return (menus);
@@ -98,7 +98,6 @@ t_data			woof_init(const char *map_file)
 	data.minimap = minimap_init();
 	data.map = map_init(map_file);
 	data.actions = actions_init();
-
 	data.menus = menus_init(data.wnd.renderer);
 	return (data);
 }

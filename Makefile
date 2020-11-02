@@ -9,6 +9,7 @@ SRCS		=		button/button_add_title.c\
 					button/button_uid.c\
 					controls/keyboard.c\
 					controls/mouse.c\
+					initialization/actions_init.c\
 					initialization/input/convert_file_to_map.c\
 					initialization/input/find_hero_position.c\
 					initialization/input/get_input.c\
@@ -84,6 +85,7 @@ HEADERS_LIST =		woof3d.h\
 					structs/point.h\
 					structs/ray.h\
 					structs/fps.h\
+					structs/actions.h\
 
 HEADERS =			$(addprefix $(INCLUDES_DIR), $(HEADERS_LIST))
 
