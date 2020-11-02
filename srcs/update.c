@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 08:05:41 by mburl             #+#    #+#             */
-/*   Updated: 2020/08/04 16:00:32 by mburl            ###   ########.fr       */
+/*   Updated: 2020/11/02 20:55:27 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "menu/sdl_menu.h"
 #include "libft.h"
 
-void	update_position(t_data *data, int mult, int rot)
+static void	update_position(t_data *data, int mult, int rot)
 {
 	float		new_fx;
 	float		new_fy;
@@ -31,30 +31,26 @@ void	update_position(t_data *data, int mult, int rot)
 		data->map.hero.position.y = new_fy;
 }
 
-void	update(t_data *data)
+void		update(t_data *data)
 {
 	int		xrel;
 	int		yrel;
 
-	if (data->actions.move_forward) {
-		if (data->actions.sonic_mode) {
-			update_position(data, 16, 0);
-		} else if (data->actions.run) {
+	if (data->actions.move_forward)
+	{
+		if (data->actions.sonic_mode)
+			update_position(data, 8, 0);
+		else if (data->actions.run)
 			update_position(data, 4, 0);
-		} else {
+		else
 			update_position(data, 2, 0);
-		}
 	}
 	if (data->actions.move_back)
 		update_position(data, -2, 0);
 	if (data->actions.move_left)
-		update_position(data, -1, -90);
+		update_position(data, 1, 90);
 	if (data->actions.move_right)
-		update_position(data, -1, 90);
+		update_position(data, 1, -90);
 	SDL_GetRelativeMouseState(&xrel, &yrel);
 	data->map.hero.pov -= xrel % 360;
-	if (data->map.hero.pov >= 360)
-		data->map.hero.pov -= 360;
-	else if (data->map.hero.pov <= 360)
-		data->map.hero.pov += 360;
 }

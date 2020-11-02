@@ -1,7 +1,19 @@
-#ifndef WOOF3D_ACTIONS_H
-#define WOOF3D_ACTIONS_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   actions.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/11/02 20:53:47 by mburl             #+#    #+#             */
+/*   Updated: 2020/11/02 20:54:12 by mburl            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <stdbool.h>
+#ifndef WOOF3D_ACTIONS_H
+# define WOOF3D_ACTIONS_H
+
+# include <stdbool.h>
 
 typedef struct		s_actions
 {
@@ -17,6 +29,7 @@ typedef struct		s_actions
 	bool			to_main;
 	bool			exit;
 	bool			to_game;
+	bool			show_minimap;
 }					t_actions;
 
 #endif

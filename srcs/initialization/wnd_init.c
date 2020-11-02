@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:36:21 by user              #+#    #+#             */
-/*   Updated: 2020/11/02 16:25:02 by mburl            ###   ########.fr       */
+/*   Updated: 2020/11/02 20:52:07 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_texture	*load_textures(SDL_Window *wnd)
 	return (textures);
 }
 
-t_wnd		wnd_init()
+t_wnd		wnd_init(void)
 {
 	t_wnd	wnd;
 

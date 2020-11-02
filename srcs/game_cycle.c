@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 15:00:33 by mburl             #+#    #+#             */
-/*   Updated: 2020/11/02 16:29:47 by mburl            ###   ########.fr       */
+/*   Updated: 2020/11/02 20:50:39 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "libft.h"
 #include <time.h>
 #include "structs/fps.h"
-
 
 static void	render(t_data *data)
 {
@@ -30,13 +29,10 @@ static void	render(t_data *data)
 	SDL_SetRenderDrawColor(data->wnd.renderer, 0x57, 0x57, 0x57, 0xff);
 	SDL_RenderFillRect(data->wnd.renderer, &dn);
 	rays = raycast(data->map.hero.pov,
-				   data->map.hero.position, data->map.map);
+					data->map.hero.position, data->map.map);
 	draw_vis(&data->wnd, rays, data->map.map);
-	// if (map)
-	// {
-	// 	draw_map(data->wnd.renderer, data->map.map);
-	// 	draw_rays(data->wnd.renderer, rays, data->map.hero.position);
-	// }
+	if (data->actions.show_minimap)
+		draw_map(data->wnd.renderer, data->map.hero.position, data->map.map);
 	free(rays);
 	SDL_UpdateWindowSurface(data->wnd.window);
 }
@@ -50,19 +46,19 @@ static void	update_actions(t_actions *actions, t_keyboard keyboard)
 	actions->run = keyboard[RUN];
 	actions->to_pause = keyboard[ESC];
 	actions->sonic_mode = keyboard[SONIC_MODE];
+	actions->show_minimap = keyboard[SHOW_MINIMAP];
 }
 
 void		game_cycle(t_data *data)
 {
 	SDL_GetRelativeMouseState(NULL, NULL);
-	data->map.hero.pov = 90;
 	SDL_SetRelativeMouseMode(1);
 	while (true)
 	{
 		SDL_PumpEvents();
 		update_actions(&data->actions, data->keyboard);
 		if (data->actions.to_pause)
-			break;
+			break ;
 		update(data);
 		render(data);
 	}

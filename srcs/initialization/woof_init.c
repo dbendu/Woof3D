@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:33:46 by user              #+#    #+#             */
-/*   Updated: 2020/11/02 16:11:19 by mburl            ###   ########.fr       */
+/*   Updated: 2020/11/02 20:51:49 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ static void		main_init(SDL_Renderer *render, TTF_Font *font, t_menu *main)
 	}
 }
 
-// TODO: убрать полный путь
 static t_menus	menus_init(SDL_Renderer *render)
 {
 	t_menus	menus;
@@ -87,7 +86,6 @@ static t_menus	menus_init(SDL_Renderer *render)
 	return (menus);
 }
 
-// TODO: сделать норм
 t_data			woof_init(const char *map_file)
 {
 	t_data	data;

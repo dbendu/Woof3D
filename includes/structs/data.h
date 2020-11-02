@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 12:44:06 by user              #+#    #+#             */
-/*   Updated: 2020/08/04 16:02:49 by mburl            ###   ########.fr       */
+/*   Updated: 2020/11/02 20:53:20 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <SDL2/SDL_ttf.h>
 # include <stdbool.h>
-#include "actions.h"
+# include "actions.h"
 # include "controls/keyboard.h"
 # include "graphic/minimap.h"
 # include "graphic/wnd.h"

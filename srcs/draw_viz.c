@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 12:26:04 by mburl             #+#    #+#             */
-/*   Updated: 2020/08/04 16:00:32 by mburl            ###   ########.fr       */
+/*   Updated: 2020/11/02 20:50:08 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ void				draw_vis_while(t_wnd *sdl, t_ray *rays,
 	down = calc_down(rays[x].len);
 	wnd_y = calc_wnd_y(rays[x].len);
 	tx_y = 0;
-	tx_x = rays[x].side == X_SIDE ?
-		((int)rays[x].x % sdl->textures[0].w) :
+	tx_x = rays[x].side == X_SIDE ? ((int)rays[x].x % sdl->textures[0].w) :
 		((int)rays[x].y % sdl->textures[0].w);
 	tx_y += wnd_y < 0 ? calc_tx_y(wnd_y, sdl, rays[x].len) : tx_y;
 	wnd_y = wnd_y < 0 ? -1 : wnd_y - 1;
@@ -70,14 +69,12 @@ void				draw_vis_while(t_wnd *sdl, t_ray *rays,
 void				draw_vis(t_wnd *sdl, t_ray *rays, t_point **map)
 {
 	int			x;
-//	float distance = WND_WIDTH / 2 / tan(HERO_FOV / 2);
-//	float delta = WND_WIDTH / (float)HERO_FOV;
-//	float *angles = malloc(sizeof(float) * WND_WIDTH);
-//	for (int x = 0; x < WND_WIDTH; ++x) {
-//		angles[x] = delta * x *
-//	}
 
 	x = -1;
 	while (++x < WND_WIDTH)
+	{
+		if (!check_vals(rays[x].y / CELL_SIZE, rays[x].x / CELL_SIZE, map))
+			continue ;
 		draw_vis_while(sdl, rays, map, x);
+	}
 }

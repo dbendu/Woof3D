@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keyboard.c                                         :+:      :+:    :+:   */
+/*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/26 15:30:39 by user              #+#    #+#             */
-/*   Updated: 2020/08/04 16:01:34 by mburl            ###   ########.fr       */
+/*   Created: 2020/11/02 20:07:51 by mburl             #+#    #+#             */
+/*   Updated: 2020/11/02 20:50:50 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "structs/data.h"
-#include "woofdefines.h"
+#include "woof3d.h"
+#include "libft.h"
 
-
-
-
+int		check_vals(int a, int b, t_point **map)
+{
+	if (a > 0 && b > 0)
+	{
+		if (vec_size(&map) > a)
+		{
+			if (vec_size(&map[a]) > b)
+				return (1);
+		}
+	}
+	return (0);
+}

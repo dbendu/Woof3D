@@ -41,7 +41,8 @@ SRCS		=		button/button_add_title.c\
 					pause_cycle.c\
 					raycasting.c\
 					update.c\
-					utils.c
+					utils.c\
+					utils_2.c
 
 
 SRCS_DIR 	=		srcs
@@ -85,7 +86,7 @@ HEADERS_LIST =		woof3d.h\
 					structs/point.h\
 					structs/ray.h\
 					structs/fps.h\
-					structs/actions.h\
+					structs/actions.h
 
 HEADERS =			$(addprefix $(INCLUDES_DIR), $(HEADERS_LIST))
 
@@ -110,7 +111,7 @@ LINK_SDL2 		= -L$(LIBSDL2) $(SDL2_FLAGS)
 #									FLAGS
 #-------------------------------------------------------------------------------
 
-FLAGS_COMPILE =		-Wall -Wextra -Werror -g
+FLAGS_COMPILE =		-Wall -Wextra -g
 
 FLAGS_LINK =		-lm $(LIBFT_LINK) $(SDL_2_FLAGS) $(LINK_SDL2)
 

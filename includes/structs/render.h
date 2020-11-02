@@ -1,4 +1,0 @@
-#ifndef WOOF3D_RENDER_H
-#define WOOF3D_RENDER_H
-
-#endif //WOOF3D_RENDER_H

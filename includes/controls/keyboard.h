@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 12:45:42 by user              #+#    #+#             */
-/*   Updated: 2020/06/19 16:06:37 by user             ###   ########.fr       */
+/*   Updated: 2020/11/02 20:52:54 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define SONIC_MODE		(SDL_SCANCODE_LCTRL)
 
 # define ESC			(SDL_SCANCODE_ESCAPE)
+# define SHOW_MINIMAP	(SDL_SCANCODE_M)
 
 typedef const uint8_t*	t_keyboard;
 

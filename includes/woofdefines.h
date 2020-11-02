@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 07:57:07 by mburl             #+#    #+#             */
-/*   Updated: 2020/08/04 08:18:48 by mburl            ###   ########.fr       */
+/*   Updated: 2020/11/02 20:40:18 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /*
 ** window
 */
-# define WND_WIDTH			1480
+# define WND_WIDTH			1280
 # define WND_HEIGHT			720
 # define WND_TITLE			"Woof3D"
 
