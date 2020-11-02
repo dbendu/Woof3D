@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 15:00:33 by mburl             #+#    #+#             */
-/*   Updated: 2020/08/04 16:00:32 by mburl            ###   ########.fr       */
+/*   Updated: 2020/11/02 16:00:43 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "menu/sdl_menu.h"
 #include "libft.h"
 #include <time.h>
+#include "structs/fps.h"
 
 static void	render(t_data *data, bool map)
 {
@@ -54,13 +55,27 @@ static void	event_handle(const SDL_Event *event, t_data *data)
 		handle_key_release(&data->keyboard, event->key.keysym.sym);
 }
 
+static void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+static void	ft_putnbr(int n)
+{
+	if (n >= 10)
+		ft_putnbr(n / 10);
+	ft_putchar((n % 10) + '0');
+}
+
 void		game_cycle(t_data *data)
 {
 	SDL_Event	event;
 	bool		draw_map;
+	t_fps		fps;
 
 	SDL_SetRelativeMouseMode(1);
 	draw_map = false;
+	fps_init(&fps);
 	while (true)
 	{
 		if (SDL_PollEvent(&event))
@@ -74,5 +89,8 @@ void		game_cycle(t_data *data)
 		}
 		update(data);
 		render(data, draw_map);
+		fps_think(&fps);
+		ft_putnbr((int)fps.framespersecond);
+		ft_putchar('\n');
 	}
 }

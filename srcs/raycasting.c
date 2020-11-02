@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 21:25:37 by user              #+#    #+#             */
-/*   Updated: 2020/08/04 16:02:15 by mburl            ###   ########.fr       */
+/*   Updated: 2020/11/02 15:50:58 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ t_ray			*raycast(float pov, t_position start, t_vector_point *map)
 	int		x;
 
 	dir = pov + HERO_FOV_DEFAULT / 2;
-	dir = dir > 360 ? (int)dir % 360 : dir;
+	dir = (int)dir % 360;
 	rays = malloc(sizeof(t_ray) * WND_WIDTH);
 	ft_memset(rays, 0, sizeof(t_ray) * WND_WIDTH);
 	x = -1;

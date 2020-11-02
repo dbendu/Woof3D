@@ -6,12 +6,14 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 15:08:06 by mburl             #+#    #+#             */
-/*   Updated: 2020/08/04 16:02:05 by mburl            ###   ########.fr       */
+/*   Updated: 2020/11/02 15:59:43 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <SDL2/SDL.h>
 #include "structs/point.h"
+#include "structs/fps.h"
+#include "woofdefines.h"
 
 SDL_Color	init_sdl_color(int r, int g, int b, int a)
 {
@@ -55,4 +57,36 @@ void		count_cols(const char *line, size_t *max_size)
 		line++;
 	}
 	*max_size = (cols > *max_size) ? cols : *max_size;
+}
+
+void		fps_init(t_fps *fps)
+{
+	ft_memset(fps->frametimes, 0, sizeof(fps->frametimes));
+	fps->framecount = 0;
+	fps->framespersecond = 0;
+	fps->frametimelast = SDL_GetTicks();
+}
+
+void		fps_think(t_fps *fps)
+{
+	Uint32	frametimesindex;
+	Uint32	getticks;
+	Uint32	count;
+	Uint32	i;
+
+	frametimesindex = fps->framecount % FRAME_VALUES;
+	getticks = SDL_GetTicks();
+	fps->frametimes[frametimesindex] = getticks - fps->frametimelast;
+	fps->frametimelast = getticks;
+	fps->framecount++;
+	if (fps->framecount < FRAME_VALUES)
+		count = fps->framecount;
+	else
+		count = FRAME_VALUES;
+	fps->framespersecond = 0;
+	i = 0;
+	while (i < count)
+		fps->framespersecond += fps->frametimes[i++];
+	fps->framespersecond /= count;
+	fps->framespersecond = 1000.f / fps->framespersecond;
 }

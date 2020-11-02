@@ -83,6 +83,7 @@ HEADERS_LIST =		woof3d.h\
 					structs/map.h\
 					structs/point.h\
 					structs/ray.h\
+					structs/fps.h\
 
 HEADERS =			$(addprefix $(INCLUDES_DIR), $(HEADERS_LIST))
 
