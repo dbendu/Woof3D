@@ -20,21 +20,21 @@ static inline float	calc_tx_y(float wnd_y, t_wnd *sdl,
 {
 	return (-wnd_y * sdl->textures[0].h /
 				(float)(CELL_SIZE / len *
-				(WND_WIDTH / 2 / tan(to_rad(HERO_FOV_DEFAULT / 2)))));
+				(WND_WIDTH / 2 / tan(to_rad(HERO_FOV / 2)))));
 }
 
 static inline float	calc_wnd_y(double len)
 {
 	return ((WND_HEIGHT / 2) - ((CELL_SIZE / len *
-			(WND_WIDTH / 2 / tan(to_rad(HERO_FOV_DEFAULT / 2)))) / 2));
+			(WND_WIDTH / 2 / tan(to_rad(HERO_FOV / 2)))) / 2));
 }
 
 static inline float	calc_down(double len)
 {
 	return ((WND_HEIGHT / 2) - ((CELL_SIZE / len *
-			(WND_WIDTH / 2 / tan(to_rad(HERO_FOV_DEFAULT / 2)))) / 2) +
+			(WND_WIDTH / 2 / tan(to_rad(HERO_FOV / 2)))) / 2) +
 			(CELL_SIZE / len * (WND_WIDTH / 2 /
-			tan(to_rad(HERO_FOV_DEFAULT / 2)))));
+			tan(to_rad(HERO_FOV / 2)))));
 }
 
 void				draw_vis_while(t_wnd *sdl, t_ray *rays,
@@ -63,13 +63,19 @@ void				draw_vis_while(t_wnd *sdl, t_ray *rays,
 			[(int)wnd_y * WND_WIDTH + x] = src_pixels[(int)tx_y *
 				sdl->textures[0].w + tx_x];
 		tx_y += sdl->textures[0].h / (float)(CELL_SIZE / rays[x].len *
-			(WND_WIDTH / 2 / tan(to_rad(HERO_FOV_DEFAULT / 2))));
+			(WND_WIDTH / 2 / tan(to_rad(HERO_FOV / 2))));
 	}
 }
 
 void				draw_vis(t_wnd *sdl, t_ray *rays, t_point **map)
 {
 	int			x;
+//	float distance = WND_WIDTH / 2 / tan(HERO_FOV / 2);
+//	float delta = WND_WIDTH / (float)HERO_FOV;
+//	float *angles = malloc(sizeof(float) * WND_WIDTH);
+//	for (int x = 0; x < WND_WIDTH; ++x) {
+//		angles[x] = delta * x *
+//	}
 
 	x = -1;
 	while (++x < WND_WIDTH)

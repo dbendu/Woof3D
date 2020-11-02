@@ -15,6 +15,7 @@
 
 # include <SDL2/SDL_ttf.h>
 # include <stdbool.h>
+#include "actions.h"
 # include "controls/keyboard.h"
 # include "graphic/minimap.h"
 # include "graphic/wnd.h"
@@ -27,7 +28,6 @@ typedef struct		s_menus
 	TTF_Font		*big;
 	t_menu			main;
 	t_menu			pause;
-	t_menu			settings;
 }					t_menus;
 
 # define MAIN_MENU_BUTTONS	3
@@ -37,24 +37,16 @@ typedef struct		s_menus
 # define BUTTON_SETTINGS		1
 # define BUTTON_EXIT			2
 # define BUTTON_CONTINUE		3
-# define BUTTON_TO_MAIN		4
-
-typedef struct		s_jumps
-{
-	bool			exit;
-	bool			to_main;
-	bool			to_game;
-}					t_jumps;
+# define BUTTON_TO_MAIN			4
 
 typedef struct		s_data
 {
 	t_wnd			wnd;
 	t_keyboard		keyboard;
+	t_actions		actions;
 	t_map			map;
 	t_minimap		minimap;
 	t_menus			menus;
-	t_jumps			jumps;
-	bool			quit;
 }					t_data;
 
 #endif

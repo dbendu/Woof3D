@@ -76,30 +76,29 @@ static void		main_init(SDL_Renderer *render, TTF_Font *font, t_menu *main)
 	}
 }
 
+// TODO: убрать полный путь
 static t_menus	menus_init(SDL_Renderer *render)
 {
 	t_menus	menus;
 
-	menus.big = TTF_OpenFont("res/font/anon.ttf", 30);
+	menus.big = TTF_OpenFont("/home/user/Woof3D/res/font/anon.ttf", 30);
 	main_init(render, menus.big, &menus.main);
-	menus.settings = NULL;
 	pause_init(render, menus.big, &menus.pause);
 	return (menus);
 }
 
-t_data			woof_init(const char *filename)
+// TODO: сделать норм
+t_data			woof_init(const char *map_file)
 {
 	t_data	data;
 
 	sdl_init();
 	data.keyboard = keyboard_init();
-	data.wnd = wnd_init(WND_TITLE, WND_WIDTH, WND_HEIGHT);
+	data.wnd = wnd_init();
 	data.minimap = minimap_init();
-	data.map = map_init(filename);
-	data.jumps.exit = false;
-	data.jumps.to_game = false;
-	data.jumps.to_main = false;
+	data.map = map_init(map_file);
+	data.actions = actions_init();
+
 	data.menus = menus_init(data.wnd.renderer);
-	data.quit = false;
 	return (data);
 }

@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "initialization/init_all.h"
 #include "initialization/input/input.h"
 
 t_map	map_init(const char *filename)

@@ -34,4 +34,7 @@ void		handle_key_press(t_keyboard *keyboard, SDL_Keycode key);
 void		handle_key_release(t_keyboard *keyboard, SDL_Keycode key);
 void		draw_vis(t_wnd *sdl, t_ray *rays, t_point **map);
 
+
+static void	render(t_data *data);
+
 #endif

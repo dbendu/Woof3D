@@ -21,13 +21,13 @@ static void	handle_event(t_data *data)
 
 	uid = menu_selected_uid(data->menus.main);
 	if (uid == BUTTON_EXIT)
-		data->jumps.exit = true;
+		data->actions.exit = true;
 	else if (uid == BUTTON_SETTINGS)
 		write(1, "Settings unavalible right now\n", 31);
 	else if (uid == BUTTON_GAME)
 	{
 		game_cycle(data);
-		data->jumps.to_main = false;
+		data->actions.to_main = false;
 	}
 }
 
@@ -41,10 +41,9 @@ void		main_menu_cycle(t_data *data)
 		ev = menu_draw(data->menus.main);
 		SDL_UpdateWindowSurface(data->wnd.window);
 		SDL_WaitEvent(&event);
-		(void)event;
 		if (ev)
 			handle_event(data);
-		if (data->jumps.exit)
+		if (data->actions.exit)
 			break ;
 	}
 }

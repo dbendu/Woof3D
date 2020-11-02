@@ -19,11 +19,11 @@ static void	input_handle(t_data *data)
 
 	uid = menu_selected_uid(data->menus.pause);
 	if (uid == BUTTON_CONTINUE)
-		data->jumps.to_game = true;
+		data->actions.to_game = true;
 	else if (uid == BUTTON_TO_MAIN)
-		data->jumps.to_main = true;
+		data->actions.to_main = true;
 	else if (uid == BUTTON_EXIT)
-		data->jumps.exit = true;
+		data->actions.exit = true;
 }
 
 void		pause_cycle(t_data *data)
@@ -38,10 +38,10 @@ void		pause_cycle(t_data *data)
 		SDL_WaitEvent(&event);
 		if (ev)
 			input_handle(data);
-		if (data->jumps.exit)
+		if (data->actions.exit)
 			exit(0);
-		else if (data->jumps.to_game || data->jumps.to_main)
+		else if (data->actions.to_game || data->actions.to_main)
 			break ;
 	}
-	data->jumps.to_game = false;
+	data->actions.to_game = false;
 }
