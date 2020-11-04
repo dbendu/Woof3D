@@ -29,6 +29,8 @@ typedef struct		s_actions
 	bool			to_main;
 	bool			exit;
 	bool			to_game;
+
+	bool			last_show_status;
 	bool			show_minimap;
 }					t_actions;
 

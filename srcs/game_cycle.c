@@ -49,7 +49,9 @@ static void	update_actions(t_actions *actions, t_keyboard keyboard)
 	actions->run = keyboard[RUN];
 	actions->to_pause = keyboard[ESC];
 	actions->sonic_mode = keyboard[SONIC_MODE];
-	actions->show_minimap = keyboard[SHOW_MINIMAP];
+	if (actions->last_show_status == false && keyboard[SHOW_MINIMAP] == true)
+		actions->show_minimap = !actions->show_minimap;
+	actions->last_show_status = keyboard[SHOW_MINIMAP];
 }
 
 void		game_cycle(t_data *data)
