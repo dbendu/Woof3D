@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 17:56:34 by user              #+#    #+#             */
-/*   Updated: 2020/11/04 12:57:34 by mburl            ###   ########.fr       */
+/*   Updated: 2020/11/04 14:26:20 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,25 +40,30 @@ static void				create_fake_point(int x, t_point *point)
 	point->wall_c = 1;
 }
 
-static t_vector_point	convert_line(const char *line, size_t y_position)
+static t_vector_point	convert_line(const char *line, size_t y_position,
+										size_t max_size)
 {
 	t_vector_point	points_line;
 	t_point			point;
+	size_t			i;
 
 	point.y = y_position * CELL_SIZE;
 	point.x = 0;
 	points_line = vec_create(20, sizeof(t_point));
 	create_fake_point(point.x, &point);
 	vec_pushback(&points_line, &point);
-	while (true)
+	i = 0;
+	while (i < max_size)
 	{
 		point.x += CELL_SIZE;
 		while (*line == ' ' || *line == '\t')
 			line += 1;
-		if (*line == '\0')
-			break ;
-		get_point(&line, &point);
+		if (*line != '\0')
+			get_point(&line, &point);
+		else
+			create_fake_point(i, &point);
 		vec_pushback(&points_line, &point);
+		i++;
 	}
 	create_fake_point(point.x + CELL_SIZE, &point);
 	vec_pushback(&points_line, &point);
@@ -105,7 +110,7 @@ t_vector_point			*convert_file_to_map(const t_vector_char *lines)
 	vec_pushback(&map, &map_line);
 	while (line_index < lines_count - 1)
 	{
-		map_line = convert_line(lines[line_index - 1], line_index);
+		map_line = convert_line(lines[line_index - 1], line_index, max_size);
 		vec_pushback(&map, &map_line);
 		line_index++;
 	}

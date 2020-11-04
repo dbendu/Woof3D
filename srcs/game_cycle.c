@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 15:00:33 by mburl             #+#    #+#             */
-/*   Updated: 2020/11/02 20:50:39 by mburl            ###   ########.fr       */
+/*   Updated: 2020/11/04 14:32:25 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ static void	render(t_data *data)
 					data->map.hero.position, data->map.map);
 	draw_vis(&data->wnd, rays, data->map.map);
 	if (data->actions.show_minimap)
+	{
 		draw_map(data->wnd.renderer, data->map.hero.position, data->map.map);
+		draw_rays(data->wnd.renderer, rays, data->map.hero.position);
+	}
 	free(rays);
 	SDL_UpdateWindowSurface(data->wnd.window);
 }
@@ -51,15 +54,20 @@ static void	update_actions(t_actions *actions, t_keyboard keyboard)
 
 void		game_cycle(t_data *data)
 {
+	t_fps		fps;
+
 	SDL_GetRelativeMouseState(NULL, NULL);
-	SDL_SetRelativeMouseMode(1);
 	while (true)
 	{
+		fps_init(&fps);
 		SDL_PumpEvents();
 		update_actions(&data->actions, data->keyboard);
 		if (data->actions.to_pause)
 			break ;
 		update(data);
 		render(data);
+		fps_think(&fps);
+		ft_putnbr((int)fps.framespersecond);
+		ft_putchar('\n');
 	}
 }

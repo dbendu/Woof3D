@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 23:33:46 by user              #+#    #+#             */
-/*   Updated: 2020/11/04 12:49:38 by mburl            ###   ########.fr       */
+/*   Updated: 2020/11/04 14:11:01 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void		sdl_init(void)
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 		ft_error(SDL_GetError(), "woof_init", 0);
 	TTF_Init();
+	SDL_SetRelativeMouseMode(1);
 }
 
 static void		pause_init(SDL_Renderer *render, TTF_Font *font, t_menu *pause)

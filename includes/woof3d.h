@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 17:28:08 by user              #+#    #+#             */
-/*   Updated: 2020/11/02 20:26:51 by mburl            ###   ########.fr       */
+/*   Updated: 2020/11/04 14:32:36 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,7 @@ void		handle_key_press(t_keyboard *keyboard, SDL_Keycode key);
 void		handle_key_release(t_keyboard *keyboard, SDL_Keycode key);
 void		draw_vis(t_wnd *sdl, t_ray *rays, t_point **map);
 int			check_vals(int a, int b, t_point **map);
+void		ft_putchar(char c);
+void		ft_putnbr(int n);
 
 #endif

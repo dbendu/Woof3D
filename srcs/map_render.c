@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 08:56:46 by mburl             #+#    #+#             */
-/*   Updated: 2020/11/02 20:47:55 by mburl            ###   ########.fr       */
+/*   Updated: 2020/11/04 14:06:43 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,29 +45,23 @@ void	draw_map(SDL_Renderer *render, t_position start, t_vector_point *map)
 	}
 }
 
-/*
-** void	draw_rays(SDL_Renderer *render, t_ray *rays, t_position start)
-** {
-** 	int		x;
-** 	int		offset_x;
-** 	int		offset_y;
-** 	int		x1;
-** 	int		x2;
-** 	int		y1;
-** 	int		y2;
-**
-** 	x = 0;
-** 	offset_x = (int)(WND_WIDTH / 2);
-** 	offset_y = (int)(WND_HEIGHT / 2);
-** 	SDL_SetRenderDrawColor(render, 0xff, 0, 0, 0xff);
-** 	while (x < WND_WIDTH)
-** 	{
-** 		x1 = offset_x - start.x;
-** 		x2 = offset_x - rays[x].x;
-** 		y1 = offset_y - start.y;
-** 		y2 = offset_y - rays[x].y;
-** 		SDL_RenderDrawLine(render, x1, y1, x2, y2);
-** 		x++;
-** 	}
-** }
-*/
+void	draw_rays(SDL_Renderer *render, t_ray *rays, t_position start)
+{
+	int		x;
+	int		x1;
+	int		x2;
+	int		y1;
+	int		y2;
+
+	x = 0;
+	x1 = WND_WIDTH / 2;
+	y1 = WND_HEIGHT / 2;
+	SDL_SetRenderDrawColor(render, 0xff, 0, 0, 0xff);
+	while (x < WND_WIDTH)
+	{
+		x2 = rays[x].x + x1 - start.x;
+		y2 = rays[x].y + y1 - start.y;
+		SDL_RenderDrawLine(render, x1, y1, x2, y2);
+		x++;
+	}
+}
