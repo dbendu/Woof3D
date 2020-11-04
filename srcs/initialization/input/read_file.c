@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 18:04:49 by user              #+#    #+#             */
-/*   Updated: 2020/10/29 12:38:02 by mburl            ###   ########.fr       */
+/*   Updated: 2020/11/04 15:29:29 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_vector_char	*read_file(const char *filename)
 	if (fd < 0)
 		ft_error("can\'t open file", "read_file", 0);
 	lines = vec_create(20, sizeof(t_vector_char));
-	while (gnl(fd, &line, NULL) == GNL_OK)
+	while (gnl(fd, &line) == GNL_OK)
 	{
 		if (useless_line(line))
 			free(line);

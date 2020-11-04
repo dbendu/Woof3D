@@ -114,7 +114,7 @@ FLAGS_COMPILE =		-Wall -Wextra -g
 
 FLAGS_LINK =		-lm $(LIBFT_LINK) $(SDL_2_FLAGS) $(LINK_SDL2)
 
-all: $(NAME)
+all: $(NAME) $(LIBFT)
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)

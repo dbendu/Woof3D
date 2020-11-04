@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 20:07:51 by mburl             #+#    #+#             */
-/*   Updated: 2020/11/04 14:31:13 by mburl            ###   ########.fr       */
+/*   Updated: 2020/11/04 14:44:24 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	ft_putchar(char c)
 
 void	ft_putnbr(int n)
 {
-
 	if (n >= 10)
 		ft_putnbr(n / 10);
 	ft_putchar((n % 10) + '0');

@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 17:56:34 by user              #+#    #+#             */
-/*   Updated: 2020/11/04 14:26:20 by mburl            ###   ########.fr       */
+/*   Updated: 2020/11/04 15:54:34 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ static t_vector_point	create_fake_line(size_t y_position, size_t size)
 	return (points_line);
 }
 
+#include <stdio.h>
+
 t_vector_point			*convert_file_to_map(const t_vector_char *lines)
 {
 	const size_t	lines_count = vec_size(&lines) + 2;
@@ -107,6 +109,14 @@ t_vector_point			*convert_file_to_map(const t_vector_char *lines)
 		count_cols(lines[line_index++], &max_size);
 	line_index = 1;
 	map_line = create_fake_line(0, max_size + 2);
+	// for (size_t i = 0; i < lines_count - 2; i++)
+	// {
+	// 	for (size_t j = 0; j < max_size; j++)
+	// 	{
+	// 		printf("%c", lines[i][j]);
+	// 	}
+	// 	printf("\n");
+	// }
 	vec_pushback(&map, &map_line);
 	while (line_index < lines_count - 1)
 	{
