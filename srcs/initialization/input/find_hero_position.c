@@ -6,29 +6,32 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 18:29:35 by user              #+#    #+#             */
-/*   Updated: 2020/08/04 15:59:05 by mburl            ###   ########.fr       */
+/*   Updated: 2020/11/04 12:53:20 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "woofdefines.h"
 #include "initialization/input/input_utils.h"
 
-static t_point	get_hero_position(const char *line, size_t y_position)
+static t_point	get_hero_position(const char *line, size_t y_position,
+									bool *hero_founded)
 {
 	t_point	hero_posititon;
 
 	hero_posititon.y = y_position;
 	hero_posititon.x = 0;
-	while (true)
+	while (*line)
 	{
 		while (*line == ' ' || *line == '\t')
-			line += 1;
+			line++;
 		if (*line == 'X')
+		{
+			*hero_founded = true;
 			break ;
+		}
 		else
 		{
-			while (ft_isdigit(*line))
-				line += 1;
+			line++;
 			hero_posititon.x += 1;
 		}
 	}
@@ -49,10 +52,10 @@ t_point			find_hero_position(const t_vector_char *lines)
 	{
 		if (ft_strchr(lines[line_index], 'X') != NULL)
 		{
-			hero_position = get_hero_position(lines[line_index], line_index);
+			hero_position = get_hero_position(lines[line_index], line_index,
+				&hero_founded);
 			hero_position.x++;
 			hero_position.y++;
-			hero_founded = true;
 			break ;
 		}
 		line_index += 1;

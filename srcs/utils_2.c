@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 20:07:51 by mburl             #+#    #+#             */
-/*   Updated: 2020/11/02 20:50:50 by mburl            ###   ########.fr       */
+/*   Updated: 2020/11/04 11:57:00 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 int		check_vals(int a, int b, t_point **map)
 {
-	if (a > 0 && b > 0)
+	if (a >= 0 && b >= 0)
 	{
-		if (vec_size(&map) > a)
+		if (a < vec_size(&map))
 		{
-			if (vec_size(&map[a]) > b)
+			if (b < vec_size(&map[a]))
 				return (1);
 		}
 	}

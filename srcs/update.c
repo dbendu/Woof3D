@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 08:05:41 by mburl             #+#    #+#             */
-/*   Updated: 2020/11/02 20:55:27 by mburl            ###   ########.fr       */
+/*   Updated: 2020/11/04 12:00:12 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static void	update_position(t_data *data, int mult, int rot)
 		cos(to_rad(data->map.hero.pov + rot));
 	new_fy = data->map.hero.position.y - mult *
 		sin(to_rad(data->map.hero.pov + rot));
+	if (!check_vals(new_fy / CELL_SIZE, new_fy / CELL_SIZE, data->map.map))
+		return ;
 	if (data->map.map[(int)(data->map.hero.position.y / CELL_SIZE)]
 			[(int)(new_fx / CELL_SIZE)].wall == false)
 		data->map.hero.position.x = new_fx;

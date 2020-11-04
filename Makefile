@@ -7,7 +7,6 @@ SRCS		=		button/button_add_title.c\
 					button/button_draw.c\
 					button/button_select.c\
 					button/button_uid.c\
-					controls/keyboard.c\
 					controls/mouse.c\
 					initialization/actions_init.c\
 					initialization/input/convert_file_to_map.c\

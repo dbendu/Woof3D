@@ -6,7 +6,7 @@
 /*   By: mburl <mburl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 17:56:34 by user              #+#    #+#             */
-/*   Updated: 2020/08/04 15:59:05 by mburl            ###   ########.fr       */
+/*   Updated: 2020/11/04 12:57:34 by mburl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ static void				get_point(const char **lineptr, t_point *point)
 		wall_c = ft_atoi(line);
 		point->wall = wall_c ? true : false;
 		point->wall_c = (wall_c > 5) ? 1 : wall_c;
-		while (ft_isdigit(*line))
-			line += 1;
+		line += 1;
 	}
 	*lineptr = line;
 }
