@@ -55,4 +55,8 @@ void		update(t_data *data)
 		update_position(data, 1, -90);
 	SDL_GetRelativeMouseState(&xrel, &yrel);
 	data->map.hero.pov -= xrel % 360;
+	if (data->map.hero.pov > 360)
+		data->map.hero.pov -= 360;
+	else if (data->map.hero.pov < 0)
+		data->map.hero.pov += 360;
 }
